@@ -1,7 +1,7 @@
-const express= require('express');
-const router= express.Router();
-const bcrypt=require('bcrypt');
-const jwt=require('jsonwebtoken');
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt-nodejs');
+const jwt = require('jsonwebtoken');
 const JWT_CONFIG=require('../config/secret');
 const UtilFab=require('../model/utilfab');
 

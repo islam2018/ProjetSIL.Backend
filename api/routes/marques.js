@@ -1,9 +1,7 @@
-const express= require('express');
-const router= express.Router();
-const bcrypt=require('bcrypt');
-const Marque=require('../model/marque');
-const UtilFab=require('../model/utilfab');
-
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt-nodejs');
+const UtilFab = require('../model/utilfab');
 
 
 router.get('/:id/utilfab', (req,res) => {
@@ -17,7 +15,7 @@ router.get('/:id/utilfab', (req,res) => {
 });
 
 router.post('/:id/utilfab', (req,res) => {
-    bcrypt.hash(req.body.Mdp,10,(err,hash)=>{
+    bcrypt.hash(req.body.Mdp,null,null,function(err,hash){
        if (err) {
             res.status(500).json({
                 msg:"Une erreur a été produite !"
