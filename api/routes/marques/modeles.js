@@ -38,6 +38,7 @@ router.put('/:id',(req,res)=>{
     });
 });
 
+
 router.delete('/:id', (req,res) => {
     Modele.destroy({where:{CodeModele:req.params.id}}).then(result=>{
         if (result) {
@@ -67,9 +68,11 @@ router.get('/:id/versions', (req,res) => {
     });
 });
 
+
 router.post('/:id/versions', (req,res) => {
     Version.findOne( {where:{NomVersion:req.body.NomVersion}}).then( version => {
         if ( version != null ) {
+
             res.status(409).json({
                 message: "Version existante"
             });
@@ -80,6 +83,7 @@ router.post('/:id/versions', (req,res) => {
             }).then(version => {
                 res.status(200).json(version);
             }).catch(error => {
+
                 res.status(500).json({
                     message: "Une erreur a été produite !"
                 });
@@ -87,5 +91,7 @@ router.post('/:id/versions', (req,res) => {
         }
     });
 });
+
+
 
 module.exports = router;

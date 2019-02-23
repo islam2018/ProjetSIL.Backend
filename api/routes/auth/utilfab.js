@@ -1,5 +1,7 @@
-const express = require('express');
-const router = express.Router();
+
+
+const express= require('express');
+const router= express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 const JWT_CONFIG=require('../../config/secret');
@@ -19,7 +21,8 @@ router.post('/', (req,res,next) => {
                         const token=jwt.sign({Id:utilfab.IdUserF,mail:utilfab.Mail},JWT_CONFIG.JWT_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
                         res.status(200).json({
                             msg: "Authentification résussite !",
-                            token: token
+                            token: token,
+                            utilfab: utilfab
                         });
                     } else {
                         res.status(401).json({

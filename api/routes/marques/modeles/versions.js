@@ -25,7 +25,7 @@ router.get('/:id', (req,res) => {
 router.put('/:id', (req,res) => {
     Version.findOne({
         where: {
-            CodeModele: req.params.id
+            CodeVersion: req.params.id
         }
     }).then(version => {
         if ( version == null ) {

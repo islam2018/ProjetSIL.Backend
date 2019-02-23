@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
-const UtilFab = require('../model/utilfab');
 const Modele=require('../model/modele');
 const Marque=require('../model/marque');
 
@@ -90,17 +89,25 @@ router.delete('/:id', (req,res) => {
 });
 
 router.get('/:id/modeles',(req,res) => {
-    Modele.findAll({where:{CodeMarque:req.params.id}}).then(modeles=>{
+    Modele.findAll({
+        where: {
+            CodeMarque: req.params.id
+        }
+    }).then(modeles=>{
         res.status(200).json({modeles});
     }).catch (error=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !",
+            message: "Une erreur a été produite !",
         })
     });
 });
 
 router.post('/:id/modeles',(req,res) => {
-    Modele.findOne( {where:{NomModele:req.body.NomModele}}).then( modele => {
+    Modele.findOne( {
+        where: {
+            NomModele: req.body.NomModele
+        }
+    }).then( modele => {
         if ( modele != null ) {
             res.status(409).json({
                 message: "Modèle existant"
@@ -121,7 +128,11 @@ router.post('/:id/modeles',(req,res) => {
 });
 
 router.get('/:id/utilfab', (req,res) => {
-    UtilFab.findAll({where:{Fabricant:req.params.id}}).then(users=>{
+    UtilFab.findAll({
+        where: {
+            Fabricant: req.params.id
+        }
+    }).then(users=>{
         res.status(200).json({users});
     }).catch (error=>{
         res.status(500).json({
@@ -134,8 +145,8 @@ router.post('/:id/utilfab', (req,res) => {
     bcrypt.hash(req.body.Mdp,10,(err,hash)=>{
         if (err) {
             res.status(500).json({
-                msg:"Une erreur a été produite !"
-            })
+                message: "Une erreur a été produite !"
+            });
         } else {
 
             UtilFab.findOne({where:{Mail:req.body.Mail}}).then(utilfabr=>{
@@ -162,6 +173,7 @@ router.post('/:id/utilfab', (req,res) => {
                 }
             });
         }
+
     });
 });
 
