@@ -15,13 +15,5 @@ router.delete('/:id', (req,res) => {
 
 });
 
-router.get('/:id/lignetarif', (req,res) => {
-
-});
-
-router.post('/:id/lignetarif', (req,res) => {
-
-});
-
 
 module.exports = router;
