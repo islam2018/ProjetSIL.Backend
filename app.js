@@ -14,15 +14,11 @@ app.use('/marques/modeles',require('./api/routes/marques/modeles'));
 app.use('/marques/modeles/versions',require('./api/routes/marques/modeles/versions'));
 app.use('/marques/modeles/versions/options',require('./api/routes/marques/modeles/versions/options'));
 app.use('/marques/modeles/versions/couleurs',require('./api/routes/marques/modeles/versions/couleurs'));
-app.use('/marques/modeles/versions/options/lignetarif',require('./api/routes/marques/modeles/versions/options/lignetarif'));
-app.use('/marques/modeles/versions/couleurs/lignetarif',require('./api/routes/marques/modeles/versions/couleurs/lignetarif'));
-
+app.use('/marques/modeles/versions/lignetarif',require('./api/routes/marques/modeles/versions/lignetarif'));
 app.use('/marques/utilfab',require('./api/routes/marques/utilfab'));
-
 app.use('/vehicules',require('./api/routes/vehicules'));
 app.use('/vehicules/annonces',require('./api/routes/vehicules/annonces'));
 app.use('/vehicules/commandes',require('./api/routes/vehicules/commandes'));
-
 app.use('/auth/utilfab',require('./api/routes/auth/utilfab'));
 
 

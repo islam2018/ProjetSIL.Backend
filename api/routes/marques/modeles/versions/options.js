@@ -82,7 +82,8 @@ router.get('/:id/lignetarif', (req,res) => {
 router.put('/:id/lignetarif',(req,res) => {
     Lignetarif.findOne({
         where: {
-            CodeOption: req.params.id
+            Code: req.params.id,
+            Type: 2
         }
     }).then(lignetarif => {
         if ( lignetarif == null ) {

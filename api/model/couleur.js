@@ -1,0 +1,10 @@
+const Sequelize = require('sequelize');
+const sequelize = require('../config/dbconnection');
+
+const Couleur = sequelize.define('couleur', {
+    CodeCouleur: {type:Sequelize.INTEGER,primaryKey: true, autoIncrement: true},
+    NomCouleur: {type:Sequelize.STRING}
+
+});
+
+module.exports = Couleur;
