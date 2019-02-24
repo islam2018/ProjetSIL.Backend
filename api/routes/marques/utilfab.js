@@ -3,31 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const UtilFab = require('../../model/utilfab');
 
-const UtilFab = require('../../model/utilfab');
 
 
-<<<<<<< HEAD
-=======
 
-router.get('/:id', (req,res) => {
-    UtilFab.findOne({
-        where: {
-            IdUserF: req.params.id
-        }
-    }).then(user=>{
-        res.status(200).json({user});
-    }).catch (error=>{
-        res.status(500).json({
-            message: "Une erreur a été produite !"
-        });
-    });
-});
 
-router.put('/:id', (req,res) => {
-
-});
-router.delete('/:id', (req,res) => {
->>>>>>> 173db0a881a17452be8c1ff47b032908d093564e
 
 router.get('/:id', (req,res) => {
     UtilFab.findOne({where:{IdUserF:req.params.id}}).then(user=>{
