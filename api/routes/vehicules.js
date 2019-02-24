@@ -4,6 +4,7 @@ const Vehicule=require('../model/vehicule');
 const Option=require('../model/option');
 const RelVehicOpt=require('../model/REL_vehicule_option');
 
+Option.belongsTo(RelVehicOpt,{foreignKey:'CodeOption',targetKey:'CodeOption'});
 
 router.get('/', (req,res) => {
     Vehicule.findAll({}).then(vehicules=>{
@@ -12,7 +13,7 @@ router.get('/', (req,res) => {
         res.status(500).json({
             msg:"Une erreur a été produite !"
         });
-    })
+    });
 });
 
 
@@ -101,8 +102,11 @@ router.delete('/:id', (req,res) => {
 
 router.get('/:id/options',(req,res)=>{
 
-    Vehicule.findAll({
-
+    Option.findAll({
+        include: [{
+            model: RelVehicOpt,
+            where: {NumChassis : req.params.id}
+        }]
     }).then(options=>{
         res.status(200).json(options);
     }).catch(e=>{
