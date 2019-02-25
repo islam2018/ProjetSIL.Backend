@@ -3,7 +3,11 @@ const router= express.Router();
 
 
 
-router.get('/', (req,res) => {
+router.post('/inscription', (req,res) => {
+
+});
+
+router.post('/connexion', (req,res) => {
 
 });
 

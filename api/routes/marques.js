@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
-const ControleAcces= require('../control/AccessControl');
+const UtilFabAccesControl= require('../control/AccessControl').UtilFabAccessControl;
+const AutoMobAccesControl= require('../control/AccessControl').AutomobAccessControl;
 const ModeleService=require('../services/ModeleService');
 const MarqueService=require('../services/MarqueService');
 const UtilisateurFabricantService=require('../services/UtilisateurFabricantService');
@@ -10,7 +11,7 @@ const marqueService=new MarqueService();
 const utilFabService=new UtilisateurFabricantService();
 
 
-router.get('/',(req,res)=>{
+router.get('/',AutoMobAccesControl,(req,res)=>{
     marqueService.getAllMarques().then(marques=>{
         res.status(200).json({marques});
     }).catch(error=>{
@@ -21,7 +22,7 @@ router.get('/',(req,res)=>{
 });
 
 
-router.post('/',ControleAcces,(req,res)=>{
+router.post('/',UtilFabAccesControl,(req,res)=>{
    marqueService.getMarqueParNom(req.body.NomMarque).then(m=>{
         if (m!=null) {
             res.status(409).json({
