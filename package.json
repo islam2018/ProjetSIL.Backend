@@ -4,9 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +15,7 @@
     "jsonwebtoken": "^8.5.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "request": "^2.88.0",
     "sequelize": "^4.42.0"
   }
 }

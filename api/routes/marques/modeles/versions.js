@@ -1,51 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const Version = require('../../../model/version');
-const Option = require('../../../model/option');
-const Rel_ver_opt = require('../../../model/rel_ver_opt');
-const Couleur = require('../../../model/couleur');
-const Rel_ver_coul = require('../../../model/rel_ver_coul');
-
-
-Option.belongsTo(Rel_ver_opt,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
-Couleur.belongsTo(Rel_ver_coul,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
+const VersionService=require('../../../services/VersionService');
+const OptionService=require('../../../services/OptionService');
+const CouleurService=require('../../../services/CouleurService');
+const versionService=new VersionService();
+const optionService=new OptionService();
+const couleurService=new CouleurService();
 
 
 router.get('/:id', (req,res) => {
-
-    Version.findOne({
-        where: {
-            CodeVersion: req.params.id
-        }
-    }).then(version=>{
+    versionService.getVersion(req.params.id).then(version=>{
         res.status(200).json({version});
     }).catch (error=>{
         res.status(500).json({
             message: "Une erreur a été produite !",
-        })
+        });
     });
 });
 
 router.put('/:id', (req,res) => {
-    Version.findOne({
-        where: {
-            CodeVersion: req.params.id
-        }
-    }).then(version => {
+    versionService.getVersion(req.params.id).then(version => {
         if ( version == null ) {
-            res.status(409).json({
+            res.status(404).json({
                 message: "Version inexistante"
             });
         } else {
-            Version.update({
-                CodeModele: req.body.CodeModele,
-                NomVersion: req.body.NomVersion
-            }, {
-                where: {
-                    CodeVersion: req.params.id
+            versionService.updateVersion(req.body,req.params.id).then( resu => {
+                if (resu) {
+                    versionService.getVersion(req.params.id).then(ver=>{
+                        res.status(200).json(ver);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
                 }
-            }).then( version => {
-                res.status(200).json(version);
             }).catch( error => {
                 res.status(500).json({
                     message: "Une erreur a éte produite !"
@@ -56,11 +49,7 @@ router.put('/:id', (req,res) => {
 });
 
 router.delete('/:id', (req,res) => {
-    Version.destroy({
-        where: {
-            CodeVersion: req.params.id
-        }
-    }).then( version => {
+    versionService.deleteVersion(req.params.id).then( version => {
         res.status(200).json({
             msg:"Version supprimée !"
         });
@@ -72,79 +61,52 @@ router.delete('/:id', (req,res) => {
 });
 
 router.get('/:id/options', (req,res) => {
-    Option.findAll({
-        include: [{
-            model: Rel_ver_opt,
-            where: {CodeVersion : req.params.id}
-        }]
-    }).then(options => {
+    optionService.getAllOptionsOfVersion(req.params.id).then(options => {
         res.status(200).json({options});
     }).catch( error => {
         res.status(500).json({
             message:"Une erreur a été produite !"
-        })
+        });
     });
-
 });
 
 router.post('/:id/options', (req,res) => {
-    Rel_ver_opt.findOne( {
-        where: {
-            CodeOption: req.body.CodeOption,
-            CodeVersion: req.params.id
-        }
-    }).then( option => {
+    versionService.findOption(req.body.CodeOption,req.params.id).then( option => {
         if ( option != null ) {
             res.status(409).json({
-                message: "Option existante pour ce modele"
+                message: "Option existante pour cette version !"
             });
         } else {
-            Rel_ver_opt.create({
-                CodeVersion: req.params.id,
-                CodeOption: req.body.CodeOption
-            }).then(option => {
+            versionService.addOption(req.body.CodeOption,req.params.id).then(option => {
                 res.status(200).json(option);
             }).catch(error => {
                 res.status(500).json({
                     message: "Une erreur a été produite !"
                 });
-            })
+            });
         }
     });
 
 });
 
 router.get('/:id/couleurs',(req,res)=>{
-    Couleur.findAll({
-        include: [{
-            model: Rel_ver_coul,
-            where: {CodeVersion : req.params.id}
-        }]
-    }).then(options => {
+    couleurService.getAllCouleurs(req.params.id).then(options => {
         res.status(200).json({options});
     }).catch( error => {
         res.status(500).json({
             message:"Une erreur a été produite !"
-        })
+        });
     });
 });
 
 router.post('/:id/couleurs',(req,res)=>{
-    Rel_ver_coul.findOne( {
-        where: {
-            CodeCouleur: req.body.CodeCouleur,
-            CodeVersion: req.params.id
-        }
-    }).then( couleur => {
+    versionService.findCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
         if ( couleur != null ) {
             res.status(409).json({
                 message: "Option existante pour ce modele"
             });
         } else {
-            Rel_ver_coul.create({
-                CodeVersion: req.params.id,
-                CodeCouleur: req.body.CodeCouleur
-            }).then( couleur => {
+            versionService.addCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
                 res.status(200).json(couleur);
             }).catch(error => {
                 res.status(500).json({
@@ -155,6 +117,58 @@ router.post('/:id/couleurs',(req,res)=>{
     });
 });
 
+
+
+router.get('/:id/lignetarif', (req,res) => {
+    ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif=>{
+        res.status(200).json({lignetarif});
+    }).catch (error=>{
+        res.status(500).json({
+            message: "Une erreur a été produite !",
+        })
+    });
+});
+
+
+router.put('/:id/lignetarif',(req,res) => {
+    ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif => {
+        if ( lignetarif == null ) {
+            res.status(404).json({
+                message: "Option inexistante"
+            });
+        } else {
+            ligneTarifService.updateLigneTarif(req.body,req.params.id,0).then( resu => {
+                if (resu) {
+                    ligneTarifService.getLigneTarif(req.params.id,0).then(ligneT=>{
+                        res.status(200).json(ligneT);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                }
+            }).catch( error => {
+                res.status(500).json({
+                    message: "Une erreur a éte produite !"
+                });
+            });
+        }
+    });
+});
+
+router.delete('/:id/lignetarif',(req,res) => {
+    ligneTarifService.deleteLigneTarif(req.params.id,0).then( lignetarif => {
+        res.status(200).json(lignetarif);
+    }).catch( error => {
+        res.status(500).json({
+            message: "Une erreur a éte produite !"
+        });
+    });
+});
 
 
 

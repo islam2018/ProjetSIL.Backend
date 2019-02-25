@@ -1,62 +1,79 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
-const UtilFab = require('../../model/utilfab');
-
-
+const UtilisateurFabricantService=require('../../services/UtilisateurFabricantService');
+const utilFabService=new UtilisateurFabricantService();
 
 
 
 
 router.get('/:id', (req,res) => {
-    UtilFab.findOne({where:{IdUserF:req.params.id}}).then(user=>{
+    utilFabService.getUtilFab(req.params.id).then(user=>{
         res.status(200).json({user});
     }).catch (error=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         })
     });
 });
 
 router.put('/:id', (req,res) => {
-    UtilFab.findOne({ where: { IdUserF: req.params.id } }).then(utilfab=>{
+    utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
-            UtilFab.update({
-                Mail:req.body.Mail,
-                Nom:req.body.Nom,
-                Prenom:req.body.Prenom,
-                NumTel:req.body.NumTel
-            },{where:{IdUserF: req.params.id}}).then(utilfabr=>{
-                res.status(200).json(utilfabr); //get the object utilfab:id // connect
+            utilFabService.updateUtilFab(req.body,req.params.id).then(resu=>{
+                if (resu) {
+                    utilFabService.getUtilFab(req.params.id).then(userf=>{
+                        res.status(200).json(userf);
+                    }).catch(error=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                } else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                }
             }).catch(error=>{
                 res.status(500).json({
-                    msg:"Une erreur a été produite !"
+                    message:"Une erreur a été produite !"
                 });
             });
         }
     }).catch(err=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 router.put('/:id/mdp', (req,res) => {
-    UtilFab.findOne({ where: { IdUserF: req.params.id } }).then(utilfab=>{
+    utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             bcrypt.hash(req.body.Mdp,10,(err,hash)=>{
                 if (err) {
                     res.status(500).json({
-                        msg:"Une erreur a été produite !"
+                        message:"Une erreur a été produite !"
                     })
                 } else {
-                    UtilFab.update({
-                        Mdp: hash,
-                    }, {where: {IdUserF: req.params.id}}).then(utilfabr => {
-                        res.status(200).json(utilfabr); //get the object utilfab:id // connect
+                    req.body.Mdp=hash;
+                    utilFabService.updateMdpForUtilFab(req.body,req.params.id).then(resu => {
+                        if (resu) {
+                            utilFabService.getUtilFab(req.params.id).then(userf=>{
+                                res.status(200).json(userf);
+                            }).catch(error=>{
+                                res.status(500).json({
+                                    message:"Une erreur a été produite !"
+                                });
+                            });
+                        } else {
+                            res.status(500).json({
+                                message:"Une erreur a été produite !"
+                            });
+                        }
                     }).catch(error => {
                         res.status(500).json({
-                            msg: "Une erreur a été produite !"
+                            message: "Une erreur a été produite !"
                         });
                     });
                 }
@@ -64,20 +81,20 @@ router.put('/:id/mdp', (req,res) => {
         }
     }).catch(err=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 router.delete('/:id', (req,res) => {
-    UtilFab.destroy({where:{IdUserF:req.params.id}}).then(result=>{
+    utilFabService.deleteUtilFab(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
-                msg:"Utilisateur supprimé !"
+                message:"Utilisateur supprimé !"
             });
         }else {
             res.status(500).json({
-                msg:"Une erreur a été produite !"
+                message:"Une erreur a été produite !"
             });
         }
     });

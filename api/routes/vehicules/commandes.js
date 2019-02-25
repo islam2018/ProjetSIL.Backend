@@ -1,36 +1,33 @@
 const express= require('express');
 const router= express.Router();
-const Commande= require('../../model/commande');
+const CommandeService=require('../../services/CommandeService');
+const commandeService=new CommandeService();
+
 
 
 
 router.get('/',(req,res)=>{
-    Commande.findAll().then(commandes=>{
+    commandeService.getAllCommandes().then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 router.post('/',(req,res)=>{
-    Commande.create({
-        Date:req.body.Date,
-        Montant:req.body.Montant,
-        idAutomobiliste:req.body.idAutomobiliste,
-        NumChassis:req.body.NumChassis
-    }).then(commande=>{
+    commandeService.createCommande(req.body).then(commande=>{
         res.status(200).json(commande);
     }).catch(e=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 router.get('/:id',(req,res)=>{
-    Commande.findOne({where:{idCommande: req.params.id}}).then(commande=>{
+    commandeService.getCommande(req.params.id).then(commande=>{
         if (commande!=null) {
             res.status(200).json(commande);
         }else {
@@ -40,21 +37,21 @@ router.get('/:id',(req,res)=>{
         }
     }).catch(error=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 
 router.delete('/:id', (req,res) => {
-    Commande.destroy({where:{idCommande:req.params.id}}).then(result=>{
+    commandeService.deleteCommande(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
-                msg:"Commande supprimée !"
+                message:"Commande supprimée !"
             });
         }else {
             res.status(500).json({
-                msg:"Une erreur a été produite !"
+                message:"Une erreur a été produite !"
             });
         }
     });

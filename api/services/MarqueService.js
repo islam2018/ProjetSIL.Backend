@@ -1,0 +1,36 @@
+const MARQUE=require('../model/marque');
+let MarqueService=class MarqueService {
+
+    getAllMarques() {
+        return MARQUE.findAll();
+    }
+
+    createMarque(marque) {
+        return MARQUE.create({
+            NomMarque:marque.NomMarque
+        });
+    }
+
+    getMarque(codeMarque) {
+        return MARQUE.findOne({
+            where : {CodeMarque: codeMarque}
+        });
+    }
+    getMarqueParNom(nomMarque) {
+        return MARQUE.findOne({
+            where : {NomMarque: nomMarque}
+        });
+    }
+
+    updateMarque(marque,codeMarque) {
+        return MARQUE.update({
+            NomMarque:marque.NomMarque
+        },{where:{CodeMarque: codeMarque}});
+    }
+
+    deleteMarque(codeMarque) {
+        return MARQUE.destroy({where:{CodeMarque:codeMarque}});
+    }
+};
+
+module.exports=MarqueService;

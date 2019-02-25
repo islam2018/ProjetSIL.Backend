@@ -1,16 +1,15 @@
 const express= require('express');
 const router= express.Router();
-const Option = require('../../../../model/option');
-const Lignetarif = require('../../../../model/lignetarif');
+
+const LigneTarifService=require('../../../../services/LigneTarifService');
+const OptionService=require('../../../../services/OptionService');
+const optionService=new OptionService();
+const ligneTarifService=new LigneTarifService();
 
 
 
 router.get('/:id', (req,res) => {
-    Option.findOne({
-        where: {
-            CodeOption: req.params.id
-        }
-    }).then(option=>{
+    optionService.getOption(req.params.id).then(option=>{
         res.status(200).json({option});
     }).catch (error=>{
         res.status(500).json({
@@ -21,24 +20,26 @@ router.get('/:id', (req,res) => {
 
 
 router.put('/:id',(req,res) => {
-    Option.findOne({
-        where: {
-            CodeOption: req.params.id
-        }
-    }).then(option => {
+    optionService.getOption(req.params.id).then(option => {
         if ( option == null ) {
-            res.status(409).json({
-                message: "Option inexistante"
+            res.status(404).json({
+                message: "Option inexistante !"
             });
         } else {
-            Option.update({
-                NomOption: req.body.NomOption
-            }, {
-                where: {
-                    CodeOption: req.params.id
+            optionService.updateOption(req.body,req.params.id).then( resu => {
+                if (resu) {
+                    optionService.getOption(req.params.id).then(opt=>{
+                        res.status(200).json(opt);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
                 }
-            }).then( option => {
-                res.status(200).json(option);
             }).catch( error => {
                 res.status(500).json({
                     message: "Une erreur a éte produite !"
@@ -49,11 +50,7 @@ router.put('/:id',(req,res) => {
 });
 
 router.delete('/:id',(req,res) => {
-    Option.destroy({
-        where: {
-            CodeOption: req.params.id
-        }
-    }).then( option => {
+    optionService.deleteOption(req.params.id).then( option => {
         res.status(200).json(option);
     }).catch( error => {
         res.status(500).json({
@@ -64,12 +61,7 @@ router.delete('/:id',(req,res) => {
 
 
 router.get('/:id/lignetarif', (req,res) => {
-    Lignetarif.findOne({
-        where: {
-            Code: req.params.id,
-            Type: 2
-        }
-    }).then(lignetarif=>{
+    ligneTarifService.getLigneTarif(req.params.id,2).then(lignetarif=>{
         res.status(200).json({lignetarif});
     }).catch (error=>{
         res.status(500).json({
@@ -80,28 +72,26 @@ router.get('/:id/lignetarif', (req,res) => {
 
 
 router.put('/:id/lignetarif',(req,res) => {
-    Lignetarif.findOne({
-        where: {
-            Code: req.params.id,
-            Type: 2
-        }
-    }).then(lignetarif => {
+    ligneTarifService.getLigneTarif(req.params.id,2).then(lignetarif => {
         if ( lignetarif == null ) {
-            res.status(409).json({
+            res.status(404).json({
                 message: "Option inexistante"
             });
         } else {
-            Lignetarif.update({
-                DateDebut: req.body.DateDebut,
-                DateFin: req.body.DateFin,
-                Prix: req.body.Prix
-            }, {
-                where: {
-                    Type: 2,
-                    Code: req.params.id
+            ligneTarifService.updateLigneTarif(req.body,req.params.id,2).then( resu => {
+                if (resu) {
+                    ligneTarifService.getLigneTarif(req.params.id,2).then(ligneT=>{
+                        res.status(200).json(ligneT);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
                 }
-            }).then( lignetarif => {
-                res.status(200).json(lignetarif);
             }).catch( error => {
                 res.status(500).json({
                     message: "Une erreur a éte produite !"
@@ -112,12 +102,7 @@ router.put('/:id/lignetarif',(req,res) => {
 });
 
 router.delete('/:id/lignetarif',(req,res) => {
-    Lignetarif.destroy({
-        where: {
-            Type: 2,
-            Code: req.params.id,
-        }
-    }).then( lignetarif => {
+    ligneTarifService.deleteLigneTarif(req.params.id,2).then( lignetarif => {
         res.status(200).json(lignetarif);
     }).catch( error => {
         res.status(500).json({

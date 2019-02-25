@@ -1,41 +1,52 @@
 const express= require('express');
 const router= express.Router();
-const Offre = require('../../../model/Offre');
+const OffreService=require('../../../services/OffreService');
+const offreService=new OffreService();
 
 
 
 router.get('/:id',(req,res)=>{
-    Offre.findOne({where:{idOffre: req.params.id}}).then(offre=>{
+    offreService.getOffre(req.params.id).then(offre=>{
         if (offre!=null) {
             res.status(200).json(offre);
         } else {
             res.status(404).json({
-                msg:"Offre non trouvée"
+                message:"Offre non trouvée"
             });
         }
     }).catch(error=>{
         res.status(500).json({
-            msg:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"
         });
     });
 });
 
 
 router.put('/:id',(req,res)=>{
-    Offre.findOne({where:{idOffre:req.params.id}}).then(offre=>{
+    offreService.getOffre(req.params.id).then(offre=>{
         if (offre!=null) {
-            Offre.update({
-                Montant:req.body.Montant
-            },{where:{idOffre: req.params.id}}).then(o=>{
-                res.status(200).json(o); //get the object
+            offre.updateAnnonce(req.body,req.params.id).then(resu=>{
+                if (resu) {
+                    offreService.getOffre(req.params.id).then(o=>{
+                        res.status(200).json(o);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                }
             }).catch(error=>{
                 res.status(500).json({
-                    msg:"Une erreur a été produite !"
+                    message:"Une erreur a été produite !"
                 });
             });
         } else {
             res.status(404).json({
-                msg:"Offre non trouvée !"
+                message:"Offre non trouvée !"
             });
         }
     }).catch(error=>{
@@ -46,14 +57,14 @@ router.put('/:id',(req,res)=>{
 });
 
 router.delete('/:id', (req,res) => {
-    Offre.destroy({where:{idOffre:req.params.id}}).then(result=>{
+    offreService.deleteOffre(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
-                msg:"Offre supprimée !"
+                message:"Offre supprimée !"
             });
         }else {
             res.status(500).json({
-                msg:"Une erreur a été produite !"
+                messag:"Une erreur a été produite !"
             });
         }
     });

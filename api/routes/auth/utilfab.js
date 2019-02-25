@@ -5,11 +5,12 @@ const router= express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 const JWT_CONFIG=require('../../config/secret');
-const UtilFab=require('../../model/utilfab');
+const UtilFabService=require('../../services/UtilisateurFabricantService');
+const utilFabService=new UtilFabService();
 
 
 router.post('/', (req,res,next) => {
-    UtilFab.findOne({where:{Mail:req.body.Mail}}).then(utilfab=>{
+    utilFabService.getUtilFabParMail(req.body.Mail).then(utilfab=>{
         if (utilfab!=null) {
             bcrypt.compare(req.body.Mdp,utilfab.Mdp,(err,result)=>{
                 if (err) {

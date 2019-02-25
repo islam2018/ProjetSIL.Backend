@@ -1,16 +1,14 @@
 const express= require('express');
 const router= express.Router();
 
-const Couleur = require('../../../../model/couleur');
-const Lignetarif = require('../../../../model/lignetarif');
+const LigneTarifService=require('../../../../services/LigneTarifService');
+const CouleurService=require('../../../../services/CouleurService');
+const couleurService=new CouleurService();
+const ligneTarifService=new LigneTarifService();
 
 
 router.get('/:id', (req,res) => {
-    Couleur.findOne({
-        where: {
-            CodeCouleur: req.params.id
-        }
-    }).then(couleur => {
+    couleurService.getCouleur(req.params.id).then(couleur => {
         res.status(200).json({couleur});
     }).catch (error => {
         res.status(500).json({
@@ -20,24 +18,26 @@ router.get('/:id', (req,res) => {
 });
 
 router.put('/:id', (req,res) => {
-    Couleur.findOne({
-        where: {
-            CodeCouleur: req.params.id
-        }
-    }).then(couleur => {
+    couleurService.getCouleur(req.params.id).then(couleur => {
         if ( couleur == null ) {
             res.status(409).json({
                 message: "Couleur inexistante"
             });
         } else {
-            Couleur.update({
-                NomCouleur: req.body.NomCouleur,
-            }, {
-                where: {
-                    CodeCouleur: req.params.id
+            couleurService.updateCouleur(req.body,req.params.id).then( resu=> {
+                if (resu) {
+                    couleurService.getCouleur(req.params.id).then(coul=>{
+                        res.status(200).json(coul);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
                 }
-            }).then( couleur => {
-                res.status(200).json(couleur);
             }).catch( error => {
                 res.status(500).json({
                     message: "Une erreur a éte produite !"
@@ -48,11 +48,7 @@ router.put('/:id', (req,res) => {
 });
 
 router.delete('/:id', (req,res) => {
-    Couleur.destroy({
-        where: {
-            CodeCouleur: req.params.id
-        }
-    }).then( couleur => {
+    couleurService.deleteCouleur(req.params.id).then( re => {
         res.status(200).json({
             msg:"Couleur supprimée !"
         });
@@ -64,12 +60,7 @@ router.delete('/:id', (req,res) => {
 });
 
 router.get('/:id/lignetarif', (req,res) => {
-    Lignetarif.findOne({
-        where: {
-            Code: req.params.id,
-            Type: 1
-        }
-    }).then(lignetarif=>{
+    ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif=>{
         res.status(200).json({lignetarif});
     }).catch (error=>{
         res.status(500).json({
@@ -79,28 +70,26 @@ router.get('/:id/lignetarif', (req,res) => {
 });
 
 router.put('/:id/lignetarif', (req,res) => {
-    Lignetarif.findOne({
-        where: {
-            Code: req.params.id,
-            Type: 1
-        }
-    }).then(lignetarif => {
+    ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif => {
         if ( lignetarif == null ) {
-            res.status(409).json({
-                message: "Couleur inexistante"
+            res.status(404).json({
+                message: "Couleur inexistante !"
             });
         } else {
-            Lignetarif.update({
-                DateDebut: req.body.DateDebut,
-                DateFin: req.body.DateFin,
-                Prix: req.body.Prix
-            }, {
-                where: {
-                    Type: 1,
-                    Code: req.params.id
+            ligneTarifService.updateLigneTarif(req.body,req.params.id,1).then(resu => {
+                if (resu) {
+                    ligneTarifService.getLigneTarif(req.params.id,1).then(ligneT=>{
+                        res.status(200).json(ligneT);
+                    }).catch(err=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                }else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
                 }
-            }).then( lignetarif => {
-                res.status(200).json(lignetarif);
             }).catch( error => {
                 res.status(500).json({
                     message: "Une erreur a éte produite !"
@@ -111,12 +100,7 @@ router.put('/:id/lignetarif', (req,res) => {
 });
 
 router.delete('/:id/lignetarif', (req,res) => {
-    Lignetarif.destroy({
-        where: {
-            Type: 1,
-            Code: req.params.id,
-        }
-    }).then( lignetarif => {
+    ligneTarifService.deleteLigneTarif(req.params.id,1).then( lignetarif => {
         res.status(200).json(lignetarif);
     }).catch( error => {
         res.status(500).json({
