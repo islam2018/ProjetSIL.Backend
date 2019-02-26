@@ -7,7 +7,8 @@ const FACEBBOK_CREDENTIALS=require('../config/secret').FACEBBOK_CREDENTIALS;
 
 module.exports.UtilFabAccessControl = (req,res,next) => {
     try {
-        const decoded = jwt.verify(req.body.token, JWT_CONFIG.UTIL_FAB_KEY);
+        const token= req.headers.authorization.split(" ");
+        const decoded = jwt.verify(token[1], JWT_CONFIG.UTIL_FAB_KEY);
         console.log(decoded);
         req.userData=decoded;
         next();

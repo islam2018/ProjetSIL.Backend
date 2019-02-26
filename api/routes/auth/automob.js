@@ -1,14 +1,27 @@
 const express= require('express');
 const router= express.Router();
+const AutoMobAccesControl= require('../../control/AccessControl').AutomobAccessControl;
+const AutomobilisteService=require('../../services/AutomobilsteService');
+const automobilsteService = new AutomobilisteService();
 
+router.post('/',AutoMobAccesControl,(req,res) => {
+    automobilsteService.getAutomobilste(req.body.idAutomobiliste).then(automob=>{
+       if (automob==null) {
+           automobilsteService.createAutomobilste(req.body).then().catch(e=>{
+               res.status(500).json({
+                   message: "Une erreur a éte produite !"
+               });
+           });
+       }
+        res.status(200).json({
+            message: "Authentification réussite !"
+        });
 
-
-router.post('/inscription', (req,res) => {
-
-});
-
-router.post('/connexion', (req,res) => {
-
+    }).catch(e=>{
+        res.status(500).json({
+            message: "Une erreur a éte produite !"
+        });
+    });
 });
 
 

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const UtilFabAccesControl= require('../../../control/AccessControl').UtilFabAccessControl;
+const AutoMobAccesControl= require('../../../control/AccessControl').AutomobAccessControl;
 const VersionService=require('../../../services/VersionService');
 const OptionService=require('../../../services/OptionService');
 const CouleurService=require('../../../services/CouleurService');
@@ -18,7 +20,7 @@ router.get('/:id', (req,res) => {
     });
 });
 
-router.put('/:id', (req,res) => {
+router.put('/:id',UtilFabAccesControl, (req,res) => {
     versionService.getVersion(req.params.id).then(version => {
         if ( version == null ) {
             res.status(404).json({
@@ -48,7 +50,7 @@ router.put('/:id', (req,res) => {
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id',UtilFabAccesControl, (req,res) => {
     versionService.deleteVersion(req.params.id).then( version => {
         res.status(200).json({
             msg:"Version supprimée !"
@@ -70,7 +72,7 @@ router.get('/:id/options', (req,res) => {
     });
 });
 
-router.post('/:id/options', (req,res) => {
+router.post('/:id/options',UtilFabAccesControl, (req,res) => {
     versionService.findOption(req.body.CodeOption,req.params.id).then( option => {
         if ( option != null ) {
             res.status(409).json({
@@ -99,7 +101,7 @@ router.get('/:id/couleurs',(req,res)=>{
     });
 });
 
-router.post('/:id/couleurs',(req,res)=>{
+router.post('/:id/couleurs',UtilFabAccesControl,(req,res)=>{
     versionService.findCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
         if ( couleur != null ) {
             res.status(409).json({
@@ -130,7 +132,7 @@ router.get('/:id/lignetarif', (req,res) => {
 });
 
 
-router.put('/:id/lignetarif',(req,res) => {
+router.put('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif => {
         if ( lignetarif == null ) {
             res.status(404).json({
@@ -160,7 +162,7 @@ router.put('/:id/lignetarif',(req,res) => {
     });
 });
 
-router.delete('/:id/lignetarif',(req,res) => {
+router.delete('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
     ligneTarifService.deleteLigneTarif(req.params.id,0).then( lignetarif => {
         res.status(200).json(lignetarif);
     }).catch( error => {

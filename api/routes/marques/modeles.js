@@ -1,5 +1,7 @@
 const express= require('express');
 const router= express.Router();
+const UtilFabAccesControl= require('../../control/AccessControl').UtilFabAccessControl;
+const AutoMobAccesControl= require('../../control/AccessControl').AutomobAccessControl;
 const ModeleService=require('../../services/ModeleService');
 const VersionService=require('../../services/VersionService');
 const modeleService=new ModeleService();
@@ -16,7 +18,7 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-router.put('/:id',(req,res)=>{
+router.put('/:id',UtilFabAccesControl,(req,res)=>{
     modeleService.getModele(req.params.id).then(modele=>{
         if (modele!=null) {
             modeleService.updateModele(req.body,req.params.id).then(resu=>{
@@ -51,7 +53,7 @@ router.put('/:id',(req,res)=>{
 });
 
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id', UtilFabAccesControl,(req,res) => {
     modeleService.deleteModele(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
@@ -77,7 +79,7 @@ router.get('/:id/versions', (req,res) => {
 });
 
 
-router.post('/:id/versions', (req,res) => {
+router.post('/:id/versions', UtilFabAccesControl, (req,res) => {
     versionService.getVersionParNom(req.body.NomVersion).then( version => {
         if ( version != null ) {
             res.status(409).json({

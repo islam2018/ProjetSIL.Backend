@@ -1,6 +1,7 @@
 const express= require('express');
 const router= express.Router();
-
+const UtilFabAccesControl= require('../../../../control/AccessControl').UtilFabAccessControl;
+const AutoMobAccesControl= require('../../../../control/AccessControl').AutomobAccessControl;
 const LigneTarifService=require('../../../../services/LigneTarifService');
 const CouleurService=require('../../../../services/CouleurService');
 const couleurService=new CouleurService();
@@ -17,7 +18,7 @@ router.get('/:id', (req,res) => {
     });
 });
 
-router.put('/:id', (req,res) => {
+router.put('/:id',UtilFabAccesControl, (req,res) => {
     couleurService.getCouleur(req.params.id).then(couleur => {
         if ( couleur == null ) {
             res.status(409).json({
@@ -47,7 +48,7 @@ router.put('/:id', (req,res) => {
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id',UtilFabAccesControl, (req,res) => {
     couleurService.deleteCouleur(req.params.id).then( re => {
         res.status(200).json({
             msg:"Couleur supprimée !"
@@ -69,7 +70,7 @@ router.get('/:id/lignetarif', (req,res) => {
     });
 });
 
-router.put('/:id/lignetarif', (req,res) => {
+router.put('/:id/lignetarif', UtilFabAccesControl,(req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif => {
         if ( lignetarif == null ) {
             res.status(404).json({
@@ -99,7 +100,7 @@ router.put('/:id/lignetarif', (req,res) => {
     });
 });
 
-router.delete('/:id/lignetarif', (req,res) => {
+router.delete('/:id/lignetarif',UtilFabAccesControl, (req,res) => {
     ligneTarifService.deleteLigneTarif(req.params.id,1).then( lignetarif => {
         res.status(200).json(lignetarif);
     }).catch( error => {

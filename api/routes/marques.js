@@ -11,7 +11,7 @@ const marqueService=new MarqueService();
 const utilFabService=new UtilisateurFabricantService();
 
 
-router.get('/',AutoMobAccesControl,(req,res)=>{
+router.get('/',(req,res)=>{
     marqueService.getAllMarques().then(marques=>{
         res.status(200).json({marques});
     }).catch(error=>{
@@ -55,7 +55,7 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-router.put('/:id',(req,res)=>{
+router.put('/:id',UtilFabAccesControl,(req,res)=>{
     marqueService.getMarque(req.params.id).then(marque=>{
         if (marque!=null) {
             marqueService.updateMarque(req.body,req.params.id).then(resu=>{
@@ -89,7 +89,7 @@ router.put('/:id',(req,res)=>{
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id',UtilFabAccesControl, (req,res) => {
    marqueService.deleteMarque(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
@@ -113,7 +113,7 @@ router.get('/:id/modeles',(req,res) => {
     });
 });
 
-router.post('/:id/modeles',(req,res) => {
+router.post('/:id/modeles',UtilFabAccesControl,(req,res) => {
     modeleService.getModeleParNom(req.body.NomModele).then( modele => {
         if ( modele != null ) {
             res.status(409).json({

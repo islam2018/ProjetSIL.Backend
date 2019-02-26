@@ -1,6 +1,7 @@
 const express= require('express');
 const router= express.Router();
-
+const UtilFabAccesControl= require('../control/AccessControl').UtilFabAccessControl;
+const AutoMobAccesControl= require('../control/AccessControl').AutomobAccessControl;
 const VehiculeService=require('../services/VehiculeService');
 const OptionService=require('../services/OptionService');
 const vehiculeService=new VehiculeService();
