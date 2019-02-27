@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/dbconnection');
 const Marque = sequelize.define('Marque', {
-    CodeMarque:{type:Sequelize.INTEGER,primaryKey: true, autoIncrement: true},
+    CodeMarque:{type:Sequelize.INTEGER,primaryKey: true},
     NomMarque:{type:Sequelize.STRING}
 });
 

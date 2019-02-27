@@ -9,6 +9,7 @@ let ModeleService=class ModeleService {
 
     createModele(modele) {
         return MODELE.create({
+            CodeModele: modele.CodeModele,
             CodeMarque: modele.CodeMarque,
             NomMarque:modele.NomMarque
         });

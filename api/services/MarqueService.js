@@ -7,6 +7,7 @@ let MarqueService=class MarqueService {
 
     createMarque(marque) {
         return MARQUE.create({
+            CodeMarque: marque.CodeMarque,
             NomMarque:marque.NomMarque
         });
     }
