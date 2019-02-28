@@ -13,7 +13,7 @@ const utilFabService=new UtilisateurFabricantService();
 
 router.get('/',(req,res)=>{
     marqueService.getAllMarques().then(marques=>{
-        res.status(200).json({marques});
+        res.status(200).json(marques);
     }).catch(error=>{
         res.status(500).json({
             message:"Une erreur a été produite !"
@@ -30,7 +30,7 @@ router.post('/',UtilFabAccesControl,(req,res)=>{
             });
         } else {
                 marqueService.createMarque(req.body).then(marque=>{
-                res.status(200).json({marque});
+                res.status(200).json(marque);
             }).catch(error=>{
                 res.status(500).json({
                     message:"Une erreur a été produite !"
@@ -47,7 +47,7 @@ router.post('/',UtilFabAccesControl,(req,res)=>{
 
 router.get('/:id',(req,res)=>{
     marqueService.getMarque(req.params.id).then(marque=>{
-        res.status(200).json({marque});
+        res.status(200).json(marque);
     }).catch(error=>{
         res.status(500).json({
             message:"Une erreur a été produite !"
@@ -105,7 +105,7 @@ router.delete('/:id',UtilFabAccesControl, (req,res) => {
 
 router.get('/:id/modeles',(req,res) => {
     modeleService.getAllModeles(req.params.id).then(modeles=>{
-        res.status(200).json({modeles});
+        res.status(200).json(modeles);
     }).catch (error=>{
         res.status(500).json({
             message: "Une erreur a été produite !",
@@ -120,7 +120,7 @@ router.post('/:id/modeles',UtilFabAccesControl,(req,res) => {
                 message: "Modèle existant"
             });
         } else {
-            modeleService.createModele(req.body).then(modele => {
+            modeleService.createModele(req.body,req.params.id).then(modele => {
                 res.status(200).json(modele);
             }).catch(error => {
                 res.status(500).json({

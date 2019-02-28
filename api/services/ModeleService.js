@@ -7,10 +7,11 @@ let ModeleService=class ModeleService {
         });
     }
 
-    createModele(modele) {
+    createModele(modele,codeMarque) {
         return MODELE.create({
-            CodeMarque: modele.CodeMarque,
-            NomMarque:modele.NomMarque
+            CodeModele: modele.CodeModele,
+            CodeMarque: codeMarque,
+            NomModele:modele.NomModele
         });
     }
 

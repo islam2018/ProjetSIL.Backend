@@ -10,7 +10,7 @@ const ligneTarifService=new LigneTarifService();
 
 router.get('/:id', (req,res) => {
     couleurService.getCouleur(req.params.id).then(couleur => {
-        res.status(200).json({couleur});
+        res.status(200).json(couleur);
     }).catch (error => {
         res.status(500).json({
             message: "Une erreur a été produite !",
@@ -62,7 +62,7 @@ router.delete('/:id',UtilFabAccesControl, (req,res) => {
 
 router.get('/:id/lignetarif', (req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif=>{
-        res.status(200).json({lignetarif});
+        res.status(200).json(lignetarif);
     }).catch (error=>{
         res.status(500).json({
             message: "Une erreur a été produite !",

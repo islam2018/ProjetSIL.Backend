@@ -12,7 +12,7 @@ const couleurService=new CouleurService();
 
 router.get('/:id', (req,res) => {
     versionService.getVersion(req.params.id).then(version=>{
-        res.status(200).json({version});
+        res.status(200).json(version);
     }).catch (error=>{
         res.status(500).json({
             message: "Une erreur a été produite !",
@@ -53,7 +53,7 @@ router.put('/:id',UtilFabAccesControl, (req,res) => {
 router.delete('/:id',UtilFabAccesControl, (req,res) => {
     versionService.deleteVersion(req.params.id).then( version => {
         res.status(200).json({
-            msg:"Version supprimée !"
+            message:"Version supprimée !"
         });
     }).catch( error => {
         res.status(500).json({
@@ -93,7 +93,7 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
 
 router.get('/:id/couleurs',(req,res)=>{
     couleurService.getAllCouleurs(req.params.id).then(options => {
-        res.status(200).json({options});
+        res.status(200).json(options);
     }).catch( error => {
         res.status(500).json({
             message:"Une erreur a été produite !"
@@ -123,7 +123,7 @@ router.post('/:id/couleurs',UtilFabAccesControl,(req,res)=>{
 
 router.get('/:id/lignetarif', (req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif=>{
-        res.status(200).json({lignetarif});
+        res.status(200).json(lignetarif);
     }).catch (error=>{
         res.status(500).json({
             message: "Une erreur a été produite !",
