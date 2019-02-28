@@ -15,6 +15,7 @@ let CouleurService=class CouleurService {
 
     createCouleur(couleur,codeVersion) {
         return COULEUR.create({
+            CodeCouleur: couleur.CodeCouleur,
             CodeVersion: codeVersion,
             NomCouleur:version.NomCouleur
         });

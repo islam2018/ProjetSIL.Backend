@@ -26,6 +26,7 @@ let OptionService=class OptionService {
 
     createOption(option,codeVersion) {
         return OPTION.create({
+            CodeOption: option.CodeOption,
             CodeModele: codeVersion,
             NomOption:version.NomOption
         });

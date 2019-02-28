@@ -12,6 +12,7 @@ let VersionService=class VersionService {
 
     createVersion(version,codeModele) {
         return VERSION.create({
+            CodeVersion: version.CodeVersion,
             CodeModele: codeModele,
             NomVersion:version.NomVersion
         });
