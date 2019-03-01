@@ -1,5 +1,6 @@
 const MARQUE=require('../model/marque');
-let MarqueService=class MarqueService {
+
+let MarqueService=class MarqueService{
 
     getAllMarques() {
         return MARQUE.findAll();

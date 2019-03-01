@@ -18,6 +18,8 @@
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "request": "^2.88.0",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sequelize-to-json": "^0.10.3",
+    "sequelize-values": "^1.1.0"
   }
 }

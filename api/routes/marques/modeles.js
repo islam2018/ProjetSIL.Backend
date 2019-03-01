@@ -1,19 +1,46 @@
 const express= require('express');
 const router= express.Router();
+const serializer=require('sequelize-values')();
+
 const UtilFabAccesControl= require('../../control/AccessControl').UtilFabAccessControl;
 const AutoMobAccesControl= require('../../control/AccessControl').AutomobAccessControl;
 const ModeleService=require('../../services/ModeleService');
 const VersionService=require('../../services/VersionService');
+const OptionService=require('../../services/OptionService');
 const modeleService=new ModeleService();
 const versionService=new VersionService();
+const optionService=new OptionService();
 
 
 router.get('/:id',(req,res)=>{
     modeleService.getModele(req.params.id).then(modele=>{
-        res.status(200).json(modele);
+            versionService.getAllVersion(modele.CodeModele).then(versions=>{
+                let vers=serializer.getValues(versions);
+                let m=serializer.getValues(modele);
+                let options=[];
+                const opts=vers.map((v)=>{
+                    return optionService.getAllOptionsOfVersion(v.CodeVersion);
+                });
+                Promise.all(opts).then(values=>{
+                   values.forEach(value => {
+                      options.push(serializer.getValues(value));
+                   });
+                    m.versions=vers;
+                    m.options=options;
+                    res.status(200).json(m);
+                }).catch(e=>{
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"+e
+                    });
+                });
+            }).catch(error=>{
+                res.status(500).json({
+                    message:"Une erreur a été produite !"+error
+                });
+            });
     }).catch(error=>{
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"+error
         });
     });
 });
