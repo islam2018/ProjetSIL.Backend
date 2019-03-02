@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
+const serializer=require('sequelize-values')();
 const UtilFabAccesControl= require('../control/AccessControl').UtilFabAccessControl;
 const AutoMobAccesControl= require('../control/AccessControl').AutomobAccessControl;
 const ModeleService=require('../services/ModeleService');
 const MarqueService=require('../services/MarqueService');
+const VersionService=require('../services/VersionService');
+const OptionService=require('../services/OptionService');
 const UtilisateurFabricantService=require('../services/UtilisateurFabricantService');
 const modeleService=new ModeleService();
 const marqueService=new MarqueService();
 const utilFabService=new UtilisateurFabricantService();
+const versionService=new VersionService();
+const optionService=new OptionService();
 
 
 router.get('/',(req,res)=>{
@@ -103,7 +108,8 @@ router.delete('/:id',UtilFabAccesControl, (req,res) => {
     });
 });
 
-router.get('/:id/modeles',(req,res) => {
+router.get('/:id/modeles', (req, res) => {
+
     modeleService.getAllModeles(req.params.id).then(modeles=>{
         res.status(200).json(modeles);
     }).catch (error=>{
@@ -126,8 +132,12 @@ router.post('/:id/modeles',UtilFabAccesControl,(req,res) => {
                 res.status(500).json({
                     message: "Une erreur a été produite !"
                 });
-            })
+            });
         }
+    }).catch(error => {
+        res.status(500).json({
+            message: "Une erreur a été produite !"
+        });
     });
 });
 

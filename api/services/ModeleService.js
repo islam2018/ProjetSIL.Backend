@@ -1,4 +1,7 @@
 const MODELE=require('../model/modele');
+const VERSION=require('../model/version');
+
+
 let ModeleService=class ModeleService {
 
     getAllModeles(codeMarque) {

@@ -17,7 +17,7 @@ router.get('/:id',(req,res)=>{
             versionService.getAllVersion(modele.CodeModele).then(versions=>{
                 let vers=serializer.getValues(versions);
                 let m=serializer.getValues(modele);
-                let options=[];
+			let options=[];
                 const opts=vers.map((v)=>{
                     return optionService.getAllOptionsOfVersion(v.CodeVersion);
                 });

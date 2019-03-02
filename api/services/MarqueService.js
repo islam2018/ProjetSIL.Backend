@@ -1,4 +1,6 @@
 const MARQUE=require('../model/marque');
+const MODELE=require('../model/modele');
+
 
 let MarqueService=class MarqueService{
 

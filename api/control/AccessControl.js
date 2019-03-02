@@ -44,7 +44,7 @@ module.exports.AutomobAccessControl = (req,res,next) => {
                 message: "Erreur dans l'authentification"
             });
         });
-    }else {
+    }else if (token[1]=="F") {
         const url="https://graph.facebook.com/debug_token?input_token="+token[2]+"&access_token="+FACEBBOK_CREDENTIALS.ACCESS_TOKEN;
         request.get(url,function(error,response,body) {
             console.log(JSON.parse(body));

@@ -79,13 +79,20 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
                 message: "Option existante pour cette version !"
             });
         } else {
-            versionService.addOption(req.body.CodeOption,req.params.id).then(option => {
-                res.status(200).json(option);
-            }).catch(error => {
+            optionService.createOption(req.body,req.params.id).then(opt=>{
+                versionService.addOption(req.body.CodeOption,req.params.id).then(option => {
+                    res.status(200).json(option);
+                }).catch(error => {
+                    res.status(500).json({
+                        message: "Une erreur a été produite !"
+                    });
+                });
+            }).catch(er=>{
                 res.status(500).json({
                     message: "Une erreur a été produite !"
                 });
             });
+
         }
     });
 

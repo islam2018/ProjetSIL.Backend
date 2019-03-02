@@ -32,7 +32,7 @@ let VersionService=class VersionService {
 
     updateVersion(version,codeVersion) {
         return VERSION.update({
-            NomVersion:modele.NomVersion
+            NomVersion:version.NomVersion
         },{where:{CodeVersion: codeVersion}});
     }
 
