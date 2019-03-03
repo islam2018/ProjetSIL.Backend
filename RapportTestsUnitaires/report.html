@@ -130,458 +130,466 @@
         "path": "./RapportTestsUnitaires"
     },
     "timer": {
-        "jasmineStart": "2019-03-01T22:19:55.575Z",
-        "jasmineDone": "2019-03-01T22:19:56.282Z"
+        "jasmineStart": "2019-03-03T15:14:43.179Z"
     },
     "counts": {
-        "passed": 21
+        "failed": 14
     },
     "sequence": [
         {
             "id": "spec0",
-            "description": "should return the element (id)",
-            "fullName": "/marques route tests GET /marques/modeles/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "description": "l'authentification doit réussir",
+            "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ l'authentification doit réussir",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:51:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:51:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.646Z",
-            "prefix": "/marques route tests GET /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec2",
-            "description": "should say the element is not found",
-            "fullName": "/marques route tests PUT /marques/modeles/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.675Z",
-            "prefix": "/marques route tests PUT /marques/modeles/:id ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:44.595Z",
+            "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
             "duration": null
         },
         {
             "id": "spec1",
-            "description": "should change the element (id)",
-            "fullName": "/marques route tests PUT /marques/modeles/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "description": "l'authentification ne doit pas réussir",
+            "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ l'authentification ne doit pas réussir",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:69:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:69:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.699Z",
-            "prefix": "/marques route tests PUT /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec3",
-            "description": "should delete the element (id)",
-            "fullName": "/marques route tests DELETE /marques/modeles/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.720Z",
-            "prefix": "/marques route tests DELETE /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec4",
-            "description": "should return all the \"versions\" of marque (id) ",
-            "fullName": "/marques route tests GET /marques/modeles/:id/versions should return all the \"versions\" of marque (id) ",
-            "failedExpectations": [],
             "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.727Z",
-            "prefix": "/marques route tests GET /marques/modeles/:id/versions ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:45.617Z",
+            "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
             "duration": null
         },
         {
-            "id": "spec5",
-            "description": "should add a new element to table \"modele\"",
-            "fullName": "/marques route tests POST /marques/modeles/:id/versions should add a new element to table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec2",
+            "description": "l'authentification ne doit pas réussir",
+            "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ l'authentification ne doit pas réussir",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:87:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\auth\\utilfabTests.spec.js:87:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.751Z",
-            "prefix": "/marques route tests POST /marques/modeles/:id/versions ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:46.627Z",
+            "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
+            "duration": null
+        },
+        {
+            "id": "spec23",
+            "description": "il devrait retourner tous les véhicules",
+            "fullName": "/vehicules route tests GET /vehicules/ il devrait retourner tous les véhicules",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'vehicules' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\vehiculesTests.spec.js:25:70)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'vehicules' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\vehiculesTests.spec.js:25:70)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:47.657Z",
+            "prefix": "/vehicules route tests GET /vehicules/ ",
             "duration": null
         },
         {
             "id": "spec6",
-            "description": "should say element already exists in the table \"modele\"",
-            "fullName": "/marques route tests POST /marques/modeles/:id/versions should say element already exists in the table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id should delete the element (id)",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:207:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:207:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.757Z",
-            "prefix": "/marques route tests POST /marques/modeles/:id/versions ",
-            "duration": null
-        },
-        {
-            "id": "spec11",
-            "description": "should change the element (id)",
-            "fullName": "/marques route tests PUT /marques/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.782Z",
-            "prefix": "/marques route tests PUT /marques/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec12",
-            "description": "should say the element is not found",
-            "fullName": "/marques route tests PUT /marques/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.801Z",
-            "prefix": "/marques route tests PUT /marques/:id ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:48.725Z",
+            "prefix": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id ",
             "duration": null
         },
         {
             "id": "spec7",
-            "description": "should return all the \"marques\"",
-            "fullName": "/marques route tests GET /marques/ should return all the \"marques\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "description": "should return all the \"versions\" of marque (id) ",
+            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions should return all the \"versions\" of marque (id) ",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:248:43)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 },
                 {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:248:43)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.812Z",
-            "prefix": "/marques route tests GET /marques/ ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:49.817Z",
+            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions ",
             "duration": null
         },
         {
-            "id": "spec10",
-            "description": "should return the element (id)",
-            "fullName": "/marques route tests GET /marques/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec4",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should change the element (id)",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'NomModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:121:33)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'NomModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:121:33)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.818Z",
-            "prefix": "/marques route tests GET /marques/:id ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:50.873Z",
+            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec5",
+            "description": "should say the element is not found",
+            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should say the element is not found",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:141:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:141:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:51.891Z",
+            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
             "duration": null
         },
         {
             "id": "spec9",
-            "description": "should say element already exists in the table \"marque\"",
-            "fullName": "/marques route tests POST /marques/ should say element already exists in the table \"marque\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "description": "should say element already exists in the table \"modele\"",
+            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should say element already exists in the table \"modele\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:347:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:347:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.836Z",
-            "prefix": "/marques route tests POST /marques/ ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:53.009Z",
+            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
             "duration": null
         },
         {
             "id": "spec8",
-            "description": "should add a new element to table \"marque\"",
-            "fullName": "/marques route tests POST /marques/ should add a new element to table \"marque\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:55.841Z",
-            "prefix": "/marques route tests POST /marques/ ",
-            "duration": null
-        },
-        {
-            "id": "spec18",
-            "description": "should add a new element to table \"utilisateurFabricant\"",
-            "fullName": "/marques route tests POST /marques/:id/utilfab should add a new element to table \"utilisateurFabricant\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.031Z",
-            "prefix": "/marques route tests POST /marques/:id/utilfab ",
-            "duration": null
-        },
-        {
-            "id": "spec19",
-            "description": "should say element already exists in the table \"utilisateurFabricant\"",
-            "fullName": "/marques route tests POST /marques/:id/utilfab should say element already exists in the table \"utilisateurFabricant\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.211Z",
-            "prefix": "/marques route tests POST /marques/:id/utilfab ",
-            "duration": null
-        },
-        {
-            "id": "spec15",
             "description": "should add a new element to table \"modele\"",
-            "fullName": "/marques route tests POST /marques/:id/modeles should add a new element to table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should add a new element to table \"modele\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:327:42)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:327:42)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.235Z",
-            "prefix": "/marques route tests POST /marques/:id/modeles ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:54.052Z",
+            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
+            "duration": null
+        },
+        {
+            "id": "spec3",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:52:33)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marques\\modelesTests.spec.js:52:33)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:55.087Z",
+            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id ",
             "duration": null
         },
         {
             "id": "spec16",
-            "description": "should say element already exists in the table \"modele\"",
-            "fullName": "/marques route tests POST /marques/:id/modeles should say element already exists in the table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.241Z",
-            "prefix": "/marques route tests POST /marques/:id/modeles ",
-            "duration": null
-        },
-        {
-            "id": "spec17",
-            "description": "should return all the \"marques\"",
-            "fullName": "/marques route tests GET /marques/:id/utilfab should return all the \"marques\"",
-            "failedExpectations": [],
-            "passedExpectations": [],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.249Z",
-            "prefix": "/marques route tests GET /marques/:id/utilfab ",
-            "duration": null
-        },
-        {
-            "id": "spec13",
             "description": "should delete the element (id)",
-            "fullName": "/marques route tests DELETE /marques/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "fullName": "TESTS:/marques |  DELETE /marques/:id should delete the element (id)",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marquesTests.spec.js:304:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\spec\\routesTest\\marquesTests.spec.js:304:37)\n    at self.callback (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:185:22)\n    at emitOne (events.js:116:13)\n    at Request.emit (events.js:211:7)\n    at Request.onRequestError (C:\\Users\\islam\\WebstormProjects\\ProjetSIL\\node_modules\\request\\request.js:881:8)\n    at emitOne (events.js:116:13)\n    at ClientRequest.emit (events.js:211:7)\n    at Socket.socketErrorListener (_http_client.js:387:9)\n    at emitOne (events.js:116:13)\n    at Socket.emit (events.js:211:7)\n    at emitErrorNT (internal/streams/destroy.js:66:8)\n    at _combinedTickCallback (internal/process/next_tick.js:139:11)\n    at process._tickCallback (internal/process/next_tick.js:181:9)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.267Z",
-            "prefix": "/marques route tests DELETE /marques/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec14",
-            "description": "should return all the \"marques\"",
-            "fullName": "/marques route tests GET /marques/:id/modeles should return all the \"marques\"",
-            "failedExpectations": [],
             "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.275Z",
-            "prefix": "/marques route tests GET /marques/:id/modeles ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:14:56.121Z",
+            "prefix": "TESTS:/marques |  DELETE /marques/:id ",
             "duration": null
         },
         {
-            "id": "spec20",
-            "description": "il devrait retourner tous les véhicules",
-            "fullName": "/vehicules route tests GET /vehicules/ il devrait retourner tous les véhicules",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec19",
+            "description": "should say element already exists in the table \"modele\"",
+            "fullName": "TESTS:/marques |  POST /marques/:id/modeles should say element already exists in the table \"modele\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)",
+                    "stack": "Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)\n    at <Jasmine>\n    at ontimeout (timers.js:498:11)\n    at tryOnTimeout (timers.js:323:5)\n    at Timer.listOnTimeout (timers.js:290:5)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-01T22:19:56.280Z",
-            "prefix": "/vehicules route tests GET /vehicules/ ",
+            "status": "failed",
+            "stoped": "2019-03-03T15:15:01.138Z",
+            "prefix": "TESTS:/marques |  POST /marques/:id/modeles ",
+            "duration": null
+        },
+        {
+            "id": "spec18",
+            "description": "should add a new element to table \"modele\"",
+            "fullName": "TESTS:/marques |  POST /marques/:id/modeles should add a new element to table \"modele\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)",
+                    "stack": "Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)\n    at <Jasmine>\n    at ontimeout (timers.js:498:11)\n    at tryOnTimeout (timers.js:323:5)\n    at Timer.listOnTimeout (timers.js:290:5)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-03-03T15:15:06.161Z",
+            "prefix": "TESTS:/marques |  POST /marques/:id/modeles ",
             "duration": null
         }
     ]

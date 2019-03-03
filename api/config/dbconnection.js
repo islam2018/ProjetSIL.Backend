@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('sayaradz', 'root', '', {
-    host: 'localhost',
+const sequelize = new Sequelize('kw7hslq7wxkw5ttr', 'j3ljxgyybyee8yx8', 'c4r1cssb9muu3yfg', {
+    host: 'vlvlnl1grfzh34vj.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
     dialect: 'mysql',
     operatorsAliases: false,
     define: {
@@ -8,6 +8,8 @@ const sequelize = new Sequelize('sayaradz', 'root', '', {
         timestamps:false
     }
 });
+
+
 
 sequelize
     .authenticate().then(() => {
@@ -20,19 +22,4 @@ sequelize
 module.exports=sequelize;
 
 
-/*const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'sayaraDZ'
-    }
-);
-
-connection.connect( error => {
-    if (error) {console.log("ERREUR connection mysql");}
-    else {console.log('MYSQL CONNECTED !!!');}
-
-});
-module.exports=connection;*/
