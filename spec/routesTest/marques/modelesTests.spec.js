@@ -13,7 +13,7 @@ let versionObject = {
 };
 
 
-describe('/marques route tests', function() {
+describe('TESTS:/marques/modeles | ', function() {
 
     /** ************************************************************************************************************ **/
 
@@ -62,7 +62,7 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
@@ -96,7 +96,7 @@ describe('/marques route tests', function() {
             });
         });
 
-        afterEach(function() {
+        afterAll(function() {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
@@ -110,7 +110,7 @@ describe('/marques route tests', function() {
                     headers : {
                         'authorization': 'Bearer'+ ' '+token
                     },
-                    url: BASE_URL+'/marques/modeles/' + IDTEST,
+                    url: BASE_URL + '/marques/modeles/' + IDTEST,
                     body: {
                         'NomModele': 'Testing modification'
                     },
@@ -151,7 +151,7 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
@@ -185,7 +185,7 @@ describe('/marques route tests', function() {
             });
         });
 
-        afterEach(function() {
+        afterAll(function() {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST

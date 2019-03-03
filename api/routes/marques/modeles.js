@@ -23,7 +23,11 @@ router.get('/:id',(req,res)=>{
                 });
                 Promise.all(opts).then(values=>{
                    values.forEach(value => {
-                      options.push(serializer.getValues(value));
+                       let vOpt=serializer.getValues(value);
+                       vOpt.forEach(o=>{
+                          options.push(o);
+                       });
+                      //options.push(serializer.getValues(value));
                    });
                     m.versions=vers;
                     m.options=options;

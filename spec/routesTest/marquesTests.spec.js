@@ -26,7 +26,7 @@ let utilfabObject = {
     Fabricant: ''
 };
 
-describe('/marques route tests', function() {
+describe('TESTS:/marques | ', function() {
 
     /** ************************************************************************************************************ **/
 
@@ -178,7 +178,7 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
@@ -206,7 +206,7 @@ describe('/marques route tests', function() {
             });
         });
 
-        afterEach(function() {
+        afterAll(function() {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
@@ -261,7 +261,7 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
