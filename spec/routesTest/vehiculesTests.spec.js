@@ -13,7 +13,7 @@ describe('/vehicules route tests', function() {
 
     /** ************************************************************************************************************ **/
 
-    describe('GET /vehicules/', function () {
+    /*describe('GET /vehicules/', function () {
 
         it('il devrait retourner tous les véhicules', function (done) {
             let options = {
