@@ -63,10 +63,11 @@ let VersionService=class VersionService {
             }});
     }
 
-    addCouleur(codeCouleur,codeVersion) {
+    addCouleur(couleur,codeVersion) {
         return REL_VER_COUL.create({
-            CodeCouleur: codeCouleur,
-            CodeVersion: codeVersion
+            CodeCouleur: couleur.CodeCouleur,
+            CodeVersion: codeVersion,
+            NomCouleur: couleur.NomCouleur
         });
     }
 

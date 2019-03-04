@@ -5,9 +5,11 @@ const AutoMobAccesControl= require('../../../control/AccessControl').AutomobAcce
 const VersionService=require('../../../services/VersionService');
 const OptionService=require('../../../services/OptionService');
 const CouleurService=require('../../../services/CouleurService');
+const LigneTarifService=require('../../../services/LigneTarifService');
 const versionService=new VersionService();
 const optionService=new OptionService();
 const couleurService=new CouleurService();
+const ligneTarifService=new LigneTarifService();
 
 
 router.get('/:id', (req,res) => {
@@ -112,16 +114,22 @@ router.post('/:id/couleurs',UtilFabAccesControl,(req,res)=>{
     versionService.findCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
         if ( couleur != null ) {
             res.status(409).json({
-                message: "Option existante pour ce modele"
+                message: "couleur existante pour ce modele"
             });
         } else {
-            versionService.addCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
-                res.status(200).json(couleur);
+            couleurService.createCouleur(req.body.CodeCouleur,req.body.NomCouleur).then( couleur => {
+                versionService.addCouleur(couleur,req.params.id).then( () => {
+                    res.status(200).json(couleur);
+                }).catch(error => {
+                    res.status(500).json({
+                        message: "Une erreur a été produite !"
+                    });
+                });
             }).catch(error => {
                 res.status(500).json({
                     message: "Une erreur a été produite !"
                 });
-            })
+            });
         }
     });
 });
@@ -143,7 +151,7 @@ router.put('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif => {
         if ( lignetarif == null ) {
             res.status(404).json({
-                message: "Option inexistante"
+                message: "lignetarif inexistante"
             });
         } else {
             ligneTarifService.updateLigneTarif(req.body,req.params.id,0).then( resu => {
@@ -155,7 +163,7 @@ router.put('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
                             message:"Une erreur a été produite !"
                         });
                     });
-                }else {
+                } else {
                     res.status(500).json({
                         message:"Une erreur a été produite !"
                     });

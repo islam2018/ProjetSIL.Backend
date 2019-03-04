@@ -13,11 +13,10 @@ let CouleurService=class CouleurService {
         });
     }
 
-    createCouleur(couleur,codeVersion) {
+    createCouleur(codeCouleur,nomCouleur) {
         return COULEUR.create({
-            CodeCouleur: couleur.CodeCouleur,
-            CodeVersion: codeVersion,
-            NomCouleur:version.NomCouleur
+            CodeCouleur: codeCouleur,
+            NomCouleur: nomCouleur
         });
     }
 
@@ -29,7 +28,7 @@ let CouleurService=class CouleurService {
 
     updateCouleur(couleur,codeCouleur) {
         return COULEUR.update({
-            NomVersion:couleur.NomCouleur
+            NomCouleur:couleur.NomCouleur
         },{where:{CodeCouleur: codeCouleur}});
     }
 

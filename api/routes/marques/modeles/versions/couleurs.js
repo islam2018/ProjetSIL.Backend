@@ -21,7 +21,7 @@ router.get('/:id', (req,res) => {
 router.put('/:id',UtilFabAccesControl, (req,res) => {
     couleurService.getCouleur(req.params.id).then(couleur => {
         if ( couleur == null ) {
-            res.status(409).json({
+            res.status(404).json({
                 message: "Couleur inexistante"
             });
         } else {

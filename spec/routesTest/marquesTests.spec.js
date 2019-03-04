@@ -5,6 +5,9 @@ const MARQUE = require('../../api/model/marque');
 const MODELE = require('../../api/model/modele');
 const UTILFAB = require('../../api/model/utilfab');
 
+const jwt = require('jsonwebtoken');
+const JWT_CONFIG=require('../../api/config/secret').JWT_CONFIG;
+
 let marqueObject = {
     CodeMarque: '',
     NomMarque: ''
@@ -26,7 +29,7 @@ let utilfabObject = {
     Fabricant: ''
 };
 
-describe('/marques route tests', function() {
+describe('TESTS:/marques | ', function() {
 
     /** ************************************************************************************************************ **/
 
@@ -55,44 +58,30 @@ describe('/marques route tests', function() {
         var token;
 
         beforeAll(function(done) {
+            token = jwt.sign({Id:IDTEST,mail:'test@exists.com'},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: 'Testing post existed'
             }).then(() => {
-                UTILFAB.create({
-                    IdUserF: IDTEST,
-                    Mail: 'test@exists.com',
-                    Fabricant: IDTEST,
-                    Mdp: '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC' // mdp == 'test'
-                }).then(() => {
-                    let options = {
-                        url: BASE_URL+'/auth/utilfab/',
-                        json: true,
-                        method: 'post',
-                        body: {
-                            'Mail': 'test@exists.com',
-                            'Mdp' : 'mossab12'
-                        }
-                    };
-                    REQUEST(options, function (error, response, body) {
-                        token = body.token;
-                        done();
-                    });
-                });
+               done();
             });
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     NomMarque: 'Testing post'
                 }
+            }).then(() => {
+                done();
             });
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST,
                     NomMarque: 'Testing post existed'
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -142,18 +131,22 @@ describe('/marques route tests', function() {
     describe('GET /marques/:id', function () {
         var req;
 
-        beforeAll(function() {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
+            }).then(() => {
+                done();
             });
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -178,39 +171,23 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
+            token = jwt.sign({Id:IDTEST,mail:'test@exists.com'},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
             }).then(() => {
-                UTILFAB.create({
-                    IdUserF: IDTEST,
-                    Mail: 'test@exists.com',
-                    Fabricant: IDTEST,
-                    Mdp: '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC' // mdp == 'test'
-                }).then(() => {
-                    let options = {
-                        url: BASE_URL+'/auth/utilfab/',
-                        json: true,
-                        method: 'post',
-                        body: {
-                            'Mail': 'test@exists.com',
-                            'Mdp' : 'mossab12'
-                        }
-                    };
-                    REQUEST(options, function (error, response, body) {
-                        token = body.token;
-                        done();
-                    });
-                });
+                done();
             });
         });
 
-        afterEach(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -261,31 +238,13 @@ describe('/marques route tests', function() {
         var req;
         var token;
 
-        beforeEach(function(done) {
+        beforeAll(function(done) {
+            token = jwt.sign({Id:IDTEST,mail:'test@exists.com'},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
             }).then(() => {
-                UTILFAB.create({
-                    IdUserF: IDTEST,
-                    Mail: 'test@exists.com',
-                    Fabricant: IDTEST,
-                    Mdp: '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC' // mdp == 'test'
-                }).then(() => {
-                    let options = {
-                        url: BASE_URL+'/auth/utilfab/',
-                        json: true,
-                        method: 'post',
-                        body: {
-                            'Mail': 'test@exists.com',
-                            'Mdp' : 'mossab12'
-                        }
-                    };
-                    REQUEST(options, function (error, response, body) {
-                        token = body.token;
-                        done();
-                    });
-                });
+                done();
             });
         });
 
@@ -314,18 +273,22 @@ describe('/marques route tests', function() {
     describe('GET /marques/:id/modeles', function () {
         var req;
 
-        beforeAll(function() {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
+            }).then(() => {
+                done();
             });
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -351,6 +314,7 @@ describe('/marques route tests', function() {
         var req;
 
         beforeAll(function(done) {
+            token = jwt.sign({Id:IDTEST,mail:'test@exists.com'},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
@@ -361,35 +325,18 @@ describe('/marques route tests', function() {
                     NomModele: 'Testing post existed'
                 });
             }).then(() => {
-                UTILFAB.create({
-                    IdUserF: IDTEST,
-                    Mail: 'test@exists.com',
-                    Fabricant: IDTEST,
-                    Mdp: '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC' // mdp == 'test'
-                }).then(() => {
-                    let options = {
-                        url: BASE_URL+'/auth/utilfab/',
-                        json: true,
-                        method: 'post',
-                        body: {
-                            'Mail': 'test@exists.com',
-                            'Mdp' : 'mossab12'
-                        }
-                    };
-                    REQUEST(options, function (error, response, body) {
-                        token = body.token;
-                        done();
-                    });
-                });
+                done();
             });
 
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     NomMarque: "Testing Marque"
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -440,18 +387,22 @@ describe('/marques route tests', function() {
     describe('GET /marques/:id/utilfab', function () {
         var req;
 
-        beforeAll(function() {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
+            }).then(() => {
+                done();
             });
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     CodeMarque: IDTEST
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -476,25 +427,33 @@ describe('/marques route tests', function() {
     describe('POST /marques/:id/utilfab', function () {
         var req;
 
-        beforeAll(function() {
+        beforeAll(function(done) {
             req = MARQUE.create({
                 CodeMarque: IDTEST,
                 NomMarque: "Testing Marque"
             }).then(() => {
                 UTILFAB.create({
-                    IdUserF: IDTEST + 1,
+                    IdUserF: IDTEST,
                     Mail: 'test@exists.com',
-                    Fabricant: IDTEST,
+                    Nom: 'test',
+                    Prenom: 'test',
+                    Mdp: '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC', // mdp == 'mossab12'
+                    NumTel: '0000000000',
+                    Fabricant: IDTEST
+                }).then(() => {
+                    done();
                 });
             });
 
         });
 
-        afterAll(function() {
+        afterAll(function(done) {
             MARQUE.destroy({
                 where : {
                     NomMarque: "Testing Marque"
                 }
+            }).then(() => {
+                done();
             });
         });
 
@@ -505,8 +464,13 @@ describe('/marques route tests', function() {
                     json: true,
                     method: 'post',
                     body: {
+                        'IdUserF': IDTEST,
                         'Mail': 'test@doesnt_exists.com',
-                        'Fabricant': IDTEST,
+                        'Nom': 'test',
+                        'Prenom': 'test',
+                        'Mdp': '$2a$04$ZzEc12dZe7JGPbrXKpe5rOw3h3.UixxifFnZseJoouMKcfUtA3UaC', // mdp == 'mossab12'
+                        'NumTel': '0000000000',
+                        'Fabricant': IDTEST
                     }
                 };
                 REQUEST(options, function (error, response, body) {

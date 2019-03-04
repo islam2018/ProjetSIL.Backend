@@ -32,9 +32,9 @@ let LigneTarifService=class LigneTarifService {
 
     updateLigneTarif(ligneTarif,code,type) {
         return LIGNETARIF.update({
-            DateDebut: req.body.DateDebut,
-            DateFin: req.body.DateFin,
-            Prix: req.body.Prix
+            DateDebut: ligneTarif.DateDebut,
+            DateFin: ligneTarif.DateFin,
+            Prix: ligneTarif.Prix
         },{where : {Code: code,Type:type}});
     }
 

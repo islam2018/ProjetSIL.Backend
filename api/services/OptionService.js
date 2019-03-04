@@ -4,6 +4,8 @@ const REL_VEHIC_OPT=require('../model/REL_vehicule_option');
 OPTION.belongsTo(REL_VER_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
 OPTION.belongsTo(REL_VEHIC_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
 
+
+
 let OptionService=class OptionService {
 
     getAllOptionsOfVersion(codeVersion) {
