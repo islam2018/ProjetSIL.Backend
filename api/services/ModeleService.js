@@ -3,24 +3,21 @@ const OPTION=require('../model/option');
 const VERSION=require('../model/version');
 const REL_MOD_OPT=require('../model/rel_mod_opt');
 
-MODELE.hasMany(REL_MOD_OPT,{foreignKey: 'CodeModele', targetKey: 'CodeModele'});
-MODELE.hasMany(VERSION,{foreignKey: 'CodeModele', targetKey: 'CodeModele'});
-REL_MOD_OPT.belongsTo(OPTION,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
+MODELE.hasMany(VERSION,{foreignKey: 'CodeModele', targetKey: 'CodeModele',as:'versions'});
+MODELE.belongsToMany(OPTION,{as:'options',foreignKey:'CodeModele',through:REL_MOD_OPT,otherKey:'CodeOption'});
 
 
 
 let ModeleService=class ModeleService {
 
+
     getAllModeles(codeMarque) {
+
         return MODELE.findAll({
-            include: [{
-                model: VERSION,
-            },{
-                model: REL_MOD_OPT,
-                    include: [{
-                    model: OPTION,
-                    }]
-            }],
+            include:[
+                {model:VERSION, as:'versions'},
+                {model:OPTION, through:REL_MOD_OPT,as:'options'},
+            ],
             where: {CodeMarque : codeMarque}
         });
     }
@@ -36,14 +33,10 @@ let ModeleService=class ModeleService {
 
     getModele(codeModele) {
         return MODELE.findOne({
-            include: [{
-                model: VERSION,
-            },{
-                model: REL_MOD_OPT,
-                include: [{
-                    model: OPTION,
-                }]
-            }],
+            include:[
+                {model:VERSION, as:'versions'},
+                {model:OPTION, through:REL_MOD_OPT,as:'options'},
+            ],
             where: {CodeModele : codeModele}
         });
     }
