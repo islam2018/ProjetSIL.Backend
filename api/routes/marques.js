@@ -110,13 +110,23 @@ router.delete('/:id',UtilFabAccesControl, (req,res) => {
 
 router.get('/:id/modeles', (req, res) => {
 
-    modeleService.getAllModeles(req.params.id).then(modeles=>{
-        res.status(200).json(modeles);
-    }).catch (error=>{
-        res.status(500).json({
-            message: "Une erreur a été produite !"+error,
-        })
-    });
+    if (req.body.idAutomobiliste != null) {
+        modeleService.getAllModelesPourAutomob(req.params.id,req.body.idAutomobiliste).then(modeles => {
+            res.status(200).json(modeles);
+        }).catch(error => {
+            res.status(500).json({
+                message: "Une erreur a été produite !" + error,
+            })
+        });
+    } else {
+        modeleService.getAllModeles(req.params.id).then(modeles => {
+            res.status(200).json(modeles);
+        }).catch(error => {
+            res.status(500).json({
+                message: "Une erreur a été produite !" + error,
+            })
+        });
+    }
 });
 
 router.post('/:id/modeles',UtilFabAccesControl,(req,res) => {

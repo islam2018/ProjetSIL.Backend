@@ -1,10 +1,15 @@
+
 const MODELE=require('../model/modele');
 const OPTION=require('../model/option');
 const VERSION=require('../model/version');
+const FAVORIS_MODELE=require('../model/favoris_modele');
+const IMAGE=require('../model/image');
 const REL_MOD_OPT=require('../model/rel_mod_opt');
 
 MODELE.hasMany(VERSION,{foreignKey: 'CodeModele', targetKey: 'CodeModele',as:'versions'});
 MODELE.belongsToMany(OPTION,{as:'options',foreignKey:'CodeModele',through:REL_MOD_OPT,otherKey:'CodeOption'});
+MODELE.hasMany(FAVORIS_MODELE,{as:'suivies',foreignKey:'CodeModele',foreignKeyKey:'CodeModele'});
+MODELE.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'CodeModele'});
 
 
 
@@ -16,7 +21,23 @@ let ModeleService=class ModeleService {
         return MODELE.findAll({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through:REL_MOD_OPT,as:'options'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
+            where: {CodeMarque : codeMarque}
+        });
+    }
+
+    getAllModelesPourAutomob(codeMarque,idAutomobiliste) {
+
+        return MODELE.findAll({
+            include:[
+                {model:VERSION, as:'versions'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
+                    where:{idAutomobiliste:idAutomobiliste},required:false}
+
             ],
             where: {CodeMarque : codeMarque}
         });
@@ -35,7 +56,8 @@ let ModeleService=class ModeleService {
         return MODELE.findOne({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through:REL_MOD_OPT,as:'options'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
             ],
             where: {CodeModele : codeModele}
         });

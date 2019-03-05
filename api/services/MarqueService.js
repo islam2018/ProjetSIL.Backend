@@ -1,11 +1,17 @@
 const MARQUE=require('../model/marque');
 const MODELE=require('../model/modele');
+const IMAGE=require('../model/image');
+MARQUE.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'CodeMarque'});
 
 
 let MarqueService=class MarqueService{
 
     getAllMarques() {
-        return MARQUE.findAll();
+        return MARQUE.findAll({
+            include:[
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
+        });
     }
 
     createMarque(marque) {
@@ -17,6 +23,9 @@ let MarqueService=class MarqueService{
 
     getMarque(codeMarque) {
         return MARQUE.findOne({
+            include:[
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
             where : {CodeMarque: codeMarque}
         });
     }
