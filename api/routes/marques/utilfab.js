@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
+const UtilFabAccesControl= require('../../control/AccessControl').UtilFabAccessControl;
+const AdminAccesControl= require('../../control/AccessControl').AdminAccessControl;
 const UtilisateurFabricantService=require('../../services/UtilisateurFabricantService');
 const utilFabService=new UtilisateurFabricantService();
 
@@ -17,7 +19,7 @@ router.get('/:id', (req,res) => {
     });
 });
 
-router.put('/:id', (req,res) => {
+router.put('/:id', UtilFabAccesControl,(req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             utilFabService.updateUtilFab(req.body,req.params.id).then(resu=>{
@@ -47,7 +49,7 @@ router.put('/:id', (req,res) => {
     });
 });
 
-router.put('/:id/mdp', (req,res) => {
+router.put('/:id/mdp',UtilFabAccesControl, (req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             bcrypt.hash(req.body.Mdp,10,(err,hash)=>{
@@ -86,7 +88,7 @@ router.put('/:id/mdp', (req,res) => {
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id',AdminAccesControl,(req,res) => {
     utilFabService.deleteUtilFab(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({

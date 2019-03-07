@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const serializer=require('sequelize-values')();
+const AdminAccesControl= require('../control/AccessControl').AdminAccessControl;
 const UtilFabAccesControl= require('../control/AccessControl').UtilFabAccessControl;
 const AutoMobAccesControl= require('../control/AccessControl').AutomobAccessControl;
 const ModeleService=require('../services/ModeleService');
@@ -27,7 +28,7 @@ router.get('/',(req,res)=>{
 });
 
 
-router.post('/',UtilFabAccesControl,(req,res)=>{
+router.post('/',AdminAccesControl,(req,res)=>{
    marqueService.getMarqueParNom(req.body.NomMarque).then(m=>{
         if (m!=null) {
             res.status(409).json({
@@ -60,7 +61,7 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-router.put('/:id',UtilFabAccesControl,(req,res)=>{
+router.put('/:id',AdminAccesControl,(req,res)=>{
     marqueService.getMarque(req.params.id).then(marque=>{
         if (marque!=null) {
             marqueService.updateMarque(req.body,req.params.id).then(resu=>{
@@ -94,7 +95,7 @@ router.put('/:id',UtilFabAccesControl,(req,res)=>{
     });
 });
 
-router.delete('/:id',UtilFabAccesControl, (req,res) => {
+router.delete('/:id',AdminAccesControl, (req,res) => {
    marqueService.deleteMarque(req.params.id).then(result=>{
         if (result) {
             res.status(200).json({
@@ -161,7 +162,7 @@ router.get('/:id/utilfab', (req,res) => {
     });
 });
 
-router.post('/:id/utilfab', (req,res) => {
+router.post('/:id/utilfab',AdminAccesControl, (req,res) => {
     bcrypt.hash(req.body.Mdp,null,null,(err,hash)=>{
         if (err) {
             res.status(500).json({

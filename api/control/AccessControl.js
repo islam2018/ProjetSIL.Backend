@@ -5,6 +5,11 @@ const JWT_CONFIG=require('../config/secret').JWT_CONFIG;
 const GOOGLE_CREDENTIALS=require('../config/secret').GOOGLE_CREDENTIALS;
 const FACEBBOK_CREDENTIALS=require('../config/secret').FACEBBOK_CREDENTIALS;
 
+module.exports.AdminAccessControl = (req,res,next) => {
+    next();
+};
+
+
 module.exports.UtilFabAccessControl = (req,res,next) => {
     try {
         const token= req.headers.authorization.split(" ");
