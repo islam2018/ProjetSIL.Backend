@@ -1,7 +1,7 @@
 const JWT_CONFIG ={
-    ADMIN_KEY:"mypassword1",
-    UTIL_FAB_KEY:"mypassword2",
-    expiresIn: "1h",
+    ADMIN_KEY:"7E29A4832D4148AA72FB1B8AF5CDB",
+    UTIL_FAB_KEY:"B4C74985957AF5F5BC8BDD6CAE7CF",
+    expiresIn: "24h",
 };
 const GOOGLE_CREDENTIALS={
     CLIENT_ID: "317982693770-5jlnnltb2in6rfbtudlqkvibg23bvdnq.apps.googleusercontent.com"

@@ -4,9 +4,22 @@ const request=require('request');
 const JWT_CONFIG=require('../config/secret').JWT_CONFIG;
 const GOOGLE_CREDENTIALS=require('../config/secret').GOOGLE_CREDENTIALS;
 const FACEBBOK_CREDENTIALS=require('../config/secret').FACEBBOK_CREDENTIALS;
+const UtilisateurFabricantService=require('../services/UtilisateurFabricantService');
+const utilFabService=new UtilisateurFabricantService();
 
 module.exports.AdminAccessControl = (req,res,next) => {
-    next();
+    try {
+        const token= req.headers.authorization.split(" ");
+        const decoded = jwt.verify(token[1], JWT_CONFIG.ADMIN_KEY);
+        console.log(decoded);
+        req.userData=decoded;
+        next();
+
+    } catch(error) {
+        return res.status(401).json({
+            message: "Erreur dans l'authentification "
+        });
+    }
 };
 
 
@@ -17,9 +30,26 @@ module.exports.UtilFabAccessControl = (req,res,next) => {
         console.log(decoded);
         req.userData=decoded;
         next();
+        /*utilFabService.getUtilFab(JSON.parse(JSON.stringify(decoded)).Id).then(utilisateur=>{
+            if (utilisateur!=null) {
+                if (utilisateur.Fabricant!==JSON.parse(JSON.stringify(decoded)).Fabricant) {
+                    return res.status(401).json({
+                        message: "Erreur dans l'authentification 1"
+                    });
+                } else {
+                    req.userData=decoded;
+                    next();
+                }
+            } else {
+                return res.status(401).json({
+                    message: "Erreur dans l'authentification 2"
+                });
+            }
+        });*/
+
     } catch(error) {
         return res.status(401).json({
-           message: "Erreur dans l'authentification"
+           message: "Erreur dans l'authentification "
         });
     }
 };

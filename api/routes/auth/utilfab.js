@@ -19,7 +19,7 @@ router.post('/', (req,res,next) => {
                     });
                 } else {
                     if (result) {
-                        const token=jwt.sign({Id:utilfab.IdUserF,mail:utilfab.Mail},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
+                        const token=jwt.sign({Id:utilfab.IdUserF,mail:utilfab.Mail,Fabricant:utilfab.Fabricant},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
                         res.status(200).json({
                             msg: "Authentification résussite !",
                             token: token,

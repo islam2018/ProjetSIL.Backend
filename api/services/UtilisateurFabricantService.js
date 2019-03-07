@@ -25,7 +25,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
 
     getUtilFab(IdUtilFab) {
         return UTILFAB.findOne({
-            where : {idUserF: idUtilFab}
+            where : {idUserF: IdUtilFab}
         });
     }
 
@@ -45,7 +45,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
     }
 
     updateMdpForUtilFab(utilfab,idUtilFab) {
-        return OFFRE.update({
+        return UTILFAB.update({
             Mdp: utilfab.Mdp
         },{where:{idUserF: idUtilFab}});
     }

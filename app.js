@@ -33,6 +33,7 @@ app.use('/vehicules/commandes',require('./api/routes/vehicules/commandes'));
 
 app.use('/auth/utilfab',require('./api/routes/auth/utilfab'));
 app.use('/auth/automob',require('./api/routes/auth/automob'));
+app.use('/auth/admin',require('./api/routes/auth/admins'));
 
 app.use('/images',require('./api/routes/images'));
 app.use('/images/marques',require('./api/routes/images/marques'));
