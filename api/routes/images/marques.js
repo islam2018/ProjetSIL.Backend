@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const UtilFabAccessControl= require('../../control/AccessControl').UtilFabAccessControl;
+const AdminAccessControl= require('../../control/AccessControl').AdminAccessControl;
 const ImageService=require('../../services/ImageService');
 const imageService=new ImageService();
 
@@ -25,9 +26,9 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-router.post('/:id',UtilFabAccessControl,upload.single('imageMarque'),(req,res)=>{
+router.post('/:id',AdminAccessControl,upload.single('imageMarque'),(req,res)=>{
 
-    req.body.CheminImage=req.file.path;
+    req.body.CheminImage=req.file.path.replace(/\\/g, "/");
     imageService.createImage(req.body,0,req.params.id).then(image=>{
         res.status(200).json(image);
     }).catch (err=>{
