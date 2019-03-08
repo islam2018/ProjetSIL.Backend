@@ -1,18 +1,27 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
 const UtilFabAccessControl= require('../../control/AccessControl').UtilFabAccessControl;
 const ImageService=require('../../services/ImageService');
 const imageService=new ImageService();
 
-const storage = multer.diskStorage({
-    destination: function(req,file,cb) {
-        cb(null,'imageUploads/modeles');
-    },
-    filename: function(req,file,cb) {
+const multer = require('multer');
+const CD_CREDENTAILS=require('../../config/secret').CLOUDINARY_CREDENTIALS;
+const cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: CD_CREDENTAILS.CNAME,
+    api_key: CD_CREDENTAILS.API_KEY,
+    api_secret: CD_CREDENTAILS.API_SECRET
+});
+const cloudinaryStorage=require('multer-storage-cloudinary');
+
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: 'Modeles',
+    filename: function (req, file, cb) {
         cb(null,new Date().toISOString().replace(/:/g, '-')+'_'+file.originalname);
     }
 });
+
 const upload=multer({storage:storage});
 
 router.get('/:id',(req,res)=>{
@@ -27,7 +36,7 @@ router.get('/:id',(req,res)=>{
 
 router.post('/:id',UtilFabAccessControl,upload.single('imageModele'),(req,res)=>{
 
-    req.body.CheminImage=req.file.path;
+    req.body.CheminImage=req.file.url;
     imageService.createImage(req.body,1,req.params.id).then(image=>{
         res.status(200).json(image);
     }).catch (err=>{

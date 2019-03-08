@@ -16,7 +16,6 @@ app.use((req,res,next)=>{
    }
    next();
 });
-app.use('/imageUploads',express.static('imageUploads'));
 
 
 app.use('/marques',require('./api/routes/marques'));

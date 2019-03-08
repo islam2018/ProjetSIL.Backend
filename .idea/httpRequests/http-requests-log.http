@@ -1,0 +1,14 @@
+POST https://sayaradz.herokuapp.com/images/marques/5?Description=Logo Renault
+Accept: */*
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MSwibWFpbCI6ImFkbWluQGdtYWlsLmZyIiwiaWF0IjoxNTUxOTk2NzAwLCJleHAiOjE1NTIwODMxMDB9.nrfBbsMdbPvBhokLxkDH6A8jjCs-kVJL5xAISlt-xzo
+
+--null
+
+
+< C:\Users\islam\Desktop\Nouveau dossier\renault-logo.png
+--null--
+
+<> 2019-03-07T114323.500.html
+
+###
+

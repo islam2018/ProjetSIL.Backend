@@ -20,8 +20,8 @@ const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kz
         timestamps:false
     }
 });
-
 */
+
 
 sequelize
     .authenticate().then(() => {
