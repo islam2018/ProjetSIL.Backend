@@ -13,7 +13,7 @@ const versionService=new VersionService();
 
 router.get('/:id',(req,res)=>{
     modeleService.getModele(req.params.id).then(modele=>{
-        res.status(500).json(modele);
+        res.status(200).json(modele);
     }).catch(error=>{
         res.status(500).json({
             message:"Une erreur a été produite !"+error
