@@ -1,0 +1,41 @@
+[
+  {
+    "CodeMarque": 5,
+    "NomMarque": "Renault",
+    "images": [
+      {
+        "CheminImage": "http://res.cloudinary.com/hftzhatr4/image/upload/v1552051778/Marques/2019-03-08T13-29-37.595Z_renault-logo.png.png"
+      }
+    ]
+  },
+  {
+    "CodeMarque": 6,
+    "NomMarque": "Mercedes",
+    "images": []
+  },
+  {
+    "CodeMarque": 8,
+    "NomMarque": "Dacia",
+    "images": []
+  },
+  {
+    "CodeMarque": 10,
+    "NomMarque": "Audi",
+    "images": []
+  },
+  {
+    "CodeMarque": 12,
+    "NomMarque": "PEUGEOT",
+    "images": []
+  },
+  {
+    "CodeMarque": 22345,
+    "NomMarque": "HYUNDAI",
+    "images": []
+  },
+  {
+    "CodeMarque": 79613,
+    "NomMarque": "Porshe",
+    "images": []
+  }
+]

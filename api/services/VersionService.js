@@ -72,20 +72,7 @@ let VersionService=class VersionService {
         return VERSION.destroy({where:{CodeVersion:codeVersion}});
     }
 
-    findOption(codeOption,codeVersion) {
-        return REL_VER_OPT.findOne({
-            where:{
-                CodeOption:codeOption,
-                CodeVersion:codeVersion
-            }});
-    }
 
-    addOption(codeOption,codeVersion) {
-        return REL_VER_OPT.create({
-            CodeOption: codeOption,
-            CodeVersion: codeVersion
-        });
-    }
 
     findCouleur(codeCouleur,codeVersion) {
         return REL_VER_COUL.findOne({

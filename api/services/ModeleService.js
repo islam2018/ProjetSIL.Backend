@@ -8,8 +8,8 @@ const REL_MOD_OPT=require('../model/rel_mod_opt');
 
 MODELE.hasMany(VERSION,{foreignKey: 'CodeModele', targetKey: 'CodeModele',as:'versions'});
 MODELE.belongsToMany(OPTION,{as:'options',foreignKey:'CodeModele',through:REL_MOD_OPT,otherKey:'CodeOption'});
-MODELE.hasMany(FAVORIS_MODELE,{as:'suivies',foreignKey:'CodeModele',foreignKeyKey:'CodeModele'});
-MODELE.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'CodeModele'});
+MODELE.hasMany(FAVORIS_MODELE,{as:'suivies',foreignKey:'CodeModele',targetKey:'CodeModele'});
+MODELE.hasMany(IMAGE,{as:'images',foreignKey:'Code',targetKey:'CodeModele'});
 
 
 
