@@ -1,7 +1,7 @@
 const sequelize=require('sequelize');
 const s=require('sequelize-values')();
 const request=require('request');
-const baseurl =require('../config/base_url');
+const configurl='https://sayadz.herokuapp.com/';
 const FAVORIS_MODELE=require('../model/favoris_modele');
 const FAVORIS_VERSION=require('../model/favoris_version');
 const VersionService = require('./VersionService');
@@ -16,7 +16,7 @@ let SuivieService=class SuivieService {
            let versions = s.getValues(value);
            console.log(versions);
            versions.forEach(function(version) {
-              request.post(baseurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
+              request.post(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
            });
             return FAVORIS_MODELE.create({
                 CodeModele:codeModele,
@@ -39,7 +39,7 @@ let SuivieService=class SuivieService {
             let versions = s.getValues(value);
             console.log(versions);
             versions.forEach(function(version) {
-                request.delete(baseurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
+                request.delete('https://sayaradz.herokuapp.com/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
             });
             return FAVORIS_MODELE.destroy({
                 where:{CodeModele:codeModele,
