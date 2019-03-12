@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kzep37lxt54', {
+/*const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kzep37lxt54', {
     host: 'gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
     port: '3306',
     dialect: 'mysql',
@@ -8,11 +8,11 @@ const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kz
         freezeTableName: true,
         timestamps:false
     }
-});
+});*/
 
-/*const sequelize = new Sequelize('sayaradz', 'root', '', {
+const sequelize = new Sequelize('sayaradz', 'root', 'root', {
     host: 'localhost',
-    //port: '8889',
+    port: '8889',
     dialect: 'mysql',
     operatorsAliases: false,
     define: {
@@ -20,7 +20,7 @@ const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kz
         timestamps:false
     }
 });
-*/
+
 
 
 sequelize
