@@ -39,6 +39,9 @@ app.use('/images/marques',require('./api/routes/images/marques'));
 app.use('/images/modeles',require('./api/routes/images/modeles'));
 app.use('/images/versions',require('./api/routes/images/versions'));
 
+app.use('/suivies/modeles',require('./api/routes/suivies/modeles'));
+app.use('/suivies/versions',require('./api/routes/suivies/versions'));
+
 
 module.exports=app;
 
