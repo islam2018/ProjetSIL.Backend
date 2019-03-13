@@ -10,10 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use((req,res,next)=>{
    res.header('Access-Control-Allow-Origin','*');
    res.header('Access-Control-Allow-Headers','Origin, Content-Type, Authorization, Form-Data');
-   if (req.method==='OPTIONS') {
-       req.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE');
-       return res.status(200).json({});
-   }
+    req.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE');
    next();
 });
 
