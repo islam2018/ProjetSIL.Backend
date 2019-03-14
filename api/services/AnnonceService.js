@@ -8,9 +8,8 @@ let AnnonceService=class AnnonceService {
 
     createAnnonce(annonce) {
         return ANNONCE.create({
-            CheminPhoto: annonce.CheminPhoto,
             Prix: annonce.Prix,
-            idAutomobilste: annonce.idAutomobilste,
+            idAutomobiliste: annonce.idAutomobiliste,
             CodeVersion: annonce.CodeVersion
         });
     }
@@ -23,7 +22,6 @@ let AnnonceService=class AnnonceService {
 
     updateAnnonce(annonce,idAnnonce) {
         return ANNONCE.update({
-            CheminPhoto: annonce.CheminPhoto,
             Prix: annonce.Prix
         },{where:{idAnnonce: idAnnonce}});
     }

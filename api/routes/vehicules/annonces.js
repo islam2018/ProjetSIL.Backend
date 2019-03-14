@@ -2,9 +2,30 @@ const express= require('express');
 const router= express.Router();
 const AnnonceService=require('../../services/AnnonceService');
 const OffreService=require('../../services/OffreService');
+const ImageService =require('../../services/ImageService');
+const imageService = new ImageService();
 const annonceService=new AnnonceService();
 const offreService=new OffreService();
 
+const multer = require('multer');
+const CD_CREDENTAILS=require('../../config/secret').CLOUDINARY_CREDENTIALS;
+const cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: CD_CREDENTAILS.CNAME,
+    api_key: CD_CREDENTAILS.API_KEY,
+    api_secret: CD_CREDENTAILS.API_SECRET
+});
+const cloudinaryStorage=require('multer-storage-cloudinary');
+
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: 'Annonces',
+    filename: function (req, file, cb) {
+        cb(null,new Date().toISOString().replace(/:/g, '-')+'_'+file.originalname);
+    }
+});
+
+const upload=multer({storage:storage});
 
 router.get('/',(req,res)=>{
     annonceService.getAllAnnonces().then(annonces=>{
@@ -16,12 +37,22 @@ router.get('/',(req,res)=>{
     });
 });
 
-router.post('/',(req,res)=>{
-    annonceService.createAnnonce(req.body).then(marque=>{
-        res.status(200).json({marque});
+router.post('/',upload.array('imageAnnonce',5),(req,res)=>{
+    annonceService.createAnnonce(req.body).then(anonce=>{
+        let promises=[];
+        req.files.forEach(file =>{
+            promises.push(imageService.createImage({CheminImage:file.url,Description:req.body.Description},3,anonce.idAnnonce));
+        });
+        Promise.all(promises).then(value=>{
+            res.status(200).json(anonce);
+        }).catch (error=>{
+            res.status(500).json({
+                message:"Une erreur a été produite !" +error
+            });
+        });
     }).catch(error=>{
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !1"+error
         });
     });
 });

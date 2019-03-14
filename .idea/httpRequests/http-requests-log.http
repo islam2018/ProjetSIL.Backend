@@ -1,3 +1,48 @@
+GET http://localhost:8080/marques/5/modeles?idAutomobiliste="380466752766558"
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-03-12T064107.200.json
+
+###
+
+GET http://localhost:8080/marques/5/modeles?idAutomobiliste=380466752766558
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-03-12T063945.200.json
+
+###
+
+GET http://localhost:8080/marques/5?idAutomobiliste=380466752766558
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-03-12T063924.200.json
+
+###
+
+GET http://localhost:8080/marques?idAutomobiliste=380466752766558
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-03-12T063831.200.json
+
+###
+
+POST http://localhost:8080/marques?idAutomobiliste=380466752766558
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-03-12T063817.401.json
+
+###
+
 POST https://sayaradz.herokuapp.com/images/marques/5?Description=Logo Renault
 Accept: */*
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MSwibWFpbCI6ImFkbWluQGdtYWlsLmZyIiwiaWF0IjoxNTUxOTk2NzAwLCJleHAiOjE1NTIwODMxMDB9.nrfBbsMdbPvBhokLxkDH6A8jjCs-kVJL5xAISlt-xzo

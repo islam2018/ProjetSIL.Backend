@@ -66,16 +66,16 @@ router.delete('/:id',UtilFabAccesControl, (req,res) => {
 
 router.get('/:id/options', (req,res) => {
     optionService.getAllOptionsOfVersion(req.params.id).then(options => {
-        res.status(200).json({options});
+        res.status(200).json(options);
     }).catch( error => {
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"+error
         });
     });
 });
 
 router.post('/:id/options',UtilFabAccesControl, (req,res) => {
-    versionService.findOption(req.body.CodeOption,req.params.id).then( option => {
+    optionService.findOptionofVersion(req.body.CodeOption,req.params.id).then( option => {
         if ( option != null ) {
             res.status(409).json({
                 message: "Option existante pour cette version !"
@@ -84,7 +84,7 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
             optionService.getOption(req.body.CodeOption).then(option => {
                 if ( option == null ) {
                     optionService.createOption(req.body,req.params.id).then(opt=>{
-                        versionService.addOption(req.body.CodeOption,req.params.id).then(option => {
+                        optionService.addOptionforVersion(req.body.CodeOption,req.params.id).then(option => {
                             res.status(200).json(option);
                         }).catch(error => {
                             res.status(500).json({
@@ -97,7 +97,7 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
                         });
                     });
                 } else {
-                    versionService.addOption(req.body.CodeOption,req.params.id).then(option => {
+                    optionService.addOptionforVersion(req.body.CodeOption,req.params.id).then(option => {
                         res.status(200).json(option);
                     }).catch(error => {
                         res.status(500).json({
@@ -111,9 +111,23 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
 
 });
 
+router.delete('/:id/options', UtilFabAccesControl,(req,res) => {
+    optionService.removeOptionofVersion(req.body.CodeOption,req.params.id).then(result=>{
+        if (result) {
+            res.status(200).json({
+                message:"Option supprimé de cette version !"
+            });
+        }else {
+            res.status(500).json({
+                message:"Une erreur a été produite !"
+            });
+        }
+    });
+});
+
 router.get('/:id/couleurs',(req,res)=>{
-    couleurService.getAllCouleurs(req.params.id).then(options => {
-        res.status(200).json(options);
+    couleurService.getAllCouleurs(req.params.id).then(couleurs => {
+        res.status(200).json(couleurs);
     }).catch( error => {
         res.status(500).json({
             message:"Une erreur a été produite !"

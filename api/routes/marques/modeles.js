@@ -9,6 +9,7 @@ const VersionService=require('../../services/VersionService');
 const OptionService=require('../../services/OptionService');
 const modeleService=new ModeleService();
 const versionService=new VersionService();
+const optionService=new OptionService();
 
 
 router.get('/:id',(req,res)=>{
@@ -112,5 +113,66 @@ router.post('/:id/versions', UtilFabAccesControl, (req,res) => {
 });
 
 
+router.get('/:id/options', (req,res) => {
+    optionService.getAllOptionsOfModele(req.params.id).then(options => {
+        res.status(200).json(options);
+    }).catch( error => {
+        res.status(500).json({
+            message:"Une erreur a été produite !"
+        });
+    });
+});
+
+router.post('/:id/options',UtilFabAccesControl, (req,res) => {
+    optionService.findOptionofModele(req.body.CodeOption,req.params.id).then( option => {
+        if ( option != null ) {
+            res.status(409).json({
+                message: "Option existante pour ce modele !"
+            });
+        } else {
+            optionService.getOption(req.body.CodeOption).then(option => {
+                if ( option == null ) {
+                    optionService.createOption(req.body,req.params.id).then(opt=>{
+                        optionService.addOptionforModele(req.body.CodeOption,req.params.id).then(option => {
+                            res.status(200).json(option);
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: "Une erreur a été produite !"
+                            });
+                        });
+                    }).catch(er=>{
+                        res.status(500).json({
+                            message: "Une erreur a été produite !"
+                        });
+                    });
+                } else {
+                    optionService.addOptionforModele(req.body.CodeOption,req.params.id).then(option => {
+                        res.status(200).json(option);
+                    }).catch(error => {
+                        res.status(500).json({
+                            message: "Une erreur a été produite !"
+                        });
+                    });
+                }
+            });
+        }
+    });
+
+});
+
+
+router.delete('/:id/options', UtilFabAccesControl,(req,res) => {
+    optionService.removeOptionofModele(req.body.CodeOption,req.params.id).then(result=>{
+        if (result) {
+            res.status(200).json({
+                message:"Option supprimé de ce modèle !"
+            });
+        }else {
+            res.status(500).json({
+                message:"Une erreur a été produite !"
+            });
+        }
+    });
+});
 
 module.exports = router;

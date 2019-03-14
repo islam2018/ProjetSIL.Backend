@@ -1,7 +1,7 @@
 const MARQUE=require('../model/marque');
 const MODELE=require('../model/modele');
 const IMAGE=require('../model/image');
-MARQUE.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'CodeMarque'});
+MARQUE.hasMany(IMAGE,{as:'images',foreignKey:'Code',targetKey:'CodeMarque'});
 
 
 let MarqueService=class MarqueService{
@@ -29,6 +29,7 @@ let MarqueService=class MarqueService{
             where : {CodeMarque: codeMarque}
         });
     }
+
     getMarqueParNom(nomMarque) {
         return MARQUE.findOne({
             where : {NomMarque: nomMarque}

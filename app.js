@@ -9,11 +9,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use((req,res,next)=>{
    res.header('Access-Control-Allow-Origin','*');
-   res.header('Access-Control-Allow-Headers','Origin, Content-Type, Authorization, Form-Data');
-   if (req.method==='OPTIONS') {
-       req.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE');
-       return res.status(200).json({});
-   }
+   res.header('Access-Control-Allow-Headers','X-Requested-With, Origin, Content-Type, Authorization, Form-Data');
+    res.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE');
    next();
 });
 
@@ -38,6 +35,9 @@ app.use('/images',require('./api/routes/images'));
 app.use('/images/marques',require('./api/routes/images/marques'));
 app.use('/images/modeles',require('./api/routes/images/modeles'));
 app.use('/images/versions',require('./api/routes/images/versions'));
+
+app.use('/suivies/modeles',require('./api/routes/suivies/modeles'));
+app.use('/suivies/versions',require('./api/routes/suivies/versions'));
 
 
 module.exports=app;
