@@ -41,7 +41,7 @@ router.post('/',upload.array('imageAnnonce',5),(req,res)=>{
     annonceService.createAnnonce(req.body).then(anonce=>{
         let promises=[];
         req.files.forEach(file =>{
-            promises.push(imageService.createImage({CheminImage:file.url,Description:req.body.description},3,anonce.idAnnonce));
+            promises.push(imageService.createImage({CheminImage:file.url,Description:req.body.Description},3,anonce.idAnnonce));
         });
         Promise.all(promises).then(value=>{
             res.status(200).json(anonce);
