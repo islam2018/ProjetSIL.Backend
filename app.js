@@ -23,9 +23,10 @@ app.use('/marques/modeles/versions/couleurs',require('./api/routes/marques/model
 app.use('/marques/modeles/versions/lignetarif',require('./api/routes/marques/modeles/versions'));
 app.use('/marques/utilfab',require('./api/routes/marques/utilfab'));
 
-app.use('/vehicules',require('./api/routes/vehicules'));
+
 app.use('/vehicules/annonces',require('./api/routes/vehicules/annonces'));
 app.use('/vehicules/commandes',require('./api/routes/vehicules/commandes'));
+app.use('/vehicules',require('./api/routes/vehicules'));
 
 app.use('/auth/utilfab',require('./api/routes/auth/utilfab'));
 app.use('/auth/automob',require('./api/routes/auth/automob'));
