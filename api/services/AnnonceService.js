@@ -1,9 +1,15 @@
 const ANNONCE=require('../model/Annonce');
+const IMAGE=require('../model/image');
+ANNONCE.hasMany(IMAGE,{as:'images',foreignKey:'Code',targetKey:'CodeAnnonce'});
 
 let AnnonceService=class AnnonceService {
 
     getAllAnnonces() {
-        return ANNONCE.findAll({});
+        return ANNONCE.findAll({
+            include:[
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ]
+        });
     }
 
     createAnnonce(annonce) {
@@ -16,6 +22,9 @@ let AnnonceService=class AnnonceService {
 
     getAnnonce(idAnnonce) {
         return ANNONCE.findOne({
+            include:[
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
             where : {idAnnonce: idAnnonce}
         });
     }
