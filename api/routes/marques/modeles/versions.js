@@ -111,8 +111,8 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
 
 });
 
-router.delete('/:id/options', UtilFabAccesControl,(req,res) => {
-    optionService.removeOptionofVersion(req.body.CodeOption,req.params.id).then(result=>{
+router.delete('/:id1/options/:id2', UtilFabAccesControl,(req,res) => {
+    optionService.removeOptionofVersion(req.params.id2,req.params.id1).then(result=>{
         if (result) {
             res.status(200).json({
                 message:"Option supprimé de cette version !"
