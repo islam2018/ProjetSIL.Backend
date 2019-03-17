@@ -7,7 +7,6 @@ const imageService=new ImageService();
 const multer = require('multer');
 const CD_CREDENTAILS=require('../../config/secret').CLOUDINARY_CREDENTIALS;
 const cloudinary = require('cloudinary');
-clou
 cloudinary.config({
     cloud_name: CD_CREDENTAILS.CNAME,
     api_key: CD_CREDENTAILS.API_KEY,
