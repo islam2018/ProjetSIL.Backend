@@ -41,12 +41,20 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
 
     getUtilFab(IdUtilFab) {
         return UTILFAB.findOne({
+            include:[
+                {model: MARQUE, attributes:['NomMarque'], as:'marque'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
             where : {idUserF: IdUtilFab}
         });
     }
 
     getUtilFabParMail(mail) {
         return UTILFAB.findOne({
+            include:[
+                {model: MARQUE, attributes:['NomMarque'], as:'marque'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
             where : {Mail: mail}
         });
     }
