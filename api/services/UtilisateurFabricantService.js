@@ -1,13 +1,29 @@
 const UTILFAB=require('../model/utilfab');
+const IMAGE = require('../model/image');
+const MARQUE = require('../model/marque');
+
+MARQUE.hasMany(UTILFAB, {foreignKey: 'Fabricant'});
+UTILFAB.belongsTo(MARQUE, {foreignKey: 'Fabricant'});
+UTILFAB.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'idUserF'});
 
 let UtilisateurFabricantService=class UtilisateurFabricantService {
 
     getAllUtilFab() {
-        return UTILFAB.findAll();
+        return UTILFAB.findAll({
+            include:[
+                {model: MARQUE, attributes:['NomMarque'], as:'marque'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                ]
+            }
+        );
     }
 
     getAllUtilFabForMarque(codeMarque) {
         return UTILFAB.findAll({
+            include:[
+                {model: MARQUE, attributes:['NomMarque'], as:'marque'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                ],
             where: {Fabricant: codeMarque}
         });
     }

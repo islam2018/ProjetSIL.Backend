@@ -157,7 +157,7 @@ router.get('/:id/utilfab', (req,res) => {
         res.status(200).json(users);
     }).catch (error=>{
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"+error
         });
     });
 });

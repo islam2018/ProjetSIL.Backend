@@ -14,7 +14,7 @@ router.get('/:id', (req,res) => {
         res.status(200).json({user});
     }).catch (error=>{
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"+error
         })
     });
 });
