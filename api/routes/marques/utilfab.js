@@ -59,6 +59,8 @@ router.put('/:id/mdp',UtilFabAccesControl, (req,res) => {
                     })
                 } else {
                     req.body.Mdp=hash;
+                    req.body.Valide = true;
+                    req.body.Bloque = false;
                     utilFabService.updateMdpForUtilFab(req.body,req.params.id).then(resu => {
                         if (resu) {
                             utilFabService.getUtilFab(req.params.id).then(userf=>{

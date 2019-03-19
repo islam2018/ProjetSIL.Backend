@@ -8,7 +8,9 @@ const UtilFab=sequelize.define('utilisateurfabricant',
         Prenom:{type:Sequelize.STRING},
         Mdp:{type:Sequelize.TEXT},
         NumTel:{type:Sequelize.INTEGER},
-        Fabricant:{type:Sequelize.INTEGER}
+        Fabricant:{type:Sequelize.INTEGER},
+            Valide:{type:Sequelize.INTEGER},
+            Bloque: {type:Sequelize.INTEGER}
     });
 
 module.exports=UtilFab;

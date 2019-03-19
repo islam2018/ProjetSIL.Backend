@@ -19,12 +19,30 @@ router.post('/', (req,res,next) => {
                     });
                 } else {
                     if (result) {
-                        const token=jwt.sign({Id:utilfab.IdUserF,mail:utilfab.Mail,Fabricant:utilfab.Fabricant},JWT_CONFIG.UTIL_FAB_KEY,{expiresIn:JWT_CONFIG.expiresIn},);
-                        res.status(200).json({
-                            msg: "Authentification résussite !",
-                            token: token,
-                            utilfab: utilfab
-                        });
+                        if (utilfab.Valide) {
+                            if (utilfab.Bloque) {
+                                res.status(403).json({
+                                    msg:"Compte bloqué !"
+                                });
+                            } else {
+                                const token = jwt.sign({
+                                    Id: utilfab.IdUserF,
+                                    Mail: utilfab.Mail,
+                                    Fabricant: utilfab.Fabricant,
+                                    Valide: utilfab.Valide,
+                                    Bloque: utilfab.Bloque
+                                }, JWT_CONFIG.UTIL_FAB_KEY, {expiresIn: JWT_CONFIG.expiresIn},);
+                                res.status(200).json({
+                                    msg: "Authentification résussite !",
+                                    token: token,
+                                    utilfab: utilfab
+                                });
+                            }
+                        } else {
+                            res.status(403).json({
+                                msg:"Compte non valide !"
+                            });
+                        }
                     } else {
                         res.status(401).json({
                             msg:"Adresse mail ou mot de passe incorrect !"
