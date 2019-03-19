@@ -11,7 +11,7 @@ const utilFabService=new UtilisateurFabricantService();
 
 router.get('/:id', (req,res) => {
     utilFabService.getUtilFab(req.params.id).then(user=>{
-        res.status(200).json({user});
+        res.status(200).json(user);
     }).catch (error=>{
         res.status(500).json({
             message:"Une erreur a été produite !"+error
