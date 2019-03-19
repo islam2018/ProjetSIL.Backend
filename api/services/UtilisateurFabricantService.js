@@ -64,13 +64,15 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
             Mail: utilfab.Mail,
             Nom:utilfab.Nom,
             Prenom: utilfab.Prenom,
-            NumTel: utilfab.NumTel
+            NumTel: utilfab.NumTel,
+            Bloque: utilfab.Bloque,
         },{where:{idUtilF: idUtilFab}});
     }
 
     updateMdpForUtilFab(utilfab,idUtilFab) {
         return UTILFAB.update({
-            Mdp: utilfab.Mdp
+            Mdp: utilfab.Mdp,
+            Valide: utilfab.Valide
         },{where:{idUserF: idUtilFab}});
     }
 
