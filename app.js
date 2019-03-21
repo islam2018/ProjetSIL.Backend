@@ -43,6 +43,8 @@ app.use('/suivies/versions',require('./api/routes/suivies/versions'));
 
 app.use('/utilfab',require('./api/routes/utilfab'));
 
+app.use('/mail',require('./api/control/Mail'));
+
 
 module.exports=app;
 

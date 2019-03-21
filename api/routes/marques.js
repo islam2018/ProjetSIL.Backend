@@ -178,6 +178,7 @@ router.post('/:id/utilfab',AdminAccesControl, (req,res) => {
                 } else {
                     req.body.Mdp=hash;
                     utilFabService.createUtilFab(req.body,req.params.id).then(utilfab=>{
+                        //send mail
                         res.status(200).json(utilfab);
                     }).catch(e=>{
                         res.status(500).json({

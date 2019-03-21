@@ -92,3 +92,18 @@ module.exports.AutomobAccessControl = (req,res,next) => {
         });
     }
 };
+
+module.exports.CheckAccountAccessControl = (req,res,next) => {
+    try {
+        const token= req.headers.authorization.split(" ");
+        const decoded = jwt.verify(token[1], JWT_CONFIG.CHECK_KEY);
+        console.log(decoded);
+        req.userData=decoded;
+        next();
+
+    } catch(error) {
+        return res.status(401).json({
+            message: "Erreur dans l'authentification "
+        });
+    }
+};
