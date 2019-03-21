@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
+const cryptojs = require('crypto-js');
 const serializer=require('sequelize-values')();
+const jwt = require('jsonwebtoken');
+const JWT_CONFIG=require('../config/secret').JWT_CONFIG;
+const send = require('../control/mailSender').send;
+const checkAccountURL = require('../config/check_account_url');
 const AdminAccesControl= require('../control/AccessControl').AdminAccessControl;
 const UtilFabAccesControl= require('../control/AccessControl').UtilFabAccessControl;
 const AutoMobAccesControl= require('../control/AccessControl').AutomobAccessControl;
@@ -166,7 +171,7 @@ router.post('/:id/utilfab',AdminAccesControl, (req,res) => {
     bcrypt.hash(req.body.Mdp,null,null,(err,hash)=>{
         if (err) {
             res.status(500).json({
-                message: "Une erreur a été produite !"
+                message: "Une erreur a été produite ! 0" +err
             });
         } else {
 
@@ -178,11 +183,41 @@ router.post('/:id/utilfab',AdminAccesControl, (req,res) => {
                 } else {
                     req.body.Mdp=hash;
                     utilFabService.createUtilFab(req.body,req.params.id).then(utilfab=>{
-                        //send mail
-                        res.status(200).json(utilfab);
+                        const token = jwt.sign({
+                            Id: utilfab.IdUserF,
+                            Mail: utilfab.Mail,
+                            Fabricant: utilfab.Fabricant,
+                            Valide: utilfab.Valide,
+                            Bloque: utilfab.Bloque
+                        }, JWT_CONFIG.CHECK_KEY, {expiresIn: JWT_CONFIG.expiresIn},);
+                        //https://www.c-sharpcorner.com/article/aes-encryptiondecryption-with-angular-7/
+                        console.log("*****"+utilfab.IdUserF);
+                        console.log("*******"+token);
+                        const encryptedId = cryptojs.enc.Base64.stringify(cryptojs.enc.Utf8.parse(utilfab.IdUserF));
+                        const encryptedToken = cryptojs.enc.Base64.stringify(cryptojs.enc.Utf8.parse(token));
+                        const content = [{
+                            IdUserF: utilfab.IdUserF,
+                            Nom: utilfab.Nom,
+                            Prenom: utilfab.Prenom,
+                            Mail: utilfab.Mail,
+                            Lien: checkAccountURL+encryptedId+'/'+encryptedToken
+                        }];
+
+                        send('ModeleVerification',content).then(()=>{
+                            console.log(content);
+                            res.status(200).json(utilfab);
+                        }).catch(error=>{
+                            utilFabService.deleteUtilFab(utilfab.IdUserF).then(()=>{
+                                res.status(500).json({
+                                    message:"Une erreur a été produite !" +error
+                                })
+                            });
+
+                        });
+
                     }).catch(e=>{
                         res.status(500).json({
-                            message:"Une erreur a été produite !"
+                            message:"Une erreur a été produite !2" +e
                         });
                     });
                 }

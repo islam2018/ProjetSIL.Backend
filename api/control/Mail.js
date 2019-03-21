@@ -1,30 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const loadTemp = require('./mailSender').loadTemplate;
-const send = require('./mailSender').sendMail;
+const send = require('./mailSender').send;
 let users = [{
-    Nom: 'islam',
+    Nom: 'bouayache',
+    Prenom : 'islam',
+    Lien: 'http://www.google.fr',
     email: 'fm_bouayache@esi.dz'
 }];
 
 router.get('/', (req,res) => {
-    loadTemp('ModeleVerification',users).then(data=>{
-        let promises = Promise.all(data.map(result=>{
-            send({
-                to: result.context.email,
-                from: 'SayaraDZ <webmaster@sayaradz.ml>',
-                subject: result.email.subject,
-                html: result.email.html,
-                text: result.email.text
-            });
-        }));
-        promises.then(()=>{
-            res.status(200).json({message:'it worked!'})
-        }).catch(error=>{
-            console.log(error);
-        });
-    }).catch (error => {
+    send('ModeleVerification',users).then(()=>{
+        res.status(200);}
+    ).catch(error=>{
         console.log(error);
+        res.status(500);
     });
 });
 

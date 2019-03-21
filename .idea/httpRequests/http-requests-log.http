@@ -1,3 +1,13 @@
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer aa
+Content-Type: application/json
+
+<> 2019-03-21T025852.404.html
+
+###
+
 GET http://localhost:8080/marques/5/modeles?idAutomobiliste="380466752766558"
 Accept: */*
 Cache-Control: no-cache
