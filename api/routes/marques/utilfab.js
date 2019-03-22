@@ -53,7 +53,7 @@ router.put('/:id', UtilFabAccesControl,(req,res) => {
 router.put('/:id/mdp',UtilFabAccesControl, (req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
-            bcrypt.hash(req.body.Mdp,10,(err,hash)=>{
+            bcrypt.hash(req.body.Mdp,null,null,(err,hash)=>{
                 if (err) {
                     res.status(500).json({
                         message:"Une erreur a été produite !"
@@ -89,7 +89,7 @@ router.put('/:id/mdp',UtilFabAccesControl, (req,res) => {
     });
 });
 
-router.put('/:id/check',CheckAccountAccesControl, (req,res) => {
+router.put('/:id/confirmation',CheckAccountAccesControl, (req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             if (utilfab.Valide) {
@@ -97,7 +97,7 @@ router.put('/:id/check',CheckAccountAccesControl, (req,res) => {
                     message:"Compte déja valide !"
                 });
             } else {
-                bcrypt.hash(req.body.Mdp, 10, (err, hash) => {
+                bcrypt.hash(req.body.Mdp, null,null, (err, hash) => {
                     if (err) {
                         res.status(500).json({
                             message: "Une erreur a été produite !"
