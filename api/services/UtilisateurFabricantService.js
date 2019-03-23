@@ -76,9 +76,9 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         },{where:{idUserF: idUtilFab}});
     }
 
-    blockUtilFab(idUtilFab) {
+    setBlockUtilFab(idUtilFab,valeur) {
         return UTILFAB.update({
-            Bloque: 1
+            Bloque: valeur.Bloque
         },{where:{idUserF: idUtilFab}});
     }
 

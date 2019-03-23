@@ -53,7 +53,7 @@ router.put('/:id', UtilFabAccesControl ,(req,res) => {
 router.put('/:id/bloquer', AdminAccesControl,(req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
-            utilFabService.blockUtilFab(req.params.id).then(resu=>{
+            utilFabService.setBlockUtilFab(req.params.id,req.body).then(resu=>{
                 if (resu) {
                     utilFabService.getUtilFab(req.params.id).then(userf=>{
                         res.status(200).json(userf);
