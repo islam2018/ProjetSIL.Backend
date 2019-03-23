@@ -20,10 +20,40 @@ router.get('/:id', (req,res) => {
     });
 });
 
-router.put('/:id', UtilFabAccesControl,(req,res) => {
+router.put('/:id', UtilFabAccesControl ,(req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             utilFabService.updateUtilFab(req.body,req.params.id).then(resu=>{
+                if (resu) {
+                    utilFabService.getUtilFab(req.params.id).then(userf=>{
+                        res.status(200).json(userf);
+                    }).catch(error=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
+                } else {
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                }
+            }).catch(error=>{
+                res.status(500).json({
+                    message:"Une erreur a été produite !"
+                });
+            });
+        }
+    }).catch(err=>{
+        res.status(500).json({
+            message:"Une erreur a été produite !"
+        });
+    });
+});
+
+router.put('/:id/bloquer', AdminAccesControl,(req,res) => {
+    utilFabService.getUtilFab(req.params.id).then(utilfab=>{
+        if (utilfab!=null) {
+            utilFabService.blockUtilFab(req.params.id).then(resu=>{
                 if (resu) {
                     utilFabService.getUtilFab(req.params.id).then(userf=>{
                         res.status(200).json(userf);

@@ -65,14 +65,20 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
             Nom:utilfab.Nom,
             Prenom: utilfab.Prenom,
             NumTel: utilfab.NumTel,
-            Bloque: utilfab.Bloque,
-        },{where:{idUtilF: idUtilFab}});
+            Fabricant: utilfab.Fabricant
+        },{where:{idUserF: idUtilFab}});
     }
 
     updateMdpForUtilFab(utilfab,idUtilFab) {
         return UTILFAB.update({
             Mdp: utilfab.Mdp,
             Valide: utilfab.Valide
+        },{where:{idUserF: idUtilFab}});
+    }
+
+    blockUtilFab(idUtilFab) {
+        return UTILFAB.update({
+            Bloque: 1
         },{where:{idUserF: idUtilFab}});
     }
 
