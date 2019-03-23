@@ -11,6 +11,14 @@ let AnnonceService=class AnnonceService {
             ]
         });
     }
+    getAllAnnoncesOfAutomobiliste(idAutomobiliste) {
+        return ANNONCE.findAll({
+            include:[
+                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+            ],
+            where: {idAutomobiliste: idAutomobiliste}
+        });
+    }
 
     createAnnonce(annonce) {
         return ANNONCE.create({

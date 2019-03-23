@@ -42,8 +42,9 @@ app.use('/suivies/modeles',require('./api/routes/suivies/modeles'));
 app.use('/suivies/versions',require('./api/routes/suivies/versions'));
 
 app.use('/utilfab',require('./api/routes/utilfab'));
+app.use('/automobiliste',require('./api/routes/automobiliste'));
 
-app.use('/mail',require('./api/control/Mail'));
+
 
 
 module.exports=app;

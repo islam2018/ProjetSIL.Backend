@@ -1,22 +1,36 @@
 const COULEUR=require('../model/couleur');
 const REL_VER_COUL=require('../model/rel_ver_coul');
+const REL_MOD_COUL=require('../model/rel_mod_coul');
+
 COULEUR.belongsTo(REL_VER_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
+COULEUR.belongsTo(REL_MOD_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
+
+
 
 let CouleurService=class CouleurService {
 
-    getAllCouleurs(codeVersion) {
-        return COULEUR.findAll({
-            include:[{
-                model: REL_VER_COUL,
-                where: {codeVersion:codeVersion}
+    getAllCouleursOfVersion(codeVersion) {
+        return  COULEUR.findAll({
+            include: [{
+                model: REL_VER_COUL,attributes:['CodeVersion'],
+                where: {CodeVersion : codeVersion}
             }]
         });
     }
 
-    createCouleur(codeCouleur,nomCouleur) {
+    getAllCouleursOfModele(codeModele) {
+        return  COULEUR.findAll({
+            include: [{
+                model: REL_MOD_COUL,attributes:['CodeModele'],
+                where: {CodeModele : codeModele}
+            }]
+        });
+    }
+
+    createCouleur(couleur) {
         return COULEUR.create({
-            CodeCouleur: codeCouleur,
-            NomCouleur: nomCouleur
+            CodeCouleur: couleur.CodeCouleur,
+            NomCouleur: couleur.NomCouleur
         });
     }
 
@@ -34,6 +48,43 @@ let CouleurService=class CouleurService {
 
     deleteCouleur(codeCouleur) {
         return COULEUR.destroy({where:{CodeCouleur:codeCouleur}});
+    }
+
+    findCouleurofVersion(codeCouleur,codeVersion) {
+        return REL_VER_COUL.findOne({
+            where:{
+                CodeCouleur:codeCouleur,
+                CodeVersion:codeVersion
+            }});
+    }
+
+    findCouleurofModele(codeCouleur,codeModele) {
+        return REL_MOD_COUL.findOne({
+            where:{
+                CodeCouleur:codeCouleur,
+                CodeModele:codeModele
+            }});
+    }
+
+    addCouleurforVersion(codeCouleur,codeVersion) {
+        return REL_VER_COUL.create({
+            CodeCouleur: codeCouleur,
+            CodeVersion: codeVersion
+        });
+    }
+    addCouleurforModele(codeCouleur,codeModele) {
+        return REL_MOD_COUL.create({
+            CodeCouleur: codeCouleur,
+            CodeModele: codeModele
+        });
+    }
+
+    removeCouleurofVersion(codeCouleur,codeVersion) {
+        return REL_VER_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeVersion:codeVersion}});
+    }
+
+    removeCouleurofModele(codeCouleur,codeModele) {
+        return REL_MOD_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeModele:codeModele}});
     }
 };
 

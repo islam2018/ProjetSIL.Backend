@@ -83,7 +83,7 @@ router.post('/:id/options',UtilFabAccesControl, (req,res) => {
         } else {
             optionService.getOption(req.body.CodeOption).then(option => {
                 if ( option == null ) {
-                    optionService.createOption(req.body,req.params.id).then(opt=>{
+                    optionService.createOption(req.body).then(opt=>{
                         optionService.addOptionforVersion(req.body.CodeOption,req.params.id).then(option => {
                             res.status(200).json(option);
                         }).catch(error => {
@@ -124,36 +124,63 @@ router.delete('/:id1/options/:id2', UtilFabAccesControl,(req,res) => {
         }
     });
 });
-
-router.get('/:id/couleurs',(req,res)=>{
-    couleurService.getAllCouleurs(req.params.id).then(couleurs => {
+/**COULEURS**/
+router.get('/:id/couleurs', (req,res) => {
+    couleurService.getAllCouleursOfVersion(req.params.id).then(couleurs => {
         res.status(200).json(couleurs);
     }).catch( error => {
         res.status(500).json({
-            message:"Une erreur a été produite !"
+            message:"Une erreur a été produite !"+error
         });
     });
 });
 
-router.post('/:id/couleurs',UtilFabAccesControl,(req,res)=>{
-    versionService.findCouleur(req.body.CodeCouleur,req.params.id).then( couleur => {
+router.post('/:id/couleurs',UtilFabAccesControl, (req,res) => {
+    couleurService.findCouleurofVersion(req.body.CodeCouleur,req.params.id).then( couleur => {
         if ( couleur != null ) {
             res.status(409).json({
-                message: "couleur existante pour ce modele"
+                message: "Couleur existante pour cette version !"
             });
         } else {
-            couleurService.createCouleur(req.body.CodeCouleur,req.body.NomCouleur).then( couleur => {
-                versionService.addCouleur(couleur,req.params.id).then( () => {
-                    res.status(200).json(couleur);
-                }).catch(error => {
-                    res.status(500).json({
-                        message: "Une erreur a été produite !"
+            couleurService.getCouleur(req.body.CodeCouleur).then(couleur => {
+                if ( couleur == null ) {
+                    couleurService.createCouleur(req.body).then(col=>{
+                        couleurService.addCouleurforVersion(req.body.CodeCouleur,req.params.id).then(couleur => {
+                            res.status(200).json(couleur);
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: "Une erreur a été produite !"
+                            });
+                        });
+                    }).catch(er=>{
+                        res.status(500).json({
+                            message: "Une erreur a été produite !"
+                        });
                     });
-                });
-            }).catch(error => {
-                res.status(500).json({
-                    message: "Une erreur a été produite !"
-                });
+                } else {
+                    couleurService.addCouleurforVersion(req.body.CodeCouleur,req.params.id).then(couleur => {
+                        res.status(200).json(couleur);
+                    }).catch(error => {
+                        res.status(500).json({
+                            message: "Une erreur a été produite !"
+                        });
+                    });
+                }
+            });
+        }
+    });
+
+});
+
+router.delete('/:id1/options/:id2', UtilFabAccesControl,(req,res) => {
+    couleurService.removeCouleurofVersion(req.params.id2,req.params.id1).then(result=>{
+        if (result) {
+            res.status(200).json({
+                message:"Couleur supprimé de cette version !"
+            });
+        }else {
+            res.status(500).json({
+                message:"Une erreur a été produite !"
             });
         }
     });
