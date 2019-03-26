@@ -30,7 +30,8 @@ let CouleurService=class CouleurService {
     createCouleur(couleur) {
         return COULEUR.create({
             CodeCouleur: couleur.CodeCouleur,
-            NomCouleur: couleur.NomCouleur
+            NomCouleur: couleur.NomCouleur,
+            CodeHexa: couleur.CodeHexa
         });
     }
 
@@ -42,7 +43,8 @@ let CouleurService=class CouleurService {
 
     updateCouleur(couleur,codeCouleur) {
         return COULEUR.update({
-            NomCouleur:couleur.NomCouleur
+            NomCouleur:couleur.NomCouleur,
+            CodeHexa:couleur.CodeHexa
         },{where:{CodeCouleur: codeCouleur}});
     }
 

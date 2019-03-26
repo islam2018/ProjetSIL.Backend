@@ -1,10 +1,16 @@
 const VERSION=require('../model/version');
+const MARQUE=require('../model/marque');
+const MODELE=require('../model/modele');
 const OPTION=require('../model/option');
 const COULEUR=require('../model/couleur');
 const REL_VER_OPT = require('../model/rel_ver_opt');
 const REL_VER_COUL = require('../model/rel_ver_coul');
 const IMAGE=require('../model/image');
 const FAVORIS_VERSION=require('../model/favoris_version');
+MARQUE.hasMany(MODELE, {foreignKey: 'CodeMarque'});
+MODELE.belongsTo(MARQUE, {foreignKey: 'CodeMarque'});
+MODELE.hasMany(VERSION, {foreignKey: 'CodeModele'});
+VERSION.belongsTo(MODELE, {foreignKey: 'CodeModele'});
 VERSION.hasMany(IMAGE,{as:'images',foreignKey:'Code',foreignKeyKey:'CodeVersion'});
 VERSION.belongsToMany(OPTION,{as:'options',foreignKey:'CodeVersion',through:REL_VER_OPT,otherKey:'CodeOption'});
 VERSION.belongsToMany(COULEUR,{as:'couleurs',foreignKey:'CodeVersion',through:REL_VER_COUL,otherKey:'CodeCouleur'});
@@ -18,7 +24,10 @@ let VersionService=class VersionService {
             include:[
                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                      ]}
             ],
             where: {CodeModele: codeModele}
         });
@@ -32,6 +41,7 @@ let VersionService=class VersionService {
                 {model:IMAGE, attributes:['CheminImage'],as:'images'},
                 {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
+
             ],
             where: {CodeModele: codeModele}
         });
@@ -50,7 +60,10 @@ let VersionService=class VersionService {
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                    ]}
             ],
             where : {CodeVersion: codeVersion}
         });
@@ -58,6 +71,14 @@ let VersionService=class VersionService {
 
     getVersionParNom(nomVersion) {
         return VERSION.findOne({
+            include:[
+                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                    ]}
+            ],
             where : {NomVersion: nomVersion}
         });
     }
@@ -73,22 +94,6 @@ let VersionService=class VersionService {
     }
 
 
-
-    findCouleur(codeCouleur,codeVersion) {
-        return REL_VER_COUL.findOne({
-            where:{
-                CodeCouleur:codeCouleur,
-                CodeVersion:codeVersion
-            }});
-    }
-
-    addCouleur(couleur,codeVersion) {
-        return REL_VER_COUL.create({
-            CodeCouleur: couleur.CodeCouleur,
-            CodeVersion: codeVersion,
-            NomCouleur: couleur.NomCouleur
-        });
-    }
 
 };
 
