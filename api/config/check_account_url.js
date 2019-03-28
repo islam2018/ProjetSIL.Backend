@@ -1,2 +1,2 @@
-const checkAccounUrl = "http://localhost:4200/confirmation/";
+const checkAccounUrl = "https://sayaradz-confirmation.herokuapp.com/";
 module.exports=checkAccounUrl;
