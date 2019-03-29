@@ -24,7 +24,10 @@ let AnnonceService=class AnnonceService {
         return ANNONCE.create({
             Prix: annonce.Prix,
             idAutomobiliste: annonce.idAutomobiliste,
-            CodeVersion: annonce.CodeVersion
+            CodeVersion: annonce.CodeVersion,
+            CodeCouleur : annonce.CodeCouleur,
+            Km : annonce.Km,
+            Description: annonce.Description
         });
     }
 
@@ -39,7 +42,8 @@ let AnnonceService=class AnnonceService {
 
     updateAnnonce(annonce,idAnnonce) {
         return ANNONCE.update({
-            Prix: annonce.Prix
+            Prix: annonce.Prix,
+            Description: annonce.Description
         },{where:{idAnnonce: idAnnonce}});
     }
 
