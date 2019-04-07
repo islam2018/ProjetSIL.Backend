@@ -70,6 +70,24 @@ router.get('/:id/lignetarif', (req,res) => {
     });
 });
 
+router.post('/:id/lignetarif',(req,res) => {
+    ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif => {
+        if (lignetarif!=null) {
+            res.status(409).json({
+                message: 'Une ligne tarif existe deja pour cette couleur !'
+            });
+        } else {
+            ligneTarifService.createLigneTarif(req.body,1,req.params.id).then( ligne => {
+                res.status(200).json(ligne);
+            }).catch(error=>{
+                res.status(500).json({
+                    message: "Une erreur a été produite !",
+                })
+            });
+        }
+    })
+});
+
 router.put('/:id/lignetarif', UtilFabAccesControl,(req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,1).then(lignetarif => {
         if ( lignetarif == null ) {

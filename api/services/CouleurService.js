@@ -1,9 +1,11 @@
 const COULEUR=require('../model/couleur');
 const REL_VER_COUL=require('../model/rel_ver_coul');
 const REL_MOD_COUL=require('../model/rel_mod_coul');
+const LIGNETARIF = require('../model/lignetarif');
 
 COULEUR.belongsTo(REL_VER_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
 COULEUR.belongsTo(REL_MOD_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
+COULEUR.hasOne(LIGNETARIF,{as:'lignetarif',foreignKey:'Code',targetKey:'CodeCouleur'});
 
 
 
@@ -14,6 +16,8 @@ let CouleurService=class CouleurService {
             include: [{
                 model: REL_VER_COUL,attributes:['CodeVersion'],
                 where: {CodeVersion : codeVersion}
+            },{
+                model: LIGNETARIF, where:{Type:1}, as:'lignetarif', required:false
             }]
         });
     }
@@ -23,7 +27,7 @@ let CouleurService=class CouleurService {
             include: [{
                 model: REL_MOD_COUL,attributes:['CodeModele'],
                 where: {CodeModele : codeModele}
-            }]
+            }, {model: LIGNETARIF, where:{Type:1}, as:'lignetarif', required:false}]
         });
     }
 
@@ -37,6 +41,7 @@ let CouleurService=class CouleurService {
 
     getCouleur(codeCouleur) {
         return COULEUR.findOne({
+            include: [{model: LIGNETARIF, where:{Type:1}, as:'lignetarif', required:false}],
             where : {CodeCouleur: codeCouleur}
         });
     }

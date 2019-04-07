@@ -10,9 +10,9 @@ const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'f3icoadbdy24u76v', 'hjg40kz
     }
 });
 
-/*const sequelize = new Sequelize('sayaradz', 'root', 'root', {
+/*const sequelize = new Sequelize('a40lmgbzo4zrytx3', 'debian-sys-maint', 'YtkaCyun9oqIzkNt', {
     host: 'localhost',
-    port: '8889',
+    //port: '8889',
     dialect: 'mysql',
     operatorsAliases: false,
     define: {
