@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const AnnonceService=require('../services/AnnonceService');
+const MarqueService=require('../services/MarqueService');
+const ModeleService=require('../services/ModeleService');
+const VersionService=require('../services/VersionService');
 const annonceService=new AnnonceService();
+const marqueService=new MarqueService();
+const modeleService=new ModeleService();
+const versionService=new VersionService();
 
 router.get('/:id/annonces',(req,res)=>{
     annonceService.getAllAnnoncesOfAutomobiliste(req.params.id).then(annonces => {
@@ -12,5 +18,26 @@ router.get('/:id/annonces',(req,res)=>{
         });
     });
 });
+
+router.get('/:idAutomob/marques/:CodeMarque/modeles',(req,res)=> {
+    modeleService.getAllModelesPourAutomob(req.params.CodeMarque,req.params.idAutomob).then(modeles=>{
+        res.status(200).json(modeles)
+    }).catch (error=>{
+        res.status(500).json({
+            message: 'Une erreur s\'est produite !'
+        })
+    })
+});
+
+router.get('/:idAutomob/marques/modeles/:CodeModele',(req,res)=> {
+
+});
+router.get('/:idAutomob/marques/modeles/:CodeModele/versions',(req,res)=> {
+
+});
+router.get('/:idAutomob/marques/modeles/versions/:CodeVersion',(req,res)=> {
+
+});
+
 
 module.exports = router;

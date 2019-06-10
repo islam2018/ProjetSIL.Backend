@@ -45,6 +45,27 @@ let ModeleService=class ModeleService {
 
             ],
             where: {CodeMarque : codeMarque}
+        }).then(modeles=>{
+            var tab = [];
+            modeles.forEach(m=>{
+                var modele= m.toJSON();
+                let suivie=false;
+                if (modele.suivies.length>0)  suivie=true;
+                tab.push({
+                    CodeModele : modele.CodeModele,
+                    CodeMarque :  modele.CodeMarque,
+                    NomModele :modele.NomModele,
+                    versions : modele.versions,
+                    options : modele.options,
+                    couleurs : modele.couleurs,
+                    images : modele.images,
+                    suivie : suivie
+                });
+            });
+            return new Promise((resolve,reject)=>resolve(tab));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
         });
     }
 
