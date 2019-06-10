@@ -5,10 +5,10 @@ const JWT_CONFIG ={
     expiresIn: "24h",
 };
 const GOOGLE_CREDENTIALS={
-    CLIENT_ID: "317982693770-mklpatake5bd1ulq0h2tkrj4r78qs44v.apps.googleusercontent.com"
+    CLIENT_ID: "493881959162-0ccs4e44m4gr9e576crna4gcm659ah5d.apps.googleusercontent.com"
 };
 const FACEBBOK_CREDENTIALS={
-    ACCESS_TOKEN: "2168870339822661|0M7plrMjzh03qFJ4VliBf0h5t1s"
+    ACCESS_TOKEN: "367651757216742"
 };
 const CLOUDINARY_CREDENTIALS={
     CNAME:"hftzhatr4",

@@ -22,7 +22,6 @@ let VersionService=class VersionService {
 
     getAllVersion(codeModele) {
         return VERSION.findAll({
-
             include:[
                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},

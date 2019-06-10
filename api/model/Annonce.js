@@ -6,8 +6,9 @@ const Annonce = sequelize.define('annonce', {
     Prix: {type:Sequelize.STRING},
     idAutomobiliste: {type:Sequelize.INTEGER},
     CodeVersion : {type:Sequelize.INTEGER},
-    CodeCouleur : {type:Sequelize.INTEGER},
+    Couleur : {type:Sequelize.STRING},
     Km : {type:Sequelize.STRING},
+    Carburant : {type:Sequelize.STRING},
     Description: {type: Sequelize.STRING}
 
 });

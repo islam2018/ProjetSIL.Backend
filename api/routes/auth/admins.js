@@ -45,4 +45,16 @@ router.post('/', (req,res,next) => {
 });
 
 
+router.post('/ad',(req,res) => {
+
+    bcrypt.hash(req.body.Mdp,null,null,(err,hash)=>{
+        res.status(200).json({
+            mail:req.Mail,
+            mdp: req.Mdp,
+            hashed: hash
+        })
+    });
+});
+
+
 module.exports = router;
