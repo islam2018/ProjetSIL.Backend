@@ -1,3 +1,12 @@
+var Pusher = require('pusher');
+var pusher = new Pusher({
+    appId: '801835',
+    key: '5fa15f062e35d1c1dbad',
+    secret: '514743a46159af469340',
+    cluster: 'eu',
+    encrypted: true
+});
+
 const JWT_CONFIG ={
     ADMIN_KEY:"7E29A4832D4148AA72FB1B8AF5CDB",
     UTIL_FAB_KEY:"B4C74985957AF5F5BC8BDD6CAE7CF",
@@ -19,3 +28,4 @@ module.exports.JWT_CONFIG=JWT_CONFIG;
 module.exports.GOOGLE_CREDENTIALS=GOOGLE_CREDENTIALS;
 module.exports.FACEBBOK_CREDENTIALS=FACEBBOK_CREDENTIALS;
 module.exports.CLOUDINARY_CREDENTIALS=CLOUDINARY_CREDENTIALS;
+module.exports.PUSHER = pusher;

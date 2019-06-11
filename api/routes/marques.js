@@ -20,6 +20,7 @@ const marqueService=new MarqueService();
 const utilFabService=new UtilisateurFabricantService();
 const versionService=new VersionService();
 const optionService=new OptionService();
+const pusher = require('../config/secret').PUSHER;
 
 
 router.get('/',(req,res)=>{
@@ -40,8 +41,15 @@ router.post('/',AdminAccesControl,(req,res)=>{
                 message:"Cette marque existe deja !"
             });
         } else {
-                marqueService.createMarque(req.body).then(marque=>{
-                res.status(200).json(marque);
+                marqueService.createMarque(req.body).then(data=>{
+                    marqueService.getMarque(data.CodeMarque).then(marque=>{
+                        pusher.trigger('marque-channel','newMark',marque);
+                        res.status(200).json(marque);
+                    }).catch(e=>{
+                        res.status(500).json({
+                            message:"Une erreur a été produite !"
+                        });
+                    });
             }).catch(error=>{
                 res.status(500).json({
                     message:"Une erreur a été produite !"
