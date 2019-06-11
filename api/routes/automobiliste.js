@@ -58,4 +58,41 @@ router.get('/:idAutomob/marques/modeles/versions/:CodeVersion',(req,res)=> {
 });
 
 
+router.delete('automobiliste/:idAutomob/modeles/:CodeModele',(req,res)=>{
+    suivieService.supprimerSuivieModele(req.body.idAutomob,req.params.CodeModele).then(suivie=>{
+        res.status(200).json({
+            message:"Suivie supprimé !"
+        });
+    }).catch (error=>{
+        res.status(500).json({
+            message: "Une erreur a été produite !"+error
+        })
+    });
+});
+
+router.delete('automobiliste/:idAutomob/modeles/:CodeVersion',(req,res)=> {
+    suivieService.getSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(r => {
+        if (r != null) {
+            suivieService.supprimerSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(suivie => {
+                res.status(200).json({
+                    message: "Suivie supprimé !"
+                });
+            }).catch(error => {
+                res.status(500).json({
+                    message: "Une erreur a été produite !"
+                })
+            });
+        } else {
+            res.status(404).json({
+                message: "Version non suivie !"
+            });
+        }
+    }).catch (error=>{
+        res.status(500).json({
+            message: "Une erreur a été produite !"
+        })
+    });
+});
+
+
 module.exports = router;
