@@ -58,7 +58,7 @@ router.get('/:idAutomob/marques/modeles/versions/:CodeVersion',(req,res)=> {
 });
 
 
-router.delete('/automobiliste/:idAutomob/modeles/:CodeModele',(req,res)=>{
+router.delete('/:idAutomob/modeles/:CodeModele',(req,res)=>{
     suivieService.supprimerSuivieModele(req.body.idAutomob,req.params.CodeModele).then(suivie=>{
         res.status(200).json({
             message:"Suivie supprimé !"
@@ -70,7 +70,7 @@ router.delete('/automobiliste/:idAutomob/modeles/:CodeModele',(req,res)=>{
     });
 });
 
-router.delete('/automobiliste/:idAutomob/modeles/:CodeVersion',(req,res)=> {
+router.delete('/:idAutomob/modeles/:CodeVersion',(req,res)=> {
     suivieService.getSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(r => {
         if (r != null) {
             suivieService.supprimerSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(suivie => {
