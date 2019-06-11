@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const AnnonceService=require('../services/AnnonceService');
-const MarqueService=require('../services/MarqueService');
 const ModeleService=require('../services/ModeleService');
 const VersionService=require('../services/VersionService');
+const SuivieService = require('../services/SuivieService');
+const suivieService = new SuivieService();
 const annonceService=new AnnonceService();
-const marqueService=new MarqueService();
 const modeleService=new ModeleService();
 const versionService=new VersionService();
 
@@ -59,7 +59,7 @@ router.get('/:idAutomob/marques/modeles/versions/:CodeVersion',(req,res)=> {
 
 
 router.delete('/:idAutomob/modeles/:CodeModele',(req,res)=>{
-    suivieService.supprimerSuivieModele(req.body.idAutomob,req.params.CodeModele).then(suivie=>{
+    suivieService.supprimerSuivieModele(req.params.idAutomob,req.params.CodeModele).then(suivie=>{
         res.status(200).json({
             message:"Suivie supprimé !"
         });
@@ -70,10 +70,10 @@ router.delete('/:idAutomob/modeles/:CodeModele',(req,res)=>{
     });
 });
 
-router.delete('/:idAutomob/modeles/:CodeVersion',(req,res)=> {
-    suivieService.getSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(r => {
+router.delete('/:idAutomob/versions/:CodeVersion',(req,res)=> {
+    suivieService.getSuivieVersion(req.params.idAutomob, req.params.CodeVersion).then(r => {
         if (r != null) {
-            suivieService.supprimerSuivieVersion(req.body.idAutomob, req.params.CodeVersion).then(suivie => {
+            suivieService.supprimerSuivieVersion(req.params.idAutomob, req.params.CodeVersion).then(suivie => {
                 res.status(200).json({
                     message: "Suivie supprimé !"
                 });
