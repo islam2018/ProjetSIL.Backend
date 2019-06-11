@@ -26,17 +26,35 @@ router.get('/:idAutomob/marques/:CodeMarque/modeles',(req,res)=> {
         res.status(500).json({
             message: 'Une erreur s\'est produite !'
         })
-    })
+    });
 });
 
 router.get('/:idAutomob/marques/modeles/:CodeModele',(req,res)=> {
-
+    modeleService.getModelePourAutomob(req.params.CodeModele,req.params.idAutomob).then(modeles=>{
+        res.status(200).json(modeles)
+    }).catch (error=>{
+        res.status(500).json({
+            message: 'Une erreur s\'est produite !'
+        })
+    });
 });
 router.get('/:idAutomob/marques/modeles/:CodeModele/versions',(req,res)=> {
-
+    versionService.getAllVersionsPourAutomobiliste(req.params.CodeModele,req.params.idAutomob).then(versions=>{
+        res.status(200).json(versions)
+    }).catch (error=>{
+        res.status(500).json({
+            message: 'Une erreur s\'est produite !'
+        })
+    });
 });
 router.get('/:idAutomob/marques/modeles/versions/:CodeVersion',(req,res)=> {
-
+    versionService.getVersionPourAutomobiliste(req.params.CodeVersion,req.params.idAutomob).then(versions=>{
+        res.status(200).json(versions)
+    }).catch (error=>{
+        res.status(500).json({
+            message: 'Une erreur s\'est produite !'
+        })
+    });
 });
 
 

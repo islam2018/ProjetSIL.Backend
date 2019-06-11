@@ -34,7 +34,7 @@ let VersionService=class VersionService {
             where: {CodeModele: codeModele}
         });
     }
-    getAllVersionPourAutomobiliste(codeModele,idAutomobiliste) {
+    getAllVersionsPourAutomobiliste(codeModele,idAutomobiliste) {
         return VERSION.findAll({
 
             include:[
@@ -47,6 +47,27 @@ let VersionService=class VersionService {
 
             ],
             where: {CodeModele: codeModele}
+        }).then(versions=>{
+            var tab = [];
+            versions.forEach(v=>{
+                var version= v.toJSON();
+                let suivie=false;
+                if (version.suivies.length>0)  suivie=true;
+                tab.push({
+                    CodeVersion: version.CodeVersion,
+                    CodeModele: version.CodeModele,
+                    NomVersion: version.NomVersion,
+                    options : version.options,
+                    couleurs : version.couleurs,
+                    images : version.images,
+                    lignetarif: version.lignetarif,
+                    suivie : suivie
+                });
+            });
+            return new Promise((resolve,reject)=>resolve(tab));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
         });
     }
 
@@ -72,6 +93,40 @@ let VersionService=class VersionService {
 
             ],
             where : {CodeVersion: codeVersion}
+        });
+    }
+    getVersionPourAutomobiliste(codeVersion,idAutomobiliste) {
+        return VERSION.findOne({
+
+            include:[
+                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
+                {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
+                    where:{idAutomobiliste:idAutomobiliste},required:false}
+
+            ],
+            where: {CodeVersion: codeVersion}
+        }).then(v=>{
+            var version= v.toJSON();
+            let suivie=false;
+            if (version.suivies.length>0)  suivie=true;
+            var res = {
+                    CodeVersion: version.CodeVersion,
+                    CodeModele: version.CodeModele,
+                    NomVersion: version.NomVersion,
+                    options : version.options,
+                    couleurs : version.couleurs,
+                    images : version.images,
+                    lignetarif: version.lignetarif,
+                    suivie : suivie
+                };
+
+            return new Promise((resolve,reject)=>resolve(res));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
         });
     }
 

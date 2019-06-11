@@ -76,15 +76,7 @@ router.delete('/:id', UtilFabAccesControl,(req,res) => {
 
 router.get('/:id/versions', (req,res) => {
 
-    if (req.body.idAutomobiliste!=null) {
-        versionService.getAllVersionPourAutomobiliste(req.params.id,req.body.idAutomobiliste).then(versions => {
-            res.status(200).json(versions);
-        }).catch(error => {
-            res.status(500).json({
-                message: "Une erreur a été produite !" + error,
-            })
-        });
-    }else {
+
         versionService.getAllVersion(req.params.id).then(versions => {
             res.status(200).json(versions);
         }).catch(error => {
@@ -92,7 +84,7 @@ router.get('/:id/versions', (req,res) => {
                 message: "Une erreur a été produite !" + error,
             })
         });
-    }
+
 });
 
 

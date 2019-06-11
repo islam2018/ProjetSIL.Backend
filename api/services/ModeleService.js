@@ -89,6 +89,39 @@ let ModeleService=class ModeleService {
             where: {CodeModele : codeModele}
         });
     }
+    getModelePourAutomob(codeModele,idAutomobiliste) {
+
+        return MODELE.findOne({
+            include:[
+                {model:VERSION, as:'versions'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
+                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
+                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
+                    where:{idAutomobiliste:idAutomobiliste},required:false}
+
+            ],
+            where: {CodeModele : codeModele}
+        }).then(m=>{
+            var modele= m.toJSON();
+            let suivie=false;
+            if (modele.suivies.length>0)  suivie=true;
+            var res= {
+                    CodeModele : modele.CodeModele,
+                    CodeMarque :  modele.CodeMarque,
+                    NomModele :modele.NomModele,
+                    versions : modele.versions,
+                    options : modele.options,
+                    couleurs : modele.couleurs,
+                    images : modele.images,
+                    suivie : suivie
+                };
+            return new Promise((resolve,reject)=>resolve(res));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
+        });
+    }
 
     getModeleParNom(nomModele) {
         return MODELE.findOne({
