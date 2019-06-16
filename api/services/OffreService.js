@@ -31,6 +31,10 @@ let OffreService=class OffreService {
     deleteOffre(idOffre) {
         return OFFRE.destroy({where:{idOffre:idOffre}});
     }
+
+    getNbOffre(idAnnonce) {
+        return OFFRE.count({where:{idAnnonce:idAnnonce}})
+    }
 };
 
 module.exports=OffreService;

@@ -19,6 +19,7 @@ router.get('/:id/annonces',(req,res)=>{
     });
 });
 
+
 router.get('/:idAutomob/marques/:CodeMarque/modeles',(req,res)=> {
     modeleService.getAllModelesPourAutomob(req.params.CodeMarque,req.params.idAutomob).then(modeles=>{
         res.status(200).json(modeles)

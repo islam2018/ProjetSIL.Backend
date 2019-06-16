@@ -79,6 +79,17 @@ let VersionService=class VersionService {
         });
     }
 
+    getVersionInfo(codeVersion) {
+        return VERSION.findOne({
+            include:[
+                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                    ]},
+            ],
+            where : {CodeVersion: codeVersion}
+        });
+    }
+
     getVersion(codeVersion) {
         let type=0;
         return VERSION.findOne({

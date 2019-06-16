@@ -43,6 +43,7 @@ app.use('/suivies/versions',require('./api/routes/suivies/versions'));
 
 app.use('/utilfab',require('./api/routes/utilfab'));
 app.use('/automobiliste',require('./api/routes/automobiliste'));
+app.use('/annonces',require('./api/routes/annonces'));
 
 
 

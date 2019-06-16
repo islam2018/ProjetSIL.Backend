@@ -30,6 +30,12 @@ let AutomobilisteService=class AutomobilisteService {
     deleteAutomobilste(idAutomobilste) {
         return AUTOMOBILISTE.destroy({where : {idAutomobiliste: idAutomobiliste}});
     }
+
+    getAutomobOfAnnonce(idAnnonce) {
+        return AUTOMOBILISTE.findOne({
+            where: {idA}
+        })
+    }
 };
 
 module.exports=AutomobilisteService ;
