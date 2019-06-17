@@ -58,6 +58,7 @@ let AnnonceService=class AnnonceService {
                                 Couleur: a.Couleur,
                                 Km: a.Km,
                                 Carburant: a.Carburant,
+                                Annee : a.Annee,
                                 Description: a.Description,
                                 NombreOffres: values[i],
                                 images:a.images
@@ -79,7 +80,32 @@ let AnnonceService=class AnnonceService {
         });
     }
 
-    getAllAnnoncesForClient(idAutomobiliste) {
+    getAllAnnoncesForClient(idAutomobiliste, options) {
+
+        let conditions = {idAutomobiliste: {[Sequelize.Op.ne]: idAutomobiliste}};
+        if (options.Carburant) {
+            conditions.Carburant = options.Carburant;
+        }
+        if (options.CodeVersion) {
+            conditions.CodeVersion = parseInt(options.CodeVersion);
+        }
+        if (options.minAnnee) {
+            conditions.Annee = {[Sequelize.Op.gte]: parseInt(options.minAnnee)};
+        }
+        if (options.maxAnnee) {
+            conditions.Annee = {[Sequelize.Op.lte]: parseInt(options.maxAnnee)};
+        }
+        if (options.minPrix) {
+            conditions.Prix = {[Sequelize.Op.gte]: parseInt(options.minPrix)};
+        }
+        if (options.maxPrix) {
+            conditions.Prix = {[Sequelize.Op.lte]: parseInt(options.maxPrix)};
+        }
+        if (options.maxKm) {
+            conditions.Km = {[Sequelize.Op.lte]: parseInt(options.maxKm)};
+        }
+        console.log(conditions);
+
         return ANNONCE.findAll({
 
             include:[
@@ -89,7 +115,7 @@ let AnnonceService=class AnnonceService {
                     attributes:['idAutomobiliste'] ,as:'offres'}
             ],
 
-            where: {idAutomobiliste: {[Sequelize.Op.ne]:idAutomobiliste}}
+            where: conditions
 
         }).then(data => {
             return new Promise((resolve, reject)=>{
@@ -123,6 +149,7 @@ let AnnonceService=class AnnonceService {
                                     Couleur: a.Couleur,
                                     Km: a.Km,
                                     Carburant: a.Carburant,
+                                    Annnee : a.Annee,
                                     Description: a.Description,
                                     NombreOffres: nbOffres[i],
                                     images: a.images
@@ -156,6 +183,7 @@ let AnnonceService=class AnnonceService {
             CodeVersion: annonce.CodeVersion,
             Couleur : annonce.Couleur,
             Km : annonce.Km,
+            Annee: annonce.Annee,
             Carburant : annonce.Carburant,
             Description: annonce.Description
         });

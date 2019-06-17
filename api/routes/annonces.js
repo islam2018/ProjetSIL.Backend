@@ -9,8 +9,9 @@ const annonceService=new AnnonceService();
 const modeleService=new ModeleService();
 const versionService=new VersionService();
 
-router.get('/client=:id',(req,res)=>{
-    annonceService.getAllAnnoncesForClient(req.params.id).then(annonces => {
+router.get('/:id',(req,res)=>{
+    console.log(req.query.Carburant);
+    annonceService.getAllAnnoncesForClient(req.params.id,req.query).then(annonces => {
         res.status(200).json(annonces);
     }).catch (err=>{
         res.status(500).json({
@@ -18,5 +19,6 @@ router.get('/client=:id',(req,res)=>{
         });
     });
 });
+
 
 module.exports = router;
