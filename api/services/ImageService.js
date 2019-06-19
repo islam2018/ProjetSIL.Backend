@@ -33,6 +33,12 @@ let ImageService=class ImageService {
     deleteImage(idImage) {
         return IMAGE.destroy({where : {idImage: idImage}});
     }
+
+    deleteImageMarque(codeMarque) {
+        return IMAGE.destroy({
+            where: {Code: codeMarque, Type:0}
+        })
+    }
 };
 
 module.exports=ImageService;
