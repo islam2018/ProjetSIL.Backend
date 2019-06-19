@@ -35,15 +35,33 @@ let SuivieService=class SuivieService {
     }
 
     supprimerSuivieModele(idAutomobiliste, codeModele) {
-        return versionService.getAllVersion(codeModele).then(value => {
-            let versions = s.getValues(value);
-            console.log(versions);
-            versions.forEach(function(version) {
-                request.delete(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
-            });
-            return FAVORIS_MODELE.destroy({
-                where:{CodeModele:codeModele,
-                idAutomobiliste: idAutomobiliste}
+        return new Promise((resolve, reject) => {
+
+            versionService.getAllVersion(codeModele).then(versions => {
+                let promises = [];
+
+                versions.forEach(v => {
+                    let version = v.toJSON();
+                    console.log(version);
+                    promises.push(this.supprimerSuivieVersion(idAutomobiliste, version.CodeVersion));
+                    //request.delete(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
+                });
+                Promise.all(promises).then(data => {
+                        FAVORIS_MODELE.destroy({
+                            where: {
+                                CodeModele: codeModele,
+                                idAutomobiliste: idAutomobiliste
+                            }
+                        }).then(value => {
+                            resolve(value);
+                        }).catch(error => {
+                            reject(error);
+                        })
+                }).catch(e => {
+                    reject(e);
+                });
+            }).catch(e1 => {
+                reject(e1);
             });
         });
     }
