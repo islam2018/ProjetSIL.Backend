@@ -39,7 +39,7 @@ router.post('/:id',AdminAccessControl,upload.single('imageMarque'),(req,res)=>{
 
     console.log(req.params.id);
     imageService.deleteImageMarque(req.params.id).then(result => {
-        if (result) {
+
             req.body.CheminImage=req.file.url;
             imageService.createImage(req.body,0,req.params.id).then(image=>{
                 res.status(200).json(image);
@@ -48,11 +48,7 @@ router.post('/:id',AdminAccessControl,upload.single('imageMarque'),(req,res)=>{
                     message:'Une erreur a été produite'
                 });
             });
-        }else {
-            res.status(500).json({
-                message:'Une erreur a été produite'
-            });
-        }
+
     }).catch (err=>{
         res.status(500).json({
             message:'Une erreur a été produite'

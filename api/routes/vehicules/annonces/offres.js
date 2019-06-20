@@ -25,7 +25,7 @@ router.get('/:id',(req,res)=>{
 router.put('/:id',(req,res)=>{
     offreService.getOffre(req.params.id).then(offre=>{
         if (offre!=null) {
-            offre.updateAnnonce(req.body,req.params.id).then(resu=>{
+            offreService.updateOffre(req.body,req.params.id).then(resu=>{
                 if (resu) {
                     offreService.getOffre(req.params.id).then(o=>{
                         res.status(200).json(o);
