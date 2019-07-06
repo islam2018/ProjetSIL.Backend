@@ -26,6 +26,7 @@ app.use('/marques/utilfab',require('./api/routes/marques/utilfab'));
 
 app.use('/vehicules/annonces',require('./api/routes/vehicules/annonces'));
 app.use('/vehicules/commandes',require('./api/routes/vehicules/commandes'));
+app.use('/vehicules/stock',require('./api/routes/vehicules/stock'));
 app.use('/vehicules',require('./api/routes/vehicules'));
 
 app.use('/auth/utilfab',require('./api/routes/auth/utilfab'));

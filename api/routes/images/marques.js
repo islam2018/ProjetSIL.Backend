@@ -35,6 +35,9 @@ router.get('/:id',(req,res)=>{
     });
 });
 
+
+
+
 router.post('/:id',AdminAccessControl,upload.single('imageMarque'),(req,res)=>{
 
     console.log(req.params.id);

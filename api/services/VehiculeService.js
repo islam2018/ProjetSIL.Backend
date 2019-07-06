@@ -47,6 +47,10 @@ let VehiculeService=class VehiculeService {
             NumChassis: numChassis
         });
     }
+
+    updateStock(stock) {
+        
+    }
 };
 
 

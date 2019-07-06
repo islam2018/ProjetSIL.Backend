@@ -164,16 +164,29 @@ let AnnonceService=class AnnonceService {
             conditions.CodeVersion = parseInt(options.CodeVersion);
         }
         if (options.minAnnee) {
-            conditions.Annee = {[Sequelize.Op.gte]: parseInt(options.minAnnee)};
+            if (options.maxAnnee) {
+                conditions.Annee = {[Sequelize.Op.gte]: parseInt(options.minAnnee),
+                    [Sequelize.Op.lte]: parseInt(options.maxAnnee)};
+            } else {
+                conditions.Annee = {[Sequelize.Op.gte]: parseInt(options.minAnnee)};
+            }
+
+        } else {
+            if (options.maxAnnee) {
+                conditions.Annee = {[Sequelize.Op.lte]: parseInt(options.maxAnnee)};
+            }
         }
-        if (options.maxAnnee) {
-            conditions.Annee = {[Sequelize.Op.lte]: parseInt(options.maxAnnee)};
-        }
+
         if (options.minPrix) {
-            conditions.Prix = {[Sequelize.Op.gte]: parseInt(options.minPrix)};
-        }
-        if (options.maxPrix) {
-            conditions.Prix = {[Sequelize.Op.lte]: parseInt(options.maxPrix)};
+            if (options.maxPrix) {
+                conditions.Prix = {[Sequelize.Op.gte]: parseInt(options.minPrix),[Sequelize.Op.lte]: parseInt(options.maxPrix)};
+            } else {
+                conditions.Prix = {[Sequelize.Op.gte]: parseInt(options.minPrix)}
+            }
+        } else {
+            if (options.maxPrix) {
+                conditions.Prix = {[Sequelize.Op.lte]: parseInt(options.maxPrix)};
+            }
         }
         if (options.maxKm) {
             conditions.Km = {[Sequelize.Op.lte]: parseInt(options.maxKm)};
@@ -223,7 +236,7 @@ let AnnonceService=class AnnonceService {
                                     Couleur: a.Couleur,
                                     Km: a.Km,
                                     Carburant: a.Carburant,
-                                    Annnee : a.Annee,
+                                    Annee : a.Annee,
                                     Description: a.Description,
                                     NombreOffres: nbOffres[i],
                                     images: a.images
