@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const COMMANDE=require('../model/commande');
 const VEHICULE=require('../model/vehicule');
 COMMANDE.belongsTo(VEHICULE,{foreignKey:'NumChassis',targetKey:'NumChassis'});
@@ -5,16 +6,56 @@ COMMANDE.belongsTo(VEHICULE,{foreignKey:'NumChassis',targetKey:'NumChassis'});
 let CommandeService=class CommandeService {
 
     getAllCommandes() {
-        return COMMANDE.findAll();
+        return COMMANDE.findAll({
+            order: [
+                ['Date', 'ASC'],
+            ],
+        });
     }
+
+    getCommandes(Etat) {
+        return COMMANDE.findAll({
+            order: [
+                ['Date', 'ASC'],
+            ],
+            where: {Etat:Etat}
+        });
+    }
+
+    getReservedCommandes() {
+        return COMMANDE.findAll({
+            order: [
+                ['Date', 'ASC'],
+            ],
+            where : {Reservation: {[Sequelize.Op.ne]: null}}
+        });
+    }
+
 
     createCommande(commande) {
         return COMMANDE.create({
-            Date: commande.Date,
+
             Montant: commande.Montant,
-            idAutomobilste: commande.idAutomobilste,
+            idAutomobiliste: commande.idAutomobiliste,
             NumChassis: commande.NumChassis
         });
+    }
+
+    confirmCommande(idCommande) {
+        return COMMANDE.update({
+            Etat:3
+        }, {where:{idCommande: idCommande}})
+    }
+    rejectCommande(idCommande) {
+        return COMMANDE.update({
+            Etat:2
+        }, {where:{idCommande: idCommande}})
+    }
+
+    cancelCommande(idCommande) {
+        return COMMANDE.update({
+            Etat:1
+        }, {where:{idCommande: idCommande}})
     }
 
     getCommande(idCommande) {
