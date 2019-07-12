@@ -24,8 +24,15 @@ const CLOUDINARY_CREDENTIALS={
     API_KEY:"498382269929551",
     API_SECRET:"OnN7GP2DLrnveFalQpzsraQSpys"
 };
+
+const BRAINTREE_CREDENTIALS={
+    merchantId: "sqz9yp5kvzds3jkp",
+    publicKey: "mg3msm3b5gsv5skj",
+    privateKey: "0ae2a3956ab63ed29ab6adfc9b106462"
+};
 module.exports.JWT_CONFIG=JWT_CONFIG;
 module.exports.GOOGLE_CREDENTIALS=GOOGLE_CREDENTIALS;
 module.exports.FACEBBOK_CREDENTIALS=FACEBBOK_CREDENTIALS;
 module.exports.CLOUDINARY_CREDENTIALS=CLOUDINARY_CREDENTIALS;
+module.exports.BRAINTREE_CREDENTIALS=BRAINTREE_CREDENTIALS;
 module.exports.PUSHER = pusher;

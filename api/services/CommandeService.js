@@ -187,6 +187,11 @@ let CommandeService=class CommandeService {
             Etat:1
         }, {where:{idCommande: idCommande}})
     }
+    setReservation(idCommande,idReservation) {
+        return COMMANDE.update({
+            Reservation:idReservation
+        }, {where:{idCommande: idCommande}})
+    }
 
     getCommande(idCommande) {
         return COMMANDE.findOne({
