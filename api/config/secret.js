@@ -17,7 +17,7 @@ const GOOGLE_CREDENTIALS={
     CLIENT_ID: "493881959162-0ccs4e44m4gr9e576crna4gcm659ah5d.apps.googleusercontent.com"
 };
 const FACEBBOK_CREDENTIALS={
-    ACCESS_TOKEN: "c4e457d8889f12564c168cdca9101f62"
+    ACCESS_TOKEN: "598e389d93bf5e88a8ccdbfe450a7c58"
 };
 const CLOUDINARY_CREDENTIALS={
     CNAME:"hftzhatr4",
