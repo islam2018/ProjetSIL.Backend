@@ -8,6 +8,7 @@ const Commande = sequelize.define('commande', {
     idAutomobiliste: {type:Sequelize.INTEGER},
     NumChassis : {type:Sequelize.INTEGER},
     Etat: {type:Sequelize.INTEGER},
-    Reservation: {type:Sequelize.INTEGER}
+    Reservation: {type:Sequelize.INTEGER},
+    Fabricant: {type:Sequelize.INTEGER}
 });
 module.exports = Commande;

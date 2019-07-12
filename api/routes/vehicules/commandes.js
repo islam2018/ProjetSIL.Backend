@@ -7,7 +7,7 @@ const commandeService=new CommandeService();
 
 
 router.get('/',(req,res)=>{
-    commandeService.getAllCommandes().then(commandes=>{
+    commandeService.getAllCommandes(req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
@@ -17,7 +17,7 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/nonvalidees',(req,res)=>{
-    commandeService.getCommandes(0).then(commandes=>{
+    commandeService.getCommandes(0,req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
@@ -26,7 +26,7 @@ router.get('/nonvalidees',(req,res)=>{
     });
 });
 router.get('/annulees',(req,res)=>{
-    commandeService.getCommandes(1).then(commandes=>{
+    commandeService.getCommandes(1,req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
@@ -35,7 +35,7 @@ router.get('/annulees',(req,res)=>{
     });
 });
 router.get('/rejetees',(req,res)=>{
-    commandeService.getCommandes(2).then(commandes=>{
+    commandeService.getCommandes(2,req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
@@ -44,7 +44,7 @@ router.get('/rejetees',(req,res)=>{
     });
 });
 router.get('/validees',(req,res)=>{
-    commandeService.getCommandes(3).then(commandes=>{
+    commandeService.getCommandes(3,req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({
@@ -53,7 +53,7 @@ router.get('/validees',(req,res)=>{
     });
 });
 router.get('/reservees',(req,res)=>{
-    commandeService.getReservedCommandes().then(commandes=>{
+    commandeService.getReservedCommandes(req.query.fabricant).then(commandes=>{
         res.status(200).json(commandes);
     }).catch(error=>{
         res.status(500).json({

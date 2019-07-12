@@ -11,7 +11,7 @@ const versionService = new VersionService();
 
 let CommandeService=class CommandeService {
 
-    getAllCommandes() {
+    getAllCommandes(fabricant) {
         return COMMANDE.findAll({
             include: [
                 {model:AUTOMOBILISTE,as:'automobiliste'},
@@ -20,6 +20,7 @@ let CommandeService=class CommandeService {
             order: [
                 ['Date', 'ASC'],
             ],
+            where : {Fabricant:fabricant}
         }).then (data=>{
             return new Promise( (resolve,reject)=>{
 
@@ -60,7 +61,7 @@ let CommandeService=class CommandeService {
         });
     }
 
-    getCommandes(Etat) {
+    getCommandes(Etat,fabricant) {
         return COMMANDE.findAll({
             include: [
                 {model:AUTOMOBILISTE,as:'automobiliste'},
@@ -69,7 +70,7 @@ let CommandeService=class CommandeService {
             order: [
                 ['Date', 'ASC'],
             ],
-            where: {Etat:Etat}
+            where: {Etat:Etat,Fabricant:fabricant}
         }).then (data=>{
             return new Promise( (resolve,reject)=>{
 
@@ -110,7 +111,7 @@ let CommandeService=class CommandeService {
         });
     }
 
-    getReservedCommandes() {
+    getReservedCommandes(fabricant) {
         return COMMANDE.findAll({
             include: [
                 {model:AUTOMOBILISTE,as:'automobiliste'},
@@ -119,7 +120,7 @@ let CommandeService=class CommandeService {
             order: [
                 ['Date', 'ASC'],
             ],
-            where : {Reservation: {[Sequelize.Op.ne]: null}}
+            where : {Reservation: {[Sequelize.Op.ne]: null}, Fabricant:fabricant}
         }).then (data=>{
             return new Promise( (resolve,reject)=>{
 
@@ -163,10 +164,10 @@ let CommandeService=class CommandeService {
 
     createCommande(commande) {
         return COMMANDE.create({
-
             Montant: commande.Montant,
             idAutomobiliste: commande.idAutomobiliste,
-            NumChassis: commande.NumChassis
+            NumChassis: commande.NumChassis,
+            Fabricant: commande.Fabricant
         });
     }
 
