@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const VehiculeService = require('../../services/VehiculeService');
+const vehiculeService = new VehiculeService();
+const VersionService = require('../../services/VersionService');
+const versionService = new VersionService();
 const UtilFabAccessControl= require('../../control/AccessControl').UtilFabAccessControl;
 const csv = require('csvtojson');
 const request = require('request');
@@ -33,6 +37,32 @@ router.post('/stock',upload.single('stockFile'),(req,res)=>{
 
          res.status(200).json({msg:json});
      });
+
+});
+
+router.post('/disponible',(req,res)=>{
+    vehiculeService.getVehiculesDisponible(req.body).then(data=>{
+        res.status(200).json(data);
+    }).catch(e=>{
+        res.status(500).json({
+            message:'Une erreur s\'est produite'
+        });
+    })
+});
+
+router.get('/disponible/:codeVersion',(req,res)=>{
+    versionService.getVersion(req.params.codeVersion).then(version=>{
+        vehiculeService.getVehiculesDisponible(version).then(data=>{
+            res.status(200).json(data);
+        }).catch(e=>{
+            res.status(500).json({
+                message:'Une erreur s\'est produite'
+            });
+        });
+    }).catch(e=>{
+        message:'Une erreur s\'est produite'
+    });
+
 
 });
 module.exports = router;

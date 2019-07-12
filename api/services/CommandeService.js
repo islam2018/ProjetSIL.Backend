@@ -4,7 +4,6 @@ const VEHICULE=require('../model/vehicule');
 const AUTOMOBILISTE = require('../model/automobilste');
 COMMANDE.belongsTo(VEHICULE,{foreignKey:'NumChassis',targetKey:'NumChassis'});
 COMMANDE.belongsTo(AUTOMOBILISTE,{foreignKey:'idAutomobiliste',targetKey:'idAutomobiliste'});
-COMMANDE.belongsTo(AUTOMOBILISTE,{foreignKey:'idAutomobiliste',targetKey:'idAutomobiliste'});
 const VersionService =require('./VersionService');
 const versionService = new VersionService();
 
