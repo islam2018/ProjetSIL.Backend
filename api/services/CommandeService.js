@@ -1,33 +1,162 @@
 const Sequelize = require('sequelize');
 const COMMANDE=require('../model/commande');
 const VEHICULE=require('../model/vehicule');
+const AUTOMOBILISTE = require('../model/automobilste');
 COMMANDE.belongsTo(VEHICULE,{foreignKey:'NumChassis',targetKey:'NumChassis'});
+COMMANDE.belongsTo(AUTOMOBILISTE,{foreignKey:'idAutomobiliste',targetKey:'idAutomobiliste'});
+COMMANDE.belongsTo(AUTOMOBILISTE,{foreignKey:'idAutomobiliste',targetKey:'idAutomobiliste'});
+const VersionService =require('./VersionService');
+const versionService = new VersionService();
+
 
 let CommandeService=class CommandeService {
 
     getAllCommandes() {
         return COMMANDE.findAll({
+            include: [
+                {model:AUTOMOBILISTE,as:'automobiliste'},
+                {model:VEHICULE,as:'vehicule'}
+            ],
             order: [
                 ['Date', 'ASC'],
             ],
+        }).then (data=>{
+            return new Promise( (resolve,reject)=>{
+
+                let tab = [];
+                let promises = [];
+                data.forEach(c=>{
+                    let command = c.toJSON();
+                    promises.push(versionService.getVersionInfo(command.vehicule.CodeVersion));
+                });
+                Promise.all(promises).then(values=>{
+                    let i=0;
+                    data.forEach(c=>{
+                        let command = c.toJSON();
+                        tab.push({
+                            idCommande : command.idCommande,
+                            Date: command.Date,
+                            Montant : command.Montant,
+                            Etat : command.Etat,
+                            Reservation : command.Reservation,
+                            automobiliste: command.automobiliste,
+                            vehicule: {
+                                NumChassis: command.vehicule.NumChassis,
+                                Concessionaire: command.vehicule.Concessionaire,
+                                NomMarque: values[i].modele.marque.NomMarque,
+                                NomModele: values[i].modele.NomModele,
+                                NomVersion: values[i].NomVersion,
+                            }
+                        });
+                        i++;
+                        });
+                    resolve(tab);
+                    });
+                });
+        }).catch(e=>{
+            return new Promise((resolve,reject)=>{
+                reject(e);
+            })
         });
     }
 
     getCommandes(Etat) {
         return COMMANDE.findAll({
+            include: [
+                {model:AUTOMOBILISTE,as:'automobiliste'},
+                {model:VEHICULE,as:'vehicule'}
+            ],
             order: [
                 ['Date', 'ASC'],
             ],
             where: {Etat:Etat}
+        }).then (data=>{
+            return new Promise( (resolve,reject)=>{
+
+                let tab = [];
+                let promises = [];
+                data.forEach(c=>{
+                    let command = c.toJSON();
+                    promises.push(versionService.getVersionInfo(command.vehicule.CodeVersion));
+                });
+                Promise.all(promises).then(values=>{
+                    let i=0;
+                    data.forEach(c=>{
+                        let command = c.toJSON();
+                        tab.push({
+                            idCommande : command.idCommande,
+                            Date: command.Date,
+                            Montant : command.Montant,
+                            Etat : command.Etat,
+                            Reservation : command.Reservation,
+                            automobiliste: command.automobiliste,
+                            vehicule: {
+                                NumChassis: command.vehicule.NumChassis,
+                                Concessionaire: command.vehicule.Concessionaire,
+                                NomMarque: values[i].modele.marque.NomMarque,
+                                NomModele: values[i].modele.NomModele,
+                                NomVersion: values[i].NomVersion,
+                            }
+                        });
+                        i++;
+                    });
+                    resolve(tab);
+                });
+            });
+        }).catch(e=>{
+            return new Promise((resolve,reject)=>{
+                reject(e);
+            })
         });
     }
 
     getReservedCommandes() {
         return COMMANDE.findAll({
+            include: [
+                {model:AUTOMOBILISTE,as:'automobiliste'},
+                {model:VEHICULE,as:'vehicule'}
+            ],
             order: [
                 ['Date', 'ASC'],
             ],
             where : {Reservation: {[Sequelize.Op.ne]: null}}
+        }).then (data=>{
+            return new Promise( (resolve,reject)=>{
+
+                let tab = [];
+                let promises = [];
+                data.forEach(c=>{
+                    let command = c.toJSON();
+                    promises.push(versionService.getVersionInfo(command.vehicule.CodeVersion));
+                });
+                Promise.all(promises).then(values=>{
+                    let i=0;
+                    data.forEach(c=>{
+                        let command = c.toJSON();
+                        tab.push({
+                            idCommande : command.idCommande,
+                            Date: command.Date,
+                            Montant : command.Montant,
+                            Etat : command.Etat,
+                            Reservation : command.Reservation,
+                            automobiliste: command.automobiliste,
+                            vehicule: {
+                                NumChassis: command.vehicule.NumChassis,
+                                Concessionaire: command.vehicule.Concessionaire,
+                                NomMarque: values[i].modele.marque.NomMarque,
+                                NomModele: values[i].modele.NomModele,
+                                NomVersion: values[i].NomVersion,
+                            }
+                        });
+                        i++;
+                    });
+                    resolve(tab);
+                });
+            });
+        }).catch(e=>{
+            return new Promise((resolve,reject)=>{
+                reject(e);
+            })
         });
     }
 
