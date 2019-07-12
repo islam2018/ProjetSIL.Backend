@@ -109,6 +109,55 @@ let CommandeService=class CommandeService {
             })
         });
     }
+    getCommandesAutomobiliste(idAutomobiliste) {
+        return COMMANDE.findAll({
+            include: [
+                {model:AUTOMOBILISTE,as:'automobiliste'},
+                {model:VEHICULE,as:'vehicule'}
+            ],
+            order: [
+                ['Date', 'ASC'],
+            ],
+            where: {idAutomobiliste:idAutomobiliste}
+        }).then (data=>{
+            return new Promise( (resolve,reject)=>{
+
+                let tab = [];
+                let promises = [];
+                data.forEach(c=>{
+                    let command = c.toJSON();
+                    promises.push(versionService.getVersionInfo(command.vehicule.CodeVersion));
+                });
+                Promise.all(promises).then(values=>{
+                    let i=0;
+                    data.forEach(c=>{
+                        let command = c.toJSON();
+                        tab.push({
+                            idCommande : command.idCommande,
+                            Date: command.Date,
+                            Montant : command.Montant,
+                            Etat : command.Etat,
+                            Reservation : command.Reservation,
+                            automobiliste: command.automobiliste,
+                            vehicule: {
+                                NumChassis: command.vehicule.NumChassis,
+                                Concessionaire: command.vehicule.Concessionaire,
+                                NomMarque: values[i].modele.marque.NomMarque,
+                                NomModele: values[i].modele.NomModele,
+                                NomVersion: values[i].NomVersion,
+                            }
+                        });
+                        i++;
+                    });
+                    resolve(tab);
+                });
+            });
+        }).catch(e=>{
+            return new Promise((resolve,reject)=>{
+                reject(e);
+            })
+        });
+    }
 
     getReservedCommandes(fabricant) {
         return COMMANDE.findAll({

@@ -15,6 +15,15 @@ router.get('/',(req,res)=>{
         });
     });
 });
+router.get('/automob/:id',(req,res)=>{
+    commandeService.getCommandesAutomobiliste(req.params.id).then(commandes=>{
+        res.status(200).json(commandes);
+    }).catch(error=>{
+        res.status(500).json({
+            message:"Une erreur a été produite !"+error
+        });
+    });
+});
 
 router.get('/nonvalidees',(req,res)=>{
     commandeService.getCommandes(0,req.query.fabricant).then(commandes=>{
