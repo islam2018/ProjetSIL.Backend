@@ -15,7 +15,7 @@ let VehiculeService=class VehiculeService {
                 include:[
                     {model:VERSION,as:'version'}
                 ]
-            },{where:{CodeVersion:body.codeVersion,CodeCouleur:body.couleur.codeCouleur}}).then(data=>{
+            },{where:{CodeVersion:body.codeVersion}}).then(data=>{
                 let res = {};
                 if (data.length === 0) {
                     res.disponible = false;
