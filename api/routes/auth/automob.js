@@ -13,7 +13,7 @@ router.post('/',AutoMobAccesControl,(req,res) => {
              });}
            ).catch(e=>{
                res.status(500).json({
-                   message: "Une erreur a éte produite !"
+                   message: "Une erreur a éte produite !"+e
                });
            });
        } else {
@@ -23,7 +23,7 @@ router.post('/',AutoMobAccesControl,(req,res) => {
         }
     }).catch(e=>{
         res.status(500).json({
-            message: "Une erreur a éte produite !"
+            message: "Une erreur a éte produite !"+e
         });
     });
 });
