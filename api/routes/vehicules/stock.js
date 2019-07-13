@@ -49,10 +49,10 @@ router.post('/disponible',(req,res)=>{
         });
     })
 });
-
-router.get('/disponible/:codeVersion',(req,res)=>{
+/*
+router.get('/disponible/:codeVersion/:codeCouleur',(req,res)=>{
     versionService.getVersion(req.params.codeVersion).then(version=>{
-        vehiculeService.getVehiculesDisponible(version).then(data=>{
+        vehiculeService.getVehiculesDisponible(version,codeCou).then(data=>{
             res.status(200).json(data);
         }).catch(e=>{
             res.status(500).json({
@@ -64,5 +64,5 @@ router.get('/disponible/:codeVersion',(req,res)=>{
     });
 
 
-});
+});*/
 module.exports = router;
