@@ -24,7 +24,7 @@ let VehiculeService=class VehiculeService {
                 } else {
                     res.disponible = true;
                     res.NumChassis = data[0].toJSON().NumChassis;
-                    res.Montant = body.lignetarif.Prix;
+                    res.Montant = body.Montant;
                 }
                 resolve(res);
             }).catch(e=>{

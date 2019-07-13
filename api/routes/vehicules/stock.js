@@ -42,7 +42,7 @@ router.post('/stock',upload.single('stockFile'),(req,res)=>{
 
 router.post('/disponible',(req,res)=>{
     versionService.getVersion(req.body.CodeVersion).then(version=>{
-        req.body.lignetarif = version.lignetarif;
+        req.body.Montant = version.lignetarif.Prix;
         vehiculeService.getVehiculesDisponible(req.body).then(data=>{
             res.status(200).json(data);
         }).catch(e=>{
