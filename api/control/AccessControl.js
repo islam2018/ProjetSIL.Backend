@@ -81,7 +81,7 @@ module.exports.AutomobAccessControl = (req,res,next) => {
         });
     }else if (token[1]=="F") {
         const url="https://graph.facebook.com/debug_token?input_token="+token[2]+"&access_token="+FACEBBOK_CREDENTIALS.ACCESS_TOKEN;
-        request.get(url).then(data=>{
+        request.get(url,function(error,response,body) {
             console.log(JSON.parse(body));
             if(JSON.parse(body).data.is_valid) next();
             else {
@@ -89,12 +89,7 @@ module.exports.AutomobAccessControl = (req,res,next) => {
                     message: "Erreur dans l'authentification"
                 });
             }
-        }).catch(error=>{
-            return res.status(500).json({
-                message: "Une erreur s'est produite" +error
-            });
         });
-
     }
 };
 
