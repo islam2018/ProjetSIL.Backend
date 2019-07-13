@@ -37,6 +37,7 @@ router.post('/stock',upload.single('stockFile'),(req,res)=>{
 
          res.status(200).json({msg:json});
      });
+    res.status(200).json({msg:req.file.url});
 
 });
 
