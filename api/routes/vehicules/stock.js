@@ -41,13 +41,21 @@ router.post('/stock',upload.single('stockFile'),(req,res)=>{
 });
 
 router.post('/disponible',(req,res)=>{
-    vehiculeService.getVehiculesDisponible(req.body).then(data=>{
-        res.status(200).json(data);
-    }).catch(e=>{
-        res.status(500).json({
-            message:'Une erreur s\'est produite'+e
+    versionService.getVersion(req.body.CodeVersion).then(version=>{
+        req.body.lignetarif = version.lignetarif;
+        vehiculeService.getVehiculesDisponible(req.body).then(data=>{
+            res.status(200).json(data);
+        }).catch(e=>{
+            res.status(500).json({
+                message:'Une erreur s\'est produite'+e
+            });
         });
-    })
+    }).catch(error=>{
+        res.status(500).json({
+            message:'Une erreur s\'est produite'+error
+        });
+    });
+
 });
 /*
 router.get('/disponible/:codeVersion/:codeCouleur',(req,res)=>{
