@@ -243,7 +243,42 @@ let CommandeService=class CommandeService {
 
     getCommande(idCommande) {
         return COMMANDE.findOne({
-            where : {idCommande: idCommande}
+            include: [
+                {model:AUTOMOBILISTE,as:'automobiliste'},
+                {model:VEHICULE,as:'vehicule'}
+            ],
+            order: [
+                ['Date', 'ASC'],
+            ],
+            where: {idCommande: idCommande}
+        }).then (data=>{
+            return new Promise( (resolve,reject)=> {
+                let command = data.toJSON();
+                versionService.getVersionInfo(command.vehicule.CodeVersion).then(version => {
+                    resolve({
+                        idCommande: command.idCommande,
+                        Date: command.Date,
+                        Montant: command.Montant,
+                        Etat: command.Etat,
+                        Reservation: command.Reservation,
+                        automobiliste: command.automobiliste,
+                        vehicule: {
+                            NumChassis: command.vehicule.NumChassis,
+                            Concessionaire: command.vehicule.Concessionaire,
+                            NomMarque: version.modele.marque.NomMarque,
+                            NomModele: version.modele.NomModele,
+                            NomVersion: version.NomVersion,
+                        }
+                    });
+
+                }).catch(e => {
+                    reject(e);
+                });
+            });
+        }).catch(e=>{
+            return new Promise((resolve,reject)=>{
+                reject(e);
+            });
         });
     }
 

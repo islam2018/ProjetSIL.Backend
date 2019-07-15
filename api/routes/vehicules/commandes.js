@@ -1,5 +1,6 @@
 const express= require('express');
 const router= express.Router();
+const pusher = require('../../config/secret').PUSHER;
 const CommandeService=require('../../services/CommandeService');
 const commandeService=new CommandeService();
 
@@ -73,10 +74,17 @@ router.get('/reservees',(req,res)=>{
 
 router.post('/',(req,res)=>{
     commandeService.createCommande(req.body).then(commande=>{
-        res.status(200).json(commande);
+        commandeService.getCommande(commande.toJSON().idCommande).then(cmd=>{
+            pusher.trigger('commande-channel-'+cmd.Fabricant,'newCommand',cmd);
+            res.status(200).json(cmd);
+        }).catch(e=> {
+            res.status(500).json({
+                message: "Une erreur a été produite !"
+            });
+        });
     }).catch(e=>{
         res.status(500).json({
-            message:"Une erreur a été produite !" +e
+            message:"Une erreur a été produite !"
         });
     });
 });
