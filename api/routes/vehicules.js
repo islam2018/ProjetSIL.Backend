@@ -95,16 +95,16 @@ router.delete('/:id', (req,res) => {
     });
 });
 
-router.get('/:id/options',(req,res)=>{
+/*router.get('/:id/options',(req,res)=>{
 
-    optionService.getAllOptionsOfVehicules(req.params.id).then(options=>{
+    vehiculeService.getAllOptionsOfVehicules(req.params.id).then(options=>{
         res.status(200).json(options);
     }).catch(e=>{
         res.status(500).json({
             message:"Une erreur a été produite !"
         });
     })
-});
+});*/
 
 router.post('/:id/options',(req,res)=>{
 

@@ -1,11 +1,11 @@
 const OPTION=require('../model/option');
 const REL_VER_OPT=require('../model/rel_ver_opt');
-const REL_VEHIC_OPT=require('../model/REL_vehicule_option');
+//const REL_VEHIC_OPT=require('../model/REL_vehicule_option');
 const REL_MOD_OPT=require('../model/rel_mod_opt');
 const LIGNETARIF = require('../model/lignetarif');
 OPTION.belongsTo(REL_VER_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
 OPTION.belongsTo(REL_MOD_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
-OPTION.belongsTo(REL_VEHIC_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
+//OPTION.belongsTo(REL_VEHIC_OPT,{foreignKey: 'CodeOption', targetKey: 'CodeOption'});
 OPTION.hasOne(LIGNETARIF,{as:'lignetarif',foreignKey:'Code',targetKey:'CodeOption'});
 
 
@@ -30,14 +30,7 @@ let OptionService=class OptionService {
         });
     }
 
-    getAllOptionsOfVehicules(numChassis) {
-        return  OPTION.findAll({
-            include: [{
-                model: REL_VEHIC_OPT,attributes:['NumChassis'],
-                where: {NumChassis : numChassis}
-            },{model: LIGNETARIF, where:{Type:2}, as:'lignetarif', required:false}]
-        });
-    }
+
 
     createOption(option) {
         return OPTION.create({

@@ -30,14 +30,55 @@ const storage = cloudinaryStorage({
 //https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
 const upload=multer({storage:storage});
 
-router.post('/stock',upload.single('stockFile'),(req,res)=>{
+router.post('/',upload.single('stockFile'), (req, res) => {
     console.log(req.file.url);
-     csv().fromStream(request.get(req.file.url)).subscribe(json=>{
-        console.log(json) ;
+    csv({
+        delimiter: [";", ","],
+        ignoreEmpty: true,
+        alwaysSplitAtEOL: true
+    }).fromStream(request.get(req.file.url)).then(json => {
+        console.log(json);
+        json.forEach(vehicule=>{
+            let options = vehicule.Options.split(",");
+            //console.log(options);
+            let obj = [];
+            options.forEach(code=>{
+                obj.push({
+                    CodeOption:code
+                });
+            });
+            vehicule.Options = obj;
+        });
+        let promises=[];
+        let promises_options=[];
+        json.forEach(vehicule=>{
+            promises.push(vehiculeService.createVehicule(vehicule));
+        });
 
-         res.status(200).json({msg:json});
-     });
-    res.status(200).json({msg:req.file.url});
+        Promise.all(promises).then(success=>{
+            json.forEach(vehicule=>{
+                vehicule.Options.forEach(option=>{
+                   promises_options.push(vehiculeService.addOption(option.CodeOption,vehicule.NumChassis));
+                });
+            });
+            Promise.all(promises_options).then(r=>{
+                vehiculeService.getAllVehicules().then(r=>{
+                    res.status(200).json(r);
+                }).catch(e2=>{
+                    res.status(500).json({message:'Une erreur a été produite'+e2});
+                });
+            }).catch(e1=>{
+                res.status(500).json({message:'Une erreur a été produite dans l\'affectation des options'+e1});
+            });
+        }).catch(e=>{
+            res.status(500).json({message:'Une erreur a été produite dans la création des vehicules'});
+        });
+
+
+    }).catch(error=>{
+        res.status(500).json(error);
+    });
+
 
 });
 
