@@ -1,8 +1,12 @@
 const VEHICULE=require('../model/vehicule');
 const VERSION=require('../model/version');
 const OPTION=require('../model/option');
+const sequelize=require('../config/dbconnection');
+const Sequelize = require('sequelize');
+const LigneTarifService = require('./LigneTarifService');
+const ligneTarifService = new LigneTarifService();
 const REL_VEHIC_OPT = require('../model/REL_vehicule_option');
-VEHICULE.belongsTo(VERSION,{foreignKey:'CodeVersion',targetKey:'CodeVersion'});
+//VEHICULE.belongsTo(VERSION,{foreignKey:'CodeVersion',targetKey:'CodeVersion'});
 VEHICULE.belongsToMany(OPTION,{as:'options',foreignKey:'NumChassis',through:REL_VEHIC_OPT,otherKey:'CodeOption'});
 
 let VehiculeService=class VehiculeService {
@@ -13,36 +17,42 @@ let VehiculeService=class VehiculeService {
 
     getVehiculesDisponible(body) {
         return new Promise((resolve,reject)=>{
+            console.log(body.codeCouleur+" "+body.codeVersion);
             VEHICULE.findAll({
-                include:[
+               include:[
                     {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options'},
-                    {model:VERSION,as:'version'}
-                ]
-            },{where:{CodeVersion:body.codeVersion,CodeCouleur:body.codeCouleur}}).then(data=>{
+                    //{model:VERSION,as:'version',required:false}
+                ],
+                where:{CodeVersion:body.codeVersion,CodeCouleur:body.codeCouleur,Disponible:1}
+            }).then(data=>{
 
                 let res = [];
-                if (data.length > 0 ) {
-                    data.forEach(v=>{
-                       let vehicule = v.toJSON();
-                       //check Options here
-                        let all=true;
-                        if (body.options!==undefined) {
-                            all = this.checkOptions(vehicule.options,body.options);
-                        }
-                        if (all) {
-                            res.push({
-                                NumChassis: vehicule.NumChassis,
-                                Montant: "GET IT FROM LIGNETARIF",
-                                Options: vehicule.options
-                            });
-                        }
+                let promises = [];
+                data.forEach(v => {
+                    let vehicule = v.toJSON();
+                    let all = true;
+                    if (body.options !== undefined) {
+                        all = this.checkOptions(vehicule.options, body.options);
+                    }
+                    if (all) {
+                        promises.push(this.calculMontant(vehicule));
+                        res.push({
+                            NumChassis: vehicule.NumChassis,
+                            Options: vehicule.options
+                        });
+                    }
+                });
+                Promise.all(promises).then(montants=>{
+                    let i=0;
+                    res.forEach(v=>{
+                        v.Montant=montants[i];
+                        i++;
                     });
-                    /*res.disponible = true;
-                    res.NumChassis = data[0].toJSON().NumChassis;
-                    res.Montant = body.Montant;
-                    res.options = data[0].options;*/
-                }
-                resolve(res);
+                    resolve(res);
+                }).catch(e=>{
+                    reject(e);
+                });
+
             }).catch(e=>{
                 reject(e);
             });
@@ -118,8 +128,38 @@ let VehiculeService=class VehiculeService {
         });
     }
 
+    calculMontant(vehicule) {
+        let montant=0;
+        return new Promise((resolve,reject)=>{
+            ligneTarifService.getLigneTarif(vehicule.CodeVersion,0).then(ltVersion=>{
+                montant+=ltVersion.Prix;
+                ligneTarifService.getLigneTarif(vehicule.CodeCouleur,1).then(ltCouleur=>{
+                    montant+=ltCouleur.Prix;
+                    let promises =[];
+                    vehicule.options.forEach(option=>{
+                       promises.push(ligneTarifService.getLigneTarif(option.CodeOption,2));
+                    });
+                    Promise.all(promises).then(ltOptions=>{
+                        ltOptions.forEach(ltOption=>{
+                            montant+=ltOption.Prix;
+                        });
+                        resolve(montant);
+                    }).catch(e=>{
+                        reject(e);
+                    });
+                }).catch(e=>{
+                    reject(e);
+                });
+            }).catch(e=>{
+                reject(e);
+            });
+        });
+
+
+    }
+
     updateStock(stock) {
-        
+
     }
 };
 

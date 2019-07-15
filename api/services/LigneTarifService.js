@@ -1,3 +1,4 @@
+
 const LIGNETARIF=require('../model/lignetarif');
 
 let LigneTarifService=class LigneTarifService {
@@ -26,9 +27,13 @@ let LigneTarifService=class LigneTarifService {
 
     getLigneTarif(code,type) {
         return LIGNETARIF.findOne({
-            where : {Code: code,Type:type}
+            where : {Code: code,Type:type/*,
+                /*DateDebut: {[Sequelize.Op.lte]: Sequelize.fn('NOW')},
+                DateFin: {[Sequelize.Op.lte]: Sequelize.fn('NOW')}*/
+            }
         });
     }
+
 
     updateLigneTarif(ligneTarif,code,type) {
         return LIGNETARIF.update({

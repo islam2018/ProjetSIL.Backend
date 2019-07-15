@@ -25,7 +25,7 @@ const storage = cloudinaryStorage({
 const upload=multer({storage:storage});
 
 router.get('/:id',(req,res)=>{
-    imageService.getAllImages(1,req.params.id).then(images=>{
+    imageService.getAllImages(5,req.params.id).then(images=>{
         res.status(200).json(images);
     }).catch (err=>{
         res.status(500).json({

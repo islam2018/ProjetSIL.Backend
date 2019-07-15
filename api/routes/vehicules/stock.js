@@ -83,8 +83,7 @@ router.post('/',upload.single('stockFile'), (req, res) => {
 });
 
 router.post('/disponible',(req,res)=>{
-    versionService.getVersion(req.body.codeVersion).then(version=>{
-        req.body.Montant = version.lignetarif.Prix;
+
         vehiculeService.getVehiculesDisponible(req.body).then(data=>{
             res.status(200).json(data);
         }).catch(e=>{
@@ -92,12 +91,6 @@ router.post('/disponible',(req,res)=>{
                 message:'Une erreur s\'est produite'+e
             });
         });
-    }).catch(error=>{
-        res.status(500).json({
-            message:'Une erreur s\'est produite'+error
-        });
-    });
-
 });
 /*
 router.get('/disponible/:codeVersion/:codeCouleur',(req,res)=>{
