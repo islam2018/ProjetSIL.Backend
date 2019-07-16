@@ -25,7 +25,7 @@ let VersionService=class VersionService {
             include:[
                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['idImage','CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['idImage','CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model: MODELE, attributes:['NomModele'], as:'modele', include:[
                         {model: MARQUE, attributes:['NomMarque'], as:'marque'}
@@ -40,7 +40,7 @@ let VersionService=class VersionService {
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
@@ -96,7 +96,7 @@ let VersionService=class VersionService {
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                  {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model: MODELE, attributes:['NomModele'], as:'modele', include:[
                         {model: MARQUE, attributes:['NomMarque'], as:'marque'}
@@ -112,7 +112,7 @@ let VersionService=class VersionService {
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
@@ -146,7 +146,7 @@ let VersionService=class VersionService {
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
                 {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model: MODELE, attributes:['NomModele'], as:'modele', include:[
                         {model: MARQUE, attributes:['NomMarque'], as:'marque'}

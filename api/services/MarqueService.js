@@ -9,7 +9,7 @@ let MarqueService=class MarqueService{
     getAllMarques() {
         return MARQUE.findAll({
             include:[
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:0},as:'images'}
             ],
         });
     }
@@ -24,7 +24,7 @@ let MarqueService=class MarqueService{
     getMarque(codeMarque) {
         return MARQUE.findOne({
             include:[
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:0},as:'images'}
             ],
             where : {CodeMarque: codeMarque}
         });

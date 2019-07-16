@@ -22,7 +22,7 @@ let AnnonceService=class AnnonceService {
     getAllAnnonces() {
         return ANNONCE.findAll({
             include:[
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:3},as:'images'}
             ]
         });
     }
@@ -32,7 +32,7 @@ let AnnonceService=class AnnonceService {
         return ANNONCE.findAll({
             include:[
 
-                {model:IMAGE,attributes:['CheminImage'], as:'images'},
+                {model:IMAGE,attributes:['CheminImage'],where:{Type:3}, as:'images'},
                 {model:OFFRE,
                     attributes:['idAutomobiliste'] ,as:'offres'}
             ],
@@ -102,7 +102,7 @@ let AnnonceService=class AnnonceService {
         return ANNONCE.findAll({
             include:[
 
-                {model:IMAGE,attributes:['CheminImage'], as:'images'},
+                {model:IMAGE,attributes:['CheminImage'], where:{Type:3},as:'images'},
                 {model:OFFRE,
                     attributes:['idAutomobiliste'] ,as:'offres'}
             ],
@@ -215,7 +215,7 @@ let AnnonceService=class AnnonceService {
 
             include:[
 
-                {model:IMAGE,attributes:['CheminImage'], as:'images'},
+                {model:IMAGE,attributes:['CheminImage'],where:{Type:3}, as:'images'},
                 {model:OFFRE,
                     attributes:['idAutomobiliste'] ,as:'offres'}
             ],
@@ -298,7 +298,7 @@ let AnnonceService=class AnnonceService {
     getAnnonce(idAnnonce) {
         return ANNONCE.findOne({
             include:[
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:3},as:'images'}
             ],
             where : {idAnnonce: idAnnonce}
         });

@@ -26,7 +26,7 @@ let ModeleService=class ModeleService {
                 {model:VERSION, as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'}
             ],
             where: {CodeMarque : codeMarque}
         });
@@ -39,7 +39,7 @@ let ModeleService=class ModeleService {
                 {model:VERSION, as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'},
                 {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
 
@@ -84,7 +84,7 @@ let ModeleService=class ModeleService {
                 {model:VERSION, as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'}
             ],
             where: {CodeModele : codeModele}
         });
@@ -96,7 +96,7 @@ let ModeleService=class ModeleService {
                 {model:VERSION, as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'},
                 {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
 

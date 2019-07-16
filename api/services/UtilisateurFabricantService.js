@@ -12,7 +12,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         return UTILFAB.findAll({
             include:[
                 {model: MARQUE, attributes:['NomMarque'], as:'marque'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images'}
                 ]
             }
         );
@@ -22,7 +22,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         return UTILFAB.findAll({
             include:[
                 {model: MARQUE, attributes:['NomMarque'], as:'marque'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images'}
                 ],
             where: {Fabricant: codeMarque}
         });
@@ -43,7 +43,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         return UTILFAB.findOne({
             include:[
                 {model: MARQUE, attributes:['NomMarque'], as:'marque'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images'}
             ],
             where : {idUserF: IdUtilFab}
         });
@@ -53,7 +53,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         return UTILFAB.findOne({
             include:[
                 {model: MARQUE, attributes:['NomMarque'], as:'marque'},
-                {model:IMAGE, attributes:['CheminImage'],as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images'}
             ],
             where : {Mail: mail}
         });
