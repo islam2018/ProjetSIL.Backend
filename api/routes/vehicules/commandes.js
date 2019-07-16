@@ -108,7 +108,7 @@ router.get('/:id',(req,res)=>{
 router.put('/:id/valider',(req,res)=>{
     commandeService.getCommande(req.params.id).then(commande=>{
         if (commande!=null) {
-            commandeService.confirmCommande(req.params.id).then(r=>{
+            commandeService.confirmCommande(commande).then(r=>{
                 res.status(200).json(r);
             }).catch(e=>{
                 res.status(500).json({
@@ -156,7 +156,7 @@ router.put('/:id/rejeter',(req,res)=>{
 router.put('/:id/annuler',(req,res)=>{
     commandeService.getCommande(req.params.id).then(commande=>{
         if (commande!=null) {
-            commandeService.cancelCommande(req.params.id).then(r=>{
+            commandeService.cancelCommande(commande).then(r=>{
                 res.status(200).json(r);
             }).catch(e=>{
                 res.status(500).json({

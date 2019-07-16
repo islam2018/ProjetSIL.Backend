@@ -219,20 +219,44 @@ let CommandeService=class CommandeService {
         });
     }
 
-    confirmCommande(idCommande) {
-        return COMMANDE.update({
-            Etat:3
-        }, {where:{idCommande: idCommande}})
+    confirmCommande(commande) {
+        return new Promise((resolve,reject)=>{
+            VEHICULE.update({
+                Disponible:0,
+            }, {where:{NumChassis:commande.vehicule.NumChassis}}).then(v=>{
+                COMMANDE.update({
+                    Etat:3
+                }, {where:{idCommande: commande.idCommande}}).then(cmd=>{
+                    resolve(cmd);
+                }).catch(e=>{
+                    reject(e);
+                });
+            }).catch(e=>{
+               reject(e);
+            });
+        });
     }
-    rejectCommande(idCommande) {
-        return COMMANDE.update({
-            Etat:2
-        }, {where:{idCommande: idCommande}})
+    cancelCommande(commande) {
+        return new Promise((resolve, reject) => {
+            VEHICULE.update({
+                Disponible: 1,
+            }, {where: {NumChassis: commande.vehicule.NumChassis}}).then(v => {
+                COMMANDE.update({
+                    Etat: 1
+                }, {where: {idCommande: commande.idCommande}}).then(cmd => {
+                    resolve(cmd);
+                }).catch(e => {
+                    reject(e);
+                });
+            }).catch(e => {
+                reject(e);
+            });
+        });
     }
 
-    cancelCommande(idCommande) {
+    rejectCommande(idCommand) {
         return COMMANDE.update({
-            Etat:1
+            Etat:2
         }, {where:{idCommande: idCommande}})
     }
     setReservation(idCommande,idReservation) {
