@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const VehiculeService = require('../../services/VehiculeService');
 const vehiculeService = new VehiculeService();
-const VersionService = require('../../services/VersionService');
-const versionService = new VersionService();
+const LigneTarifService = require('../../services/LigneTarifService');
+const ligneTarifService = new LigneTarifService();
 const UtilFabAccessControl= require('../../control/AccessControl').UtilFabAccessControl;
 const csv = require('csvtojson');
 const request = require('request');
@@ -65,7 +65,7 @@ router.post('/',upload.single('stockFile'), (req, res) => {
                 vehiculeService.getAllVehicules().then(r=>{
                     res.status(200).json(r);
                 }).catch(e2=>{
-                    res.status(500).json({message:'Une erreur a été produite'+e2});
+                    res.status(500).json({message:'Une erreur a été produite'});
                 });
             }).catch(e1=>{
                 res.status(500).json({message:'Une erreur a été produite dans l\'affectation des options'+e1});
@@ -81,6 +81,43 @@ router.post('/',upload.single('stockFile'), (req, res) => {
 
 
 });
+
+router.post('/',upload.single('ligneTarifFile'), (req, res) => {
+    console.log(req.file.url);
+    csv({
+        delimiter: [";", ","],
+        ignoreEmpty: true,
+        alwaysSplitAtEOL: true
+    }).fromStream(request.get(req.file.url)).then(json => {
+        let promises=[];
+        json.forEach(ligneTarif=>{
+            switch(ligneTarif) {
+                case "VERSION": {
+                    ligneTarif.Type = 0;
+                }break;
+                case "COULEUR": {
+                    ligneTarif.Type = 1;
+                }break;
+                case "OPTION": {
+                    ligneTarif.Type = 2;
+                }break;
+            }
+            promises.push(ligneTarifService.createLigneTarif(ligneTarif,ligneTarif.Type,ligneTarif.Code));
+        });
+        Promise.all(promises).then(data=>{
+            res.status(200).json(data);
+        }).catch(error=>{
+            res.status(500).json({
+                message:'Une erreur s\'est produite'
+            });
+        });
+    }).catch(error=>{
+       res.status(500).json({
+           message:'Une erreur s\'est produite'
+       });
+    });
+});
+
 
 router.post('/disponible',(req,res)=>{
 

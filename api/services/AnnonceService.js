@@ -36,7 +36,7 @@ let AnnonceService=class AnnonceService {
                 {model:OFFRE,
                     attributes:['idAutomobiliste'] ,as:'offres'}
             ],
-            where: {idAutomobiliste: {[Sequelize.Op.ne]: idAutomobiliste}}
+            where: {idAutomobiliste:  idAutomobiliste}
 
         }).then(data => {
             return new Promise((resolve, reject)=>{
