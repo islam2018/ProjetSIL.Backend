@@ -37,7 +37,8 @@
     "request": "^2.88.0",
     "sequelize": "^4.42.0",
     "sequelize-to-json": "^0.10.3",
-    "sequelize-values": "^1.1.0"
+    "sequelize-values": "^1.1.0",
+    "synchronized-promise": "^0.1.0"
   },
   "devDependencies": {
     "jasmine": "^3.3.1",

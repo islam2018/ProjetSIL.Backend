@@ -8,11 +8,14 @@ const REL_VER_COUL = require('../model/rel_ver_coul');
 const IMAGE=require('../model/image');
 const FAVORIS_VERSION=require('../model/favoris_version');
 const LIGNETARIF = require('../model/lignetarif');
+const ImageService = require('./ImageService');
+const imageService = new ImageService();
 MARQUE.hasMany(MODELE, {foreignKey: 'CodeMarque'});
 MODELE.belongsTo(MARQUE, {foreignKey: 'CodeMarque'});
 MODELE.hasMany(VERSION, {foreignKey: 'CodeModele'});
 VERSION.belongsTo(MODELE, {foreignKey: 'CodeModele'});
 VERSION.hasMany(IMAGE,{as:'images',foreignKey:'Code',targetKey:'CodeVersion'});
+COULEUR.hasMany(IMAGE,{as:'images',foreignKey:'CodeSup',targetKey:'CodeCouleur'});
 VERSION.belongsToMany(OPTION,{as:'options',foreignKey:'CodeVersion',through:REL_VER_OPT,otherKey:'CodeOption'});
 VERSION.belongsToMany(COULEUR,{as:'couleurs',foreignKey:'CodeVersion',through:REL_VER_COUL,otherKey:'CodeCouleur'});
 VERSION.hasMany(FAVORIS_VERSION,{as:'suivies',foreignKey:'CodeVersion',foreignKeyKey:'CodeVersion'});
@@ -21,19 +24,35 @@ VERSION.hasOne(LIGNETARIF,{as:'lignetarif',foreignKey:'Code',targetKey:'CodeVers
 let VersionService=class VersionService {
 
     getAllVersion(codeModele) {
-        return VERSION.findAll({
-            include:[
-               {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
-                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['idImage','CheminImage'],where:{Type:2},as:'images'},
-                {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
-                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
-                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
-                      ]}
-            ],
-            where: {CodeModele: codeModele}
-        });
+
+            return new Promise((resolve,reject)=> {
+                VERSION.findAll({
+                    include: [
+                        {model: OPTION, through: {model: REL_VER_OPT, attributes: ['']}, as: 'options'},
+                        {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                        include:[
+                            {model: IMAGE, attributes: ['idImage', 'CheminImage'], where: {Type: 2},as: 'images', required: false}
+                        ]},
+                        //{model: IMAGE, attributes: ['idImage', 'CheminImage'], where: {Type: 2}, as: 'images'},
+                        {model: LIGNETARIF, where: {Type: 0}, as: 'lignetarif', required: false},
+                        {
+                            model: MODELE, attributes: ['NomModele'], as: 'modele', include: [
+                                {model: MARQUE, attributes: ['NomMarque'], as: 'marque'}
+                            ]
+                        }
+                    ],
+                    where: {CodeModele: codeModele}
+                }).then(versions => {
+                    resolve(versions);
+                }).catch(e => {
+                    reject(e);
+                });
+            });
     }
+
+
+
+
     getAllVersionsPourAutomobiliste(codeModele,idAutomobiliste) {
         return VERSION.findAll({
 

@@ -9,6 +9,13 @@ let ImageService=class ImageService {
         });
     }
 
+    getVersionImage(type,code,codeSup) {
+        return IMAGE.findOne({
+                    where: {Type:type,Code:code,CodeSup:codeSup}
+                });
+
+    }
+
     createImage(image,type,code) {
         return IMAGE.create({
             Type: type,
