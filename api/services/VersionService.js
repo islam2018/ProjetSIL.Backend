@@ -1,3 +1,5 @@
+const sequelize = require('sequelize');
+const Sequelize = require('../config/dbconnection');
 const VERSION=require('../model/version');
 const MARQUE=require('../model/marque');
 const MODELE=require('../model/modele');
@@ -31,7 +33,9 @@ let VersionService=class VersionService {
                         {model: OPTION, through: {model: REL_VER_OPT, attributes: ['']}, as: 'options'},
                         {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
                         include:[
-                            {model: IMAGE, attributes: ['idImage', 'CheminImage'], where: {Type: 2},as: 'images', required: false}
+                            {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                                where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                               as: 'images', required: false}
                         ]},
                         //{model: IMAGE, attributes: ['idImage', 'CheminImage'], where: {Type: 2}, as: 'images'},
                         {model: LIGNETARIF, where: {Type: 0}, as: 'lignetarif', required: false},
@@ -43,7 +47,32 @@ let VersionService=class VersionService {
                     ],
                     where: {CodeModele: codeModele}
                 }).then(versions => {
-                    resolve(versions);
+                    let res=[];
+                    versions.forEach(v=>{
+                        let version = v.toJSON();
+                        let colors = [];
+                        version.couleurs.forEach(couleur=>{
+                            let chemin;
+                            if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                            else chemin=null;
+                           colors.push({
+                               CodeCouleur: couleur.CodeCouleur,
+                               NomCouleur: couleur.NomCouleur,
+                               CodeHexa: couleur.CodeHexa,
+                               CheminImage: chemin
+                           });
+                        });
+                        res.push({
+                            CodeVersion: version.CodeVersion,
+                            CodeModele:  version.CodeModele,
+                            NomVersion:  version.NomVersion,
+                            options: version.options,
+                            couleurs: colors,
+                            lignetarif: version.lignetarif,
+                            modele:version.modele
+                        });
+                    });
+                    resolve(res);
                 }).catch(e => {
                     reject(e);
                 });
@@ -58,8 +87,13 @@ let VersionService=class VersionService {
 
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
-                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                    include:[
+                        {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                            where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                            as: 'images', required: false}
+                    ]},
+                //{model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
@@ -70,6 +104,18 @@ let VersionService=class VersionService {
             var tab = [];
             versions.forEach(v=>{
                 var version= v.toJSON();
+                let colors = [];
+                version.couleurs.forEach(couleur=>{
+                    let chemin;
+                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                    else chemin=null;
+                    colors.push({
+                        CodeCouleur: couleur.CodeCouleur,
+                        NomCouleur: couleur.NomCouleur,
+                        CodeHexa: couleur.CodeHexa,
+                        CheminImage: chemin
+                    });
+                });
                 let suivie=false;
                 if (version.suivies.length>0)  suivie=true;
                 tab.push({
@@ -77,8 +123,8 @@ let VersionService=class VersionService {
                     CodeModele: version.CodeModele,
                     NomVersion: version.NomVersion,
                     options : version.options,
-                    couleurs : version.couleurs,
-                    images : version.images,
+                    couleurs : colors,
+                    //images : version.images,
                     lignetarif: version.lignetarif,
                     suivie : suivie
                 });
@@ -111,18 +157,50 @@ let VersionService=class VersionService {
 
     getVersion(codeVersion) {
         let type=0;
-        return VERSION.findOne({
-            include:[
-                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
-                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
-                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
-                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
-                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
-                    ]},
+        return new Promise((resolve,reject)=>{
+            VERSION.findOne({
+                include:[
+                    {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                    {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                        include:[
+                            {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                                where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                                as: 'images', required: false}
+                        ]},
+                    //{model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                    {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
+                    {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                            {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                        ]},
 
-            ],
-            where : {CodeVersion: codeVersion}
+                ],
+                where : {CodeVersion: codeVersion}
+            }).then(v => {
+                let version = v.toJSON();
+                let colors = [];
+                version.couleurs.forEach(couleur=>{
+                    let chemin;
+                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                    else chemin=null;
+                    colors.push({
+                        CodeCouleur: couleur.CodeCouleur,
+                        NomCouleur: couleur.NomCouleur,
+                        CodeHexa: couleur.CodeHexa,
+                        CheminImage: chemin
+                    });
+                });
+                resolve({
+                    CodeVersion: version.CodeVersion,
+                    CodeModele:  version.CodeModele,
+                    NomVersion:  version.NomVersion,
+                    options: version.options,
+                    couleurs: colors,
+                    lignetarif: version.lignetarif,
+                    modele:version.modele
+                });
+            }).catch(e => {
+                reject(e);
+            });
         });
     }
     getVersionPourAutomobiliste(codeVersion,idAutomobiliste) {
@@ -130,8 +208,13 @@ let VersionService=class VersionService {
 
             include:[
                 {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
-                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                    include:[
+                        {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                            where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                            as: 'images', required: false}
+                    ]},
+                //{model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
                 {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
                 {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
@@ -140,6 +223,18 @@ let VersionService=class VersionService {
             where: {CodeVersion: codeVersion}
         }).then(v=>{
             var version= v.toJSON();
+            let colors = [];
+            version.couleurs.forEach(couleur=>{
+                let chemin;
+                if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                else chemin=null;
+                colors.push({
+                    CodeCouleur: couleur.CodeCouleur,
+                    NomCouleur: couleur.NomCouleur,
+                    CodeHexa: couleur.CodeHexa,
+                    CheminImage: chemin
+                });
+            });
             let suivie=false;
             if (version.suivies.length>0)  suivie=true;
             var res = {
@@ -147,7 +242,7 @@ let VersionService=class VersionService {
                     CodeModele: version.CodeModele,
                     NomVersion: version.NomVersion,
                     options : version.options,
-                    couleurs : version.couleurs,
+                    couleurs : colors,
                     images : version.images,
                     lignetarif: version.lignetarif,
                     suivie : suivie
@@ -161,17 +256,49 @@ let VersionService=class VersionService {
     }
 
     getVersionParNom(nomVersion) {
-        return VERSION.findOne({
-            include:[
-                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
-                {model:COULEUR,through: {model: REL_VER_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
-                {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
-                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
-                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
-                    ]}
-            ],
-            where : {NomVersion: nomVersion}
+        return new Promise((resolve,reject)=>{
+            VERSION.findOne({
+                include:[
+                    {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                    {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                        include:[
+                            {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                                where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                                as: 'images', required: false}
+                        ]},
+                    // {model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                    {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
+                    {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                            {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                        ]}
+                ],
+                where : {NomVersion: nomVersion}
+            }).then(v => {
+                let version = v.toJSON();
+                let colors = [];
+                version.couleurs.forEach(couleur=>{
+                    let chemin;
+                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                    else chemin=null;
+                    colors.push({
+                        CodeCouleur: couleur.CodeCouleur,
+                        NomCouleur: couleur.NomCouleur,
+                        CodeHexa: couleur.CodeHexa,
+                        CheminImage: chemin
+                    });
+                });
+                resolve({
+                    CodeVersion: version.CodeVersion,
+                    CodeModele:  version.CodeModele,
+                    NomVersion:  version.NomVersion,
+                    options: version.options,
+                    couleurs: colors,
+                    lignetarif: version.lignetarif,
+                    modele:version.modele
+                });
+            }).catch(e => {
+                reject(e);
+            });
         });
     }
 

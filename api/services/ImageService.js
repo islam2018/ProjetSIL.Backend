@@ -17,12 +17,15 @@ let ImageService=class ImageService {
     }
 
     createImage(image,type,code) {
-        return IMAGE.create({
-            Type: type,
-            Code: code,
-            CheminImage: image.CheminImage,
-            Description: image.Description
-        });
+        let CodeSup = 0;
+        if (type===2) CodeSup = image.CodeCouleur;
+            return IMAGE.create({
+                Type: type,
+                Code: code,
+                CodeSup: CodeSup,
+                CheminImage: image.CheminImage,
+                Description: image.Description
+            });
     }
 
     getImage(idImage) {
