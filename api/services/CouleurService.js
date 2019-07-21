@@ -1,8 +1,11 @@
 const COULEUR=require('../model/couleur');
+const IMAGE=require('../model/image');
+const sequelize = require('sequelize');
 const REL_VER_COUL=require('../model/rel_ver_coul');
 const REL_MOD_COUL=require('../model/rel_mod_coul');
 const LIGNETARIF = require('../model/lignetarif');
 
+COULEUR.hasMany(IMAGE,{as:'image',foreignKey:'CodeSup',targetKey:'CodeCouleur'});
 COULEUR.belongsTo(REL_VER_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
 COULEUR.belongsTo(REL_MOD_COUL,{foreignKey: 'CodeCouleur', targetKey: 'CodeCouleur'});
 COULEUR.hasOne(LIGNETARIF,{as:'lignetarif',foreignKey:'Code',targetKey:'CodeCouleur'});
@@ -13,12 +16,12 @@ let CouleurService=class CouleurService {
 
     getAllCouleursOfVersion(codeVersion) {
         return  COULEUR.findAll({
-            include: [{
-                model: REL_VER_COUL,attributes:['CodeVersion'],
-                where: {CodeVersion : codeVersion}
-            },{
-                model: LIGNETARIF, where:{Type:1}, as:'lignetarif', required:false
-            }]
+            include: [
+                {model: REL_VER_COUL,attributes:['CodeVersion'], where: {CodeVersion : codeVersion}},
+                {model: IMAGE, attributes: ['CheminImage'],
+                    where: {Type: 2, Code:  codeVersion},
+                    as: 'image', required: false},
+                {model: LIGNETARIF, where:{Type:1}, as:'lignetarif', required:false}]
         });
     }
 
@@ -78,16 +81,6 @@ let CouleurService=class CouleurService {
             CodeCouleur: codeCouleur,
             CodeVersion: codeVersion
         });
-    }
-    addCouleurforModele(codeCouleur,codeModele) {
-        return REL_MOD_COUL.create({
-            CodeCouleur: codeCouleur,
-            CodeModele: codeModele
-        });
-    }
-
-    removeCouleurofVersion(codeCouleur,codeVersion) {
-        return REL_VER_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeVersion:codeVersion}});
     }
 
     removeCouleurofModele(codeCouleur,codeModele) {
