@@ -1,5 +1,7 @@
 const VEHICULE=require('../model/vehicule');
 const VERSION=require('../model/version');
+const values=require('sequelize-values')();
+const groupBy=require('group-by');
 const OPTION=require('../model/option');
 const sequelize=require('../config/dbconnection');
 const Sequelize = require('sequelize');
@@ -13,6 +15,85 @@ let VehiculeService=class VehiculeService {
 
     getAllVehicules() {
         return VEHICULE.findAll({});
+    }
+
+    getVehicules(code) {
+        return new Promise((resolve,reject)=>{
+            VEHICULE.findAll({
+                include:[
+                    {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options'}
+                ],
+                where:{CodeVersion:code,Disponible:1}
+            }).then(data=>{
+
+                let vehicules = [];
+                let Optgroups = [];
+                data.forEach(v=>{
+                   vehicules.push(v.toJSON());
+                });
+                let i=0;
+               while (i<vehicules.length) {
+                    let group=[];
+                    let j=0;
+                    let f=false;
+                   let optionsA = JSON.parse(JSON.stringify(vehicules[i])).options;
+                   while (j<vehicules.length) {
+                       let optionsB = JSON.parse(JSON.stringify(vehicules[j])).options;
+                       if (this.checkOptions(optionsA,optionsB)===true) {
+                           group.push(JSON.parse(JSON.stringify(vehicules[j])));
+                           vehicules.splice(j, 1);
+                           f=true;
+                       } else j++;
+                   }
+                   if (f!==true) i++;
+                   Optgroups.push(group);
+                }
+
+                let groups = [];
+                let promises=[];
+
+                Optgroups.forEach(optgroup=>{
+                    let clrgroups = Object.values(groupBy(optgroup,'CodeCouleur'));
+                    clrgroups.forEach(clrgroup=>{
+                        promises.push(this.calculMontant(clrgroup[0]));
+
+                    });
+                });
+                let k=0;
+                Promise.all(promises).then(prices=>{
+
+                   Optgroups.forEach(optgroup=> {
+                       let options = optgroup[0].options;
+                       let clrgroups = Object.values(groupBy(optgroup, 'CodeCouleur'));
+                       clrgroups.forEach(clrgroup => {
+                           let vehicules = [];
+                           clrgroup.forEach(v => {
+                               vehicules.push({
+                                   NumChassis: v.NumChassis,
+                                   Concessionaire: v.Concessionaire
+                               });
+                           });
+                           groups.push({
+                               vehicules : vehicules,
+                               Montant: prices[k],
+                               quantite : vehicules.length,
+                               CodeVersion: clrgroup[0].CodeVersion,
+                               CodeCouleur: clrgroup[0].CodeCouleur,
+                               options: options,
+                           });
+                           k++;
+                       });
+                   });
+                    resolve(groups);
+                }).catch(e=>{
+                    reject(e);
+                });
+
+
+            }).catch(error=>{
+                reject(error);
+            });
+        });
     }
 
     getVehiculesDisponible(body) {

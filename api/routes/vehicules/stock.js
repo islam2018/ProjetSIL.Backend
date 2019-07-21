@@ -129,6 +129,16 @@ router.post('/disponible',(req,res)=>{
             });
         });
 });
+router.get('/:CodeVersion',(req,res)=>{
+
+    vehiculeService.getVehicules(req.params.CodeVersion).then(data=>{
+        res.status(200).json(data);
+    }).catch(e=>{
+        res.status(500).json({
+            message:'Une erreur s\'est produite'+e
+        });
+    });
+});
 /*
 router.get('/disponible/:codeVersion/:codeCouleur',(req,res)=>{
     versionService.getVersion(req.params.codeVersion).then(version=>{
