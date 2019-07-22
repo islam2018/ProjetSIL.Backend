@@ -274,28 +274,30 @@ let VersionService=class VersionService {
                 ],
                 where : {NomVersion: nomVersion}
             }).then(v => {
-                let version = v.toJSON();
-                let colors = [];
-                version.couleurs.forEach(couleur=>{
-                    let chemin;
-                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
-                    else chemin=null;
-                    colors.push({
-                        CodeCouleur: couleur.CodeCouleur,
-                        NomCouleur: couleur.NomCouleur,
-                        CodeHexa: couleur.CodeHexa,
-                        CheminImage: chemin
+                if (v!==null) {
+                    let version = v.toJSON();
+                    let colors = [];
+                    version.couleurs.forEach(couleur => {
+                        let chemin;
+                        if (couleur.images.length > 0) chemin = couleur.images[0].CheminImage;
+                        else chemin = null;
+                        colors.push({
+                            CodeCouleur: couleur.CodeCouleur,
+                            NomCouleur: couleur.NomCouleur,
+                            CodeHexa: couleur.CodeHexa,
+                            CheminImage: chemin
+                        });
                     });
-                });
-                resolve({
-                    CodeVersion: version.CodeVersion,
-                    CodeModele:  version.CodeModele,
-                    NomVersion:  version.NomVersion,
-                    options: version.options,
-                    couleurs: colors,
-                    lignetarif: version.lignetarif,
-                    modele:version.modele
-                });
+                    resolve({
+                        CodeVersion: version.CodeVersion,
+                        CodeModele: version.CodeModele,
+                        NomVersion: version.NomVersion,
+                        options: version.options,
+                        couleurs: colors,
+                        lignetarif: version.lignetarif,
+                        modele: version.modele
+                    });
+                }else {resolve(v);}
             }).catch(e => {
                 reject(e);
             });

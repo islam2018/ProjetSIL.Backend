@@ -103,6 +103,10 @@ router.post('/:id/versions', UtilFabAccesControl, (req,res) => {
                 });
             });
         }
+    }).catch(error => {
+        res.status(500).json({
+            message: "Une erreur a été produite !"
+        });
     });
 });
 
