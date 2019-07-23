@@ -17,7 +17,7 @@ let CommandeService=class CommandeService {
                 {model:VEHICULE,as:'vehicule'}
             ],
             order: [
-                ['Date', 'ASC'],
+                ['Date', 'DESC'],
             ],
             where : {Fabricant:fabricant}
         }).then (data=>{
@@ -67,7 +67,7 @@ let CommandeService=class CommandeService {
                 {model:VEHICULE,as:'vehicule'}
             ],
             order: [
-                ['Date', 'ASC'],
+                ['Date', 'DESC'],
             ],
             where: {Etat:Etat,Fabricant:fabricant}
         }).then (data=>{
@@ -116,7 +116,7 @@ let CommandeService=class CommandeService {
                 {model:VEHICULE,as:'vehicule'}
             ],
             order: [
-                ['Date', 'ASC'],
+                ['Date', 'DESC'],
             ],
             where: {idAutomobiliste:idAutomobiliste}
         }).then (data=>{
@@ -166,7 +166,7 @@ let CommandeService=class CommandeService {
                 {model:VEHICULE,as:'vehicule'}
             ],
             order: [
-                ['Date', 'ASC'],
+                ['Date', 'DESC'],
             ],
             where : {Reservation: {[Sequelize.Op.ne]: null}, Fabricant:fabricant}
         }).then (data=>{
@@ -272,7 +272,7 @@ let CommandeService=class CommandeService {
                 {model:VEHICULE,as:'vehicule'}
             ],
             order: [
-                ['Date', 'ASC'],
+                ['Date', 'DESC'],
             ],
             where: {idCommande: idCommande}
         }).then (data=>{
