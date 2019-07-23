@@ -76,6 +76,7 @@ router.post('/',(req,res)=>{
     commandeService.createCommande(req.body).then(commande=>{
         commandeService.getCommande(commande.toJSON().idCommande).then(cmd=>{
             pusher.trigger('commande-channel-'+cmd.Fabricant,'newCommand',cmd);
+            console.log('commande-channel-'+cmd.Fabricant);
             res.status(200).json(cmd);
         }).catch(e=> {
             res.status(500).json({

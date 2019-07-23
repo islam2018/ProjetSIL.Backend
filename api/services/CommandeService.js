@@ -286,6 +286,7 @@ let CommandeService=class CommandeService {
                         Etat: command.Etat,
                         Reservation: command.Reservation,
                         automobiliste: command.automobiliste,
+                        Fabricant: command.Fabricant,
                         vehicule: {
                             NumChassis: command.vehicule.NumChassis,
                             Concessionaire: command.vehicule.Concessionaire,
