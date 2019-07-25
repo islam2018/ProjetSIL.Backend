@@ -6,6 +6,7 @@ const ImageService =require('../../services/ImageService');
 const imageService = new ImageService();
 const annonceService=new AnnonceService();
 const offreService=new OffreService();
+const pusher = require('../../config/secret').PUSHER;
 
 const multer = require('multer');
 const CD_CREDENTAILS=require('../../config/secret').CLOUDINARY_CREDENTIALS;
@@ -136,6 +137,7 @@ router.get('/:id/offres',(req,res)=>{
 
 router.post('/:id/offres',(req,res)=>{
     offreService.createOffre(req.body,req.params.id).then(offre=>{
+        pusher.trigger('offre-channel-'+req.params.id,'newOffre',offre);
         res.status(200).json(offre);
     }).catch(error=>{
         res.status(500).json({

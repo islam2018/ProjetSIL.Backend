@@ -82,6 +82,12 @@ let CouleurService=class CouleurService {
             CodeVersion: codeVersion
         });
     }
+    addCouleurforModele(codeCouleur,codeModele) {
+        return REL_MOD_COUL.create({
+            CodeCouleur: codeCouleur,
+            CodeModele: codeModele
+        });
+    }
 
     removeCouleurofModele(codeCouleur,codeModele) {
         return REL_MOD_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeModele:codeModele}});

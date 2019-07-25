@@ -144,7 +144,14 @@ router.post('/:id/modeles',UtilFabAccesControl,(req,res) => {
             });
         } else {
             modeleService.createModele(req.body,req.params.id).then(modele => {
-                res.status(200).json(modele);
+                modeleService.getModele(modele.CodeModele).then(m=>{
+                    pusher.trigger('modele-channel-'+req.params.id,'newModele',m);
+                    res.status(200).json(m);
+                }).catch(e=>{
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                });
             }).catch(error => {
                 res.status(500).json({
                     message: "Une erreur a été produite !"

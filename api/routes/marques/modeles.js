@@ -12,6 +12,7 @@ const modeleService=new ModeleService();
 const versionService=new VersionService();
 const optionService=new OptionService();
 const couleurService=new CouleurService();
+const pusher = require('../../config/secret').PUSHER;
 
 
 router.get('/:id',(req,res)=>{
@@ -96,7 +97,14 @@ router.post('/:id/versions', UtilFabAccesControl, (req,res) => {
             });
         } else {
             versionService.createVersion(req.body,req.params.id).then(version => {
-                res.status(200).json(version);
+                versionService.getVersion(version.CodeVersion).then(v=>{
+                    pusher.trigger('version-channel'+req.params.id,'newVersion',v);
+                    res.status(200).json(v);
+                }).catch(e=>{
+                    res.status(500).json({
+                        message:"Une erreur a été produite !"
+                    });
+                });
             }).catch(error => {
                 res.status(500).json({
                     message: "Une erreur a été produite !"
