@@ -113,9 +113,11 @@ let VehiculeService=class VehiculeService {
                     let vehicule = v.toJSON();
                     let all = true;
                     if (body.options !== undefined) {
+                        console.log(vehicule.options)
+                        console.log(body.options)
                         all = this.checkOptions(vehicule.options, body.options);
                     }
-                    if (all) {
+                    if (all===true) {
                         promises.push(this.calculMontant(vehicule));
                         res.push({
                             NumChassis: vehicule.NumChassis,
@@ -181,13 +183,13 @@ let VehiculeService=class VehiculeService {
         let available = true;
         options.forEach(option=>{
            let found = optionsVehicules.find(o=>{
-              return option.CodeOption === o.CodeOption;
+              return parseInt(option.CodeOption.toString()) === parseInt(o.CodeOption.toString());
            });
            if (found===undefined) available = false;
         });
         optionsVehicules.forEach(optionV=>{
             let found = options.find(o=>{
-                return optionV.CodeOption === o.CodeOption;
+                return parseInt(optionV.CodeOption.toString()) === parseInt(o.CodeOption.toString());
             });
             if (found===undefined) available = false;
         });
