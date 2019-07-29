@@ -135,6 +135,8 @@ router.get('/:id/offres',(req,res)=>{
     });
 });
 
+
+
 router.post('/:id/offres',(req,res)=>{
     offreService.createOffre(req.body,req.params.id).then(offre=>{
         pusher.trigger('offre-channel-'+req.params.id,'newOffre',offre);

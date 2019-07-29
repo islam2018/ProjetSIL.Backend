@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const AnnonceService=require('../services/AnnonceService');
+const OffreService=require('../services/OffreService');
 const ModeleService=require('../services/ModeleService');
 const VersionService=require('../services/VersionService');
 const SuivieService = require('../services/SuivieService');
 const suivieService = new SuivieService();
 const annonceService=new AnnonceService();
+const offreService=new OffreService();
 const modeleService=new ModeleService();
 const versionService=new VersionService();
 
@@ -17,6 +19,19 @@ router.get('/:id/annonces',(req,res)=>{
             message:'Une erreur a été produite'
         });
     });
+});
+
+router.get('/:id/offres',(req,res)=>{
+
+        offreService.getAllOffresOfAutomobiliste(req.params.id).then(offres=>{
+            res.status(200).json(offres);
+        }).catch(error=>{
+            res.status(500).json({
+                msg:"Une erreur a été produite !"
+            });
+        });
+
+
 });
 
 
