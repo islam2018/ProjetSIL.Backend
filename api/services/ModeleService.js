@@ -24,9 +24,9 @@ let ModeleService=class ModeleService {
         return MODELE.findAll({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
-                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'}
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
+                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false}
             ],
             where: {CodeMarque : codeMarque}
         });
@@ -37,9 +37,9 @@ let ModeleService=class ModeleService {
         return MODELE.findAll({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
-                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
+                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false},
                 {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
 
@@ -82,9 +82,9 @@ let ModeleService=class ModeleService {
         return MODELE.findOne({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
-                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'}
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
+                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false}
             ],
             where: {CodeModele : codeModele}
         });
@@ -94,9 +94,9 @@ let ModeleService=class ModeleService {
         return MODELE.findOne({
             include:[
                 {model:VERSION, as:'versions'},
-                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options'},
-                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images'},
+                {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
+                {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false},
                 {model:FAVORIS_MODELE, attributes:['idAutomobiliste'],as:'suivies',
                     where:{idAutomobiliste:idAutomobiliste},required:false}
 
