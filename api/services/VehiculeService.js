@@ -1,5 +1,6 @@
 const VEHICULE=require('../model/vehicule');
 const VERSION=require('../model/version');
+const COULEUR=require('../model/couleur');
 const values=require('sequelize-values')();
 const groupBy=require('group-by');
 const OPTION=require('../model/option');
@@ -8,7 +9,7 @@ const Sequelize = require('sequelize');
 const LigneTarifService = require('./LigneTarifService');
 const ligneTarifService = new LigneTarifService();
 const REL_VEHIC_OPT = require('../model/REL_vehicule_option');
-//VEHICULE.belongsTo(VERSION,{foreignKey:'CodeVersion',targetKey:'CodeVersion'});
+VEHICULE.belongsTo(COULEUR, {foreignKey: 'CodeCouleur'});
 VEHICULE.belongsToMany(OPTION,{as:'options',foreignKey:'NumChassis',through:REL_VEHIC_OPT,otherKey:'CodeOption'});
 
 let VehiculeService=class VehiculeService {
@@ -21,7 +22,8 @@ let VehiculeService=class VehiculeService {
         return new Promise((resolve,reject)=>{
             VEHICULE.findAll({
                 include:[
-                    {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options'}
+                    {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options'},
+                    {model:COULEUR,as:'couleur'}
                 ],
                 where:{CodeVersion:code,Disponible:1}
             }).then(data=>{
@@ -79,6 +81,7 @@ let VehiculeService=class VehiculeService {
                                quantite : vehicules.length,
                                CodeVersion: clrgroup[0].CodeVersion,
                                CodeCouleur: clrgroup[0].CodeCouleur,
+                               CodeHexa: clrgroup[0].couleur.CodeHexa,
                                options: options,
                            });
                            k++;
