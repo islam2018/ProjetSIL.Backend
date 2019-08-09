@@ -257,7 +257,7 @@ let CommandeService=class CommandeService {
     rejectCommande(idCommand) {
         return COMMANDE.update({
             Etat:2
-        }, {where:{idCommande: idCommande}})
+        }, {where:{idCommande: idCommand}})
     }
     setReservation(idCommande,idReservation) {
         return COMMANDE.update({
