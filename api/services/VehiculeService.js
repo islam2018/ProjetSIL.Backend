@@ -1,6 +1,7 @@
 const VEHICULE=require('../model/vehicule');
-const VERSION=require('../model/version');
+const LIGNETARIF=require('../model/lignetarif');
 const COULEUR=require('../model/couleur');
+const VERSION=require('../model/version');
 const values=require('sequelize-values')();
 const groupBy=require('group-by');
 const OPTION=require('../model/option');
@@ -10,7 +11,11 @@ const LigneTarifService = require('./LigneTarifService');
 const ligneTarifService = new LigneTarifService();
 const REL_VEHIC_OPT = require('../model/REL_vehicule_option');
 VEHICULE.belongsTo(COULEUR, {foreignKey: 'CodeCouleur'});
+VEHICULE.belongsTo(VERSION, {foreignKey: 'CodeVersion'});
 VEHICULE.belongsToMany(OPTION,{as:'options',foreignKey:'NumChassis',through:REL_VEHIC_OPT,otherKey:'CodeOption'});
+VERSION.hasOne(LIGNETARIF,{as:'tarifBase',foreignKey:'Code',targetKey:'CodeVersion'});
+OPTION.hasOne(LIGNETARIF,{as:'tarifOption',foreignKey:'Code',targetKey:'CodeOption'});
+COULEUR.hasOne(LIGNETARIF,{as:'tarifCouleur',foreignKey:'Code',targetKey:'CodeCouleur'});
 
 let VehiculeService=class VehiculeService {
 
@@ -22,8 +27,15 @@ let VehiculeService=class VehiculeService {
         return new Promise((resolve,reject)=>{
             VEHICULE.findAll({
                 include:[
-                    {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options'},
-                    {model:COULEUR,as:'couleur'}
+                    {model:OPTION,through: {model: REL_VEHIC_OPT, attributes:['']},as:'options',include:[
+                                {model:LIGNETARIF,as:'tarifOption',attributes:['DateDebut','DateFin','Prix'],required:false,where:{Type:2}}
+                        ]},
+                    {model:COULEUR,as:'couleur',include:[
+                            {model:LIGNETARIF,as:'tarifCouleur',attributes:['DateDebut','DateFin','Prix'],required:false,where:{Type:1}}
+                        ]},
+                    {model:VERSION,as:'version',include:[
+                            {model:LIGNETARIF,as:'tarifBase',attributes:['DateDebut','DateFin','Prix'],required:false,where:{Type:0}}
+                        ]}
                 ],
                 where:{CodeVersion:code,Disponible:1}
             }).then(data=>{
@@ -78,10 +90,10 @@ let VehiculeService=class VehiculeService {
                            groups.push({
                                vehicules : vehicules,
                                Montant: prices[k],
+                               tarifBase: clrgroup[0].version.tarifBase,
                                quantite : vehicules.length,
                                CodeVersion: clrgroup[0].CodeVersion,
-                               CodeCouleur: clrgroup[0].CodeCouleur,
-                               CodeHexa: clrgroup[0].couleur.CodeHexa,
+                               Couleur: clrgroup[0].couleur,
                                options: options,
                            });
                            k++;
