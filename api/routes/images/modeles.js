@@ -36,12 +36,19 @@ router.get('/:id',(req,res)=>{
 
 router.post('/:id',UtilFabAccessControl,upload.single('imageModele'),(req,res)=>{
 
-    req.body.CheminImage=req.file.url;
-    imageService.createImage(req.body,1,req.params.id).then(image=>{
-        res.status(200).json(image);
-    }).catch (err=>{
+
+    imageService.deleteImageMarque(req.params.id).then(result => {
+        req.body.CheminImage=req.file.url;
+        imageService.createImage(req.body, 1, req.params.id).then(image => {
+            res.status(200).json(image);
+        }).catch(err => {
+            res.status(500).json({
+                message: 'Une erreur a été produite'
+            });
+        });
+    }).catch(err => {
         res.status(500).json({
-            message:'Une erreur a été produite'
+            message: 'Une erreur a été produite'
         });
     });
 });

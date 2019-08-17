@@ -49,6 +49,12 @@ let ImageService=class ImageService {
             where: {Code: codeMarque, Type:0}
         })
     }
+
+    deleteImageVersion(codeVersion,codeCouleur) {
+        return IMAGE.destroy({
+            where: {Code: codeVersion, CodeSup:codeCouleur, Type:2}
+        })
+    }
 };
 
 module.exports=ImageService;

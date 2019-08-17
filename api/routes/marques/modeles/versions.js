@@ -172,7 +172,7 @@ router.post('/:id/couleurs',UtilFabAccesControl, (req,res) => {
 
 });
 
-router.delete('/:id1/options/:id2', UtilFabAccesControl,(req,res) => {
+router.delete('/:id1/couleur/:id2', UtilFabAccesControl,(req,res) => {
     couleurService.removeCouleurofVersion(req.params.id2,req.params.id1).then(result=>{
         if (result) {
             res.status(200).json({
@@ -257,6 +257,7 @@ router.delete('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
         });
     });
 });
+
 
 
 

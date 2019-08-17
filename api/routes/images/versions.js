@@ -36,12 +36,29 @@ router.get('/:id',(req,res)=>{
 
 router.post('/:id',UtilFabAccessControl,upload.single('imageVersion'),(req,res)=>{
 
-    req.body.CheminImage=req.file.url;
-    imageService.createImage(req.body,2,req.params.id).then(image=>{
-        res.status(200).json(image);
-    }).catch (err=>{
+    imageService.deleteImageVersion(req.params.id,req.body.CodeCouleur).then(result => {
+        req.body.CheminImage = req.file.url;
+        imageService.createImage(req.body, 2, req.params.id).then(image => {
+            res.status(200).json(image);
+        }).catch(err => {
+            res.status(500).json({
+                message: 'Une erreur a été produite'
+            });
+        });
+    }).catch(err => {
         res.status(500).json({
-            message:'Une erreur a été produite'
+            message: 'Une erreur a été produite'
+        });
+    });
+});
+
+
+router.delete('/:id',UtilFabAccessControl,(req,res) => {
+    imageService.deleteImageVersion(req.params.id,req.query.couleur).then( a => {
+        res.status(200).json(a);
+    }).catch( error => {
+        res.status(500).json({
+            message: "Une erreur a éte produite !"
         });
     });
 });

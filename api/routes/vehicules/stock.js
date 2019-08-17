@@ -4,6 +4,8 @@ const VehiculeService = require('../../services/VehiculeService');
 const vehiculeService = new VehiculeService();
 const LigneTarifService = require('../../services/LigneTarifService');
 const ligneTarifService = new LigneTarifService();
+const InfService = require('../../services/InformationService');
+const informationService = new InfService();
 const UtilFabAccessControl= require('../../control/AccessControl').UtilFabAccessControl;
 const csv = require('csvtojson');
 const request = require('request');
@@ -63,6 +65,7 @@ router.post('/',upload.single('stockFile'), (req, res) => {
             });
             Promise.all(promises_options).then(r=>{
                 vehiculeService.getAllVehicules().then(r=>{
+                    informationService.updateStockInfo(req.query.fabricant);
                     res.status(200).json(r);
                 }).catch(e2=>{
                     res.status(500).json({message:'Une erreur a été produite'});
@@ -82,7 +85,7 @@ router.post('/',upload.single('stockFile'), (req, res) => {
 
 });
 
-router.post('/',upload.single('ligneTarifFile'), (req, res) => {
+router.post('/lignetarif',upload.single('ligneTarifFile'), (req, res) => {
     console.log(req.file.url);
     csv({
         delimiter: [";", ","],
@@ -105,6 +108,7 @@ router.post('/',upload.single('ligneTarifFile'), (req, res) => {
             promises.push(ligneTarifService.createLigneTarif(ligneTarif,ligneTarif.Type,ligneTarif.Code));
         });
         Promise.all(promises).then(data=>{
+            informationService.updateTarifInfo(req.query.fabricant);
             res.status(200).json(data);
         }).catch(error=>{
             res.status(500).json({

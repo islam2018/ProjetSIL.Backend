@@ -92,6 +92,10 @@ let CouleurService=class CouleurService {
     removeCouleurofModele(codeCouleur,codeModele) {
         return REL_MOD_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeModele:codeModele}});
     }
+
+    removeCouleurofVersion(codeCouleur,codeVersion) {
+        return REL_VER_COUL.destroy({where:{CodeCouleur:codeCouleur,CodeVersion:codeVersion}});
+    }
 };
 
 
