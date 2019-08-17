@@ -16,7 +16,8 @@ let SuivieService=class SuivieService {
            let versions = s.getValues(value);
            console.log(versions);
            versions.forEach(function(version) {
-              request.post(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
+               this.ajouterSuivieVersion(idAutomobiliste,version.CodeVersion);
+              //request.post(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
            });
             return FAVORIS_MODELE.create({
                 CodeModele:codeModele,
@@ -40,8 +41,8 @@ let SuivieService=class SuivieService {
             versionService.getAllVersion(codeModele).then(versions => {
                 let promises = [];
 
-                versions.forEach(v => {
-                    let version = v.toJSON();
+                versions.forEach(version => {
+
                     console.log(version);
                     promises.push(this.supprimerSuivieVersion(idAutomobiliste, version.CodeVersion));
                     //request.delete(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
