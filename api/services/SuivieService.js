@@ -15,7 +15,7 @@ let SuivieService=class SuivieService {
         return versionService.getAllVersion(codeModele).then(value => {
            let versions = s.getValues(value);
            console.log(versions);
-           versions.forEach(function(version) {
+           versions.forEach(version=> {
                this.ajouterSuivieVersion(idAutomobiliste,version.CodeVersion);
               //request.post(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
            });
