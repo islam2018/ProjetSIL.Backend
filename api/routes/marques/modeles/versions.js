@@ -11,6 +11,16 @@ const optionService=new OptionService();
 const couleurService=new CouleurService();
 const ligneTarifService=new LigneTarifService();
 
+router.get('/dernieres',(req,res)=>{
+    versionService.getLatestVersions().then(versions=>{
+        res.status(200).json(versions);
+    }).catch (error=>{
+        res.status(500).json({
+            message: "Une erreur a été produite !"+error,
+        });
+    });
+});
+
 
 router.get('/:id', (req,res) => {
     versionService.getVersion(req.params.id).then(version=>{
@@ -21,7 +31,7 @@ router.get('/:id', (req,res) => {
         });
     });
 });
-
+const beamsClient = require('../../../config/secret').BEAMS;
 router.put('/:id',UtilFabAccesControl, (req,res) => {
     versionService.getVersion(req.params.id).then(version => {
         if ( version == null ) {
@@ -29,9 +39,30 @@ router.put('/:id',UtilFabAccesControl, (req,res) => {
                 message: "Version inexistante"
             });
         } else {
+            let oldMnt = version.lignetarif.Montant;
             versionService.updateVersion(req.body,req.params.id).then( resu => {
                 if (resu) {
                     versionService.getVersion(req.params.id).then(ver=>{
+                        let newMnt = ver.lignetarif.Montant;
+                        if( oldMnt !== newMnt) {
+                            let body = 'La '+ver.NomVersion+' de la '+ver.modele.NomModele
+                                +' a un nouvau prix: '+newMnt;
+                            beamsClient.publishToInterests(['VERSION_'+ver.CodeVersion], {
+                                fcm: {
+                                    notification: {
+                                        title: 'Tarif '+ver.modele.NomModele+' '+ver.NomVersion,
+                                        body: body
+                                    },
+                                    data:{
+                                        version:ver
+                                    }
+                                }
+                            }).then((publishResponse) => {
+                                console.log('Just published:', publishResponse.publishId);
+                            }).catch((error) => {
+                                console.log('Error:', error);
+                            });
+                        }
                         res.status(200).json(ver);
                     }).catch(err=>{
                         res.status(500).json({

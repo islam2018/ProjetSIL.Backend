@@ -16,8 +16,14 @@ let SuivieService=class SuivieService {
            let versions = s.getValues(value);
            console.log(versions);
            versions.forEach(version=> {
-               this.ajouterSuivieVersion(idAutomobiliste,version.CodeVersion);
-              //request.post(configurl+'/suivies/versions/'+version.CodeVersion,{form:{idAutomobiliste:idAutomobiliste}},null);
+               this.getSuivieVersion(idAutomobiliste,version.CodeVersion).then(r=>{
+                       if (r===null) {
+                           this.ajouterSuivieVersion(idAutomobiliste,version.CodeVersion);
+                       }
+               }).catch(e=>{
+                   console.log("Error"+e);
+               });
+
            });
             return FAVORIS_MODELE.create({
                 CodeModele:codeModele,
@@ -27,6 +33,22 @@ let SuivieService=class SuivieService {
 
 
     }
+
+    getSuivieVersion(idAutomobiliste, codeVersion) {
+        return FAVORIS_VERSION.findOne({where: {
+                CodeVersion: codeVersion,
+                idAutomobiliste: idAutomobiliste
+            }
+        });
+    }
+    getSuivieModele(idAutomobiliste, codeModele) {
+        return FAVORIS_MODELE.findOne({where: {
+                CodeModele: codeModele,
+                idAutomobiliste: idAutomobiliste
+            }
+        });
+    }
+
 
     ajouterSuivieVersion(idAutomobiliste, codeVersion) {
         return FAVORIS_VERSION.create({

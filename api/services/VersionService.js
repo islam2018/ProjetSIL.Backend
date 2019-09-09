@@ -136,6 +136,121 @@ let VersionService=class VersionService {
         });
     }
 
+    getAllVersionsSuivies(idAutomobiliste,page) {
+        const offset = page * 10;
+        const limit = offset + 10;
+        return VERSION.findAll({
+            offset: offset,
+            limit: limit,
+            include:[
+                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                    include:[
+                        {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                            where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                            as: 'images', required: false}
+                    ]},
+                //{model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
+                {model: MODELE, attributes:['NomModele'], as:'modele', include:[
+                        {model: MARQUE, attributes:['NomMarque'], as:'marque'}
+                    ]},
+                {model:FAVORIS_VERSION, attributes:['idAutomobiliste'],as:'suivies',
+                    where:{idAutomobiliste:idAutomobiliste}}
+
+            ],
+        }).then(versions=>{
+            var tab = [];
+            versions.forEach(v=>{
+                var version= v.toJSON();
+                let colors = [];
+                version.couleurs.forEach(couleur=>{
+                    let chemin;
+                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                    else chemin=null;
+                    colors.push({
+                        CodeCouleur: couleur.CodeCouleur,
+                        NomCouleur: couleur.NomCouleur,
+                        CodeHexa: couleur.CodeHexa,
+                        CheminImage: chemin
+                    });
+                });
+                let suivie=false;
+                if (version.suivies.length>0)  suivie=true;
+                tab.push({
+                    CodeVersion: version.CodeVersion,
+                    CodeModele: version.CodeModele,
+                    NomVersion: version.NomVersion,
+                    options : version.options,
+                    couleurs : colors,
+                    modele:version.modele,
+                    //images : version.images,
+                    lignetarif: version.lignetarif,
+                    suivie : suivie
+                });
+            });
+            return new Promise((resolve,reject)=>resolve(tab));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
+        });
+    }
+
+    getLatestVersions() {
+        return VERSION.findAll({
+           order:[
+               ['Date','DESC']
+           ],
+            limit:5,
+            include:[
+                {model:OPTION,through: {model: REL_VER_OPT, attributes:['']},as:'options'},
+                {model: COULEUR, through: {model: REL_VER_COUL, attributes: ['']}, as: 'couleurs',
+                    include:[
+                        {model: IMAGE, attributes: ['idImage', 'CheminImage'],
+                            where: {Type: 2, Code:  sequelize.literal('`version`.`CodeVersion` = `couleurs->images`.`Code`')},
+                            as: 'images', required: false}
+                    ]},
+                //{model:IMAGE, attributes:['CheminImage'],where:{Type:2},as:'images'},
+                {model: LIGNETARIF, where:{Type:0}, as:'lignetarif', required:false},
+                {model: MODELE, as:'modele', include:[
+                        {model: MARQUE, as:'marque'}
+                    ]}
+
+            ]
+        }).then(versions=>{
+            var tab = [];
+            versions.forEach(v=>{
+                var version= v.toJSON();
+                let colors = [];
+                version.couleurs.forEach(couleur=>{
+                    let chemin;
+                    if (couleur.images.length>0) chemin= couleur.images[0].CheminImage;
+                    else chemin=null;
+                    colors.push({
+                        CodeCouleur: couleur.CodeCouleur,
+                        NomCouleur: couleur.NomCouleur,
+                        CodeHexa: couleur.CodeHexa,
+                        CheminImage: chemin
+                    });
+                });
+                tab.push({
+                    CodeVersion: version.CodeVersion,
+                    CodeModele: version.CodeModele,
+                    NomVersion: version.NomVersion,
+                    options : version.options,
+                    couleurs : colors,
+                    modele:version.modele,
+                    //images : version.images,
+                    lignetarif: version.lignetarif
+                });
+            });
+            return new Promise((resolve,reject)=>resolve(tab));
+        }).catch(err=>{
+            console.log(err);
+            return new Promise((resolve,reject)=>reject(err));
+        });
+    }
+
     createVersion(version,codeModele) {
         return VERSION.create({
             CodeVersion: version.CodeVersion,

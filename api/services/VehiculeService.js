@@ -33,7 +33,7 @@ let VehiculeService=class VehiculeService {
                     {model:COULEUR,as:'couleur',include:[
                             {model:LIGNETARIF,as:'tarifCouleur',attributes:['DateDebut','DateFin','Prix'],required:false,where:{Type:1}}
                         ]},
-                    {model:VERSION,as:'version',include:[
+                    {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'],as:'version',include:[
                             {model:LIGNETARIF,as:'tarifBase',attributes:['DateDebut','DateFin','Prix'],required:false,where:{Type:0}}
                         ]}
                 ],

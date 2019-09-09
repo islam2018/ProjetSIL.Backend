@@ -23,7 +23,7 @@ let ModeleService=class ModeleService {
 
         return MODELE.findAll({
             include:[
-                {model:VERSION, as:'versions'},
+                {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'], as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
                 {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false}
@@ -36,7 +36,7 @@ let ModeleService=class ModeleService {
 
         return MODELE.findAll({
             include:[
-                {model:VERSION, as:'versions'},
+                {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'], as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
                 {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false},
@@ -81,7 +81,7 @@ let ModeleService=class ModeleService {
     getModele(codeModele) {
         return MODELE.findOne({
             include:[
-                {model:VERSION, as:'versions'},
+                {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'], as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
                 {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false}
@@ -93,7 +93,7 @@ let ModeleService=class ModeleService {
 
         return MODELE.findOne({
             include:[
-                {model:VERSION, as:'versions'},
+                {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'], as:'versions'},
                 {model:OPTION, through: {model: REL_MOD_OPT, attributes:['']},as:'options',required:false},
                 {model:COULEUR, through: {model: REL_MOD_COUL, attributes:['']},as:'couleurs',required:false},
                 {model:IMAGE, attributes:['CheminImage'],where:{Type:1},as:'images',required:false},

@@ -136,11 +136,35 @@ router.get('/:id/offres',(req,res)=>{
 });
 
 
-
+const beamsClient = require('../../config/secret').BEAMS;
 router.post('/:id/offres',(req,res)=>{
     offreService.createOffre(req.body,req.params.id).then(offre=>{
         pusher.trigger('offre-channel-'+req.params.id,'newOffre',offre);
-        res.status(200).json(offre);
+
+        offreService.getOffreDetails(offre.idOffre).then(details=>{
+
+            let body= details.automobiliste.Nom+" "+details.automobiliste.Prenom+
+                " a offert "+details.Montant+" DA pour votre voiture : "+details.vehicule.NomModele+" "+details.vehicule.NomVersion+".";
+            console.log(body);
+            beamsClient.publishToInterests(['ANNONCE_'+req.params.id], {
+                fcm: {
+                    notification: {
+                        title: 'Nouvelle offre !',
+                        body: body,
+                        click_action: 'OpenOffers'
+                    }
+                }
+            }).then((publishResponse) => {
+                console.log('Just published:', publishResponse.publishId);
+            }).catch((error) => {
+                console.log('Error:', error);
+            });
+            res.status(200).json(offre);
+        }).catch(e=>{
+            res.status(500).json("Erreur"+e);
+        });
+
+
     }).catch(error=>{
         res.status(500).json({
             msg:"Une erreur a été produite !"

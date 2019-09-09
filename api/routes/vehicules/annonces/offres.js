@@ -55,13 +55,28 @@ router.put('/:id',(req,res)=>{
         });
     });
 });
-
+const beamsClient = require('../../../config/secret').BEAMS;
 router.put('/:id/accepter',(req,res)=>{
     offreService.getOffre(req.params.id).then(offre=>{
         if (offre!=null) {
             offreService.changeState(req.params.id,1).then(resu=>{
                 if (resu) {
-                    offreService.getOffre(req.params.id).then(o=>{
+                    offreService.getOffreDetails(req.params.id).then(o=>{
+                        let body = o.annonce.automobiliste.Nom + ' '+o.annonce.automobiliste.Prenom+
+                            ' a accepté votre offre sur la '+o.annonce.version.modele.NomModele+' '+o.annonce.version.NomVersion+".";
+                        beamsClient.publishToInterests(['OFFRE_'+o.idOffre], {
+                            fcm: {
+                                notification: {
+                                    title: 'Offre acceptée !',
+                                    body: body,
+                                    click_action: 'OpenOffers'
+                                }
+                            }
+                        }).then((publishResponse) => {
+                            console.log('Just published:', publishResponse.publishId);
+                        }).catch((error) => {
+                            console.log('Error:', error);
+                        });
                         res.status(200).json(o);
                     }).catch(err=>{
                         res.status(500).json({

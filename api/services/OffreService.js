@@ -87,6 +87,52 @@ let OffreService=class OffreService {
         });
     }
 
+    getOffreDetails(idOffre) {
+        return new Promise((resolve,reject)=>{
+            OFFRE.findOne({
+                include:[
+                    {model:ANNONCE,as:'annonce',include:[
+                            {model:VERSION,attributes:['CodeVersion','CodeModele','NomVersion'],as:'version',include:[
+                                    {model:MODELE,as:'modele',include:[
+                                            {model:MARQUE,as:'marque'}
+                                        ]}
+                                ]},
+                            {model:AUTOMOBILISTE,as:'automobiliste'}
+
+                        ]},
+                    {model:AUTOMOBILISTE,as:'automobiliste'}
+                ],
+                where: {idOffre:idOffre}
+            }).then(offre=>{
+                    resolve({
+                        idOffre: offre.idOffre,
+                        Montant: offre.Montant,
+                        Date: offre.Date,
+                        Etat: offre.Etat,
+                        automobiliste: offre.automobiliste,
+                        vehicule:{
+                            CodeVersion:offre.annonce.version.CodeVersion,
+                            CodeModele:offre.annonce.version.modele.CodeModele,
+                            CodeMarque:offre.annonce.version.modele.marque.CodeMarque,
+                            NomVersion:offre.annonce.version.NomVersion,
+                            NomModele:offre.annonce.version.modele.NomModele,
+                            NomMarque:offre.annonce.version.modele.marque.NomMarque,
+                            Couleur: offre.annonce.Couleur,
+                            Km: offre.annonce.Km,
+                            Carburant: offre.annonce.Carburant,
+                            Annee: offre.annonce.Annee
+                        },
+                        annonce:{
+                            idAnnonce: offre.annonce.idAnnonce,
+                            Prix: offre.annonce.Prix
+                        },
+                    });
+                }).catch(e=>{
+                    reject(e);
+                });
+            });
+    }
+
     updateOffre(offre,idOffre) {
         return OFFRE.update({
             Montant: offre.Montant

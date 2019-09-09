@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const SuivieService = require('../../services/SuivieService');
 const suivieService = new SuivieService();
+const VersionService = require('../../services/VersionService');
+const versionService = new VersionService();
 
 
 router.post('/:id',(req,res)=>{
@@ -26,6 +28,18 @@ router.post('/:id',(req,res)=>{
         })
     });
 
+});
+
+router.get('',(req,res)=>{
+    let automobilste = req.query.automobiliste;
+    let page =req.query.page;
+    versionService.getAllVersionsSuivies(automobilste,page).then(versions=>{
+        res.status(200).json(versions);
+    }).catch(er=>{
+       res.status(500).json({
+           message:'Une erreur s\'est produite'+er
+       });
+    });
 });
 
 

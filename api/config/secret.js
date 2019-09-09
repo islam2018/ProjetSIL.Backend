@@ -6,6 +6,11 @@ var pusher = new Pusher({
     cluster: 'eu',
     encrypted: true
 });
+const PushNotifications = require('@pusher/push-notifications-server');
+let beamsClient = new PushNotifications({
+    instanceId: 'cdb4283c-b2a5-4469-85df-5dd6936e57c2',
+    secretKey: '1818207AA2B8C580394FD32AC2B559C404FD30DF318F6207CCAEBE4FB21B5254'
+});
 
 const JWT_CONFIG ={
     ADMIN_KEY:"7E29A4832D4148AA72FB1B8AF5CDB",
@@ -36,3 +41,4 @@ module.exports.FACEBBOK_CREDENTIALS=FACEBBOK_CREDENTIALS;
 module.exports.CLOUDINARY_CREDENTIALS=CLOUDINARY_CREDENTIALS;
 module.exports.BRAINTREE_CREDENTIALS=BRAINTREE_CREDENTIALS;
 module.exports.PUSHER = pusher;
+module.exports.BEAMS = beamsClient;
