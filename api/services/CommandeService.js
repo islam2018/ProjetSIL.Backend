@@ -260,9 +260,22 @@ let CommandeService=class CommandeService {
         }, {where:{idCommande: idCommand}})
     }
     setReservation(idCommande,idReservation) {
-        return COMMANDE.update({
-            Reservation:idReservation
-        }, {where:{idCommande: idCommande}})
+        return new Promise((resolve,reject)=>{
+            COMMANDE.update({
+                Reservation:idReservation
+            }, {where:{idCommande: idCommande}}).then(r=>{
+                if (r) {
+                    COMMANDE.findOne({where:{idCommande:idCommande}}).then(cmd=>{
+                        VEHICULE.update({
+                            Disponible:0,
+                        }, {where:{NumChassis:cmd.NumChassis}}).then(r=>{
+                            resolve(r);
+                        }).catch(e=>reject(e));
+                    }).catch(e=>reject(e));
+                }
+            }).catch(e=>reject(e));
+        });
+
     }
 
     getCommande(idCommande) {
