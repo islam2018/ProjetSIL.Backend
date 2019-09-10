@@ -31,7 +31,7 @@ router.get('/:id', (req,res) => {
         });
     });
 });
-const beamsClient = require('../../../config/secret').BEAMS;
+
 router.put('/:id',UtilFabAccesControl, (req,res) => {
     versionService.getVersion(req.params.id).then(version => {
         if ( version == null ) {
@@ -39,30 +39,10 @@ router.put('/:id',UtilFabAccesControl, (req,res) => {
                 message: "Version inexistante"
             });
         } else {
-            let oldMnt = version.lignetarif.Montant;
+
             versionService.updateVersion(req.body,req.params.id).then( resu => {
                 if (resu) {
-                    versionService.getVersion(req.params.id).then(ver=>{
-                        let newMnt = ver.lignetarif.Montant;
-                        if( oldMnt !== newMnt) {
-                            let body = 'La '+ver.NomVersion+' de la '+ver.modele.NomModele
-                                +' a un nouvau prix: '+newMnt;
-                            beamsClient.publishToInterests(['VERSION_'+ver.CodeVersion], {
-                                fcm: {
-                                    notification: {
-                                        title: 'Tarif '+ver.modele.NomModele+' '+ver.NomVersion,
-                                        body: body
-                                    },
-                                    data:{
-                                        version:ver
-                                    }
-                                }
-                            }).then((publishResponse) => {
-                                console.log('Just published:', publishResponse.publishId);
-                            }).catch((error) => {
-                                console.log('Error:', error);
-                            });
-                        }
+                    versionService.getVersion(req.params.id).then(ver=> {
                         res.status(200).json(ver);
                     }).catch(err=>{
                         res.status(500).json({
@@ -248,18 +228,42 @@ router.post('/:id/lignetarif',(req,res) => {
     })
 });
 
-
-router.put('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
+const beamsClient = require('../../../config/secret').BEAMS;
+router.put('/:id/lignetarif'/*,UtilFabAccesControl*/,(req,res) => {
     ligneTarifService.getLigneTarif(req.params.id,0).then(lignetarif => {
         if ( lignetarif == null ) {
             res.status(404).json({
                 message: "lignetarif inexistante"
             });
         } else {
+
+            let oldMnt = lignetarif.Prix;
+            console.log("old",oldMnt);
             ligneTarifService.updateLigneTarif(req.body,req.params.id,0).then( resu => {
                 if (resu) {
-                    ligneTarifService.getLigneTarif(req.params.id,0).then(ligneT=>{
-                        res.status(200).json(ligneT);
+                    versionService.getVersion(req.params.id).then(ver=>{
+                        let newMnt = ver.lignetarif.Prix;
+                        console.log("new",newMnt);
+                        if( oldMnt !== newMnt) {
+                            let body = 'La '+ver.NomVersion+' de la '+ver.modele.NomModele
+                                +' a un nouvau prix: '+newMnt;
+                            beamsClient.publishToInterests(['VERSION_'+ver.CodeVersion], {
+                                fcm: {
+                                    notification: {
+                                        title: 'Tarif '+ver.modele.NomModele+' '+ver.NomVersion,
+                                        body: body
+                                    },
+                                    data:{
+                                        version:ver
+                                    }
+                                }
+                            }).then((publishResponse) => {
+                                console.log('Just published:', publishResponse.publishId);
+                            }).catch((error) => {
+                                console.log('Error:', error);
+                            });
+                        }
+                        res.status(200).json(ver);
                     }).catch(err=>{
                         res.status(500).json({
                             message:"Une erreur a été produite !"
@@ -276,6 +280,10 @@ router.put('/:id/lignetarif',UtilFabAccesControl,(req,res) => {
                 });
             });
         }
+    }).catch(err=> {
+        res.status(500).json({
+            message: "Une erreur a été produite !"
+        });
     });
 });
 
