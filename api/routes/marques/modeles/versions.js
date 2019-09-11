@@ -247,6 +247,10 @@ router.put('/:id/lignetarif'/*,UtilFabAccesControl*/,(req,res) => {
                         if( oldMnt !== newMnt) {
                             let body = 'La '+ver.NomVersion+' de la '+ver.modele.NomModele
                                 +' a un nouvau prix: '+newMnt;
+                            let imageUrl = "";
+                            if (ver.couleurs.length>0) {
+                                imageUrl = ver.couleurs[0].CheminImage;
+                            }
                             beamsClient.publishToInterests(['VERSION_'+ver.CodeVersion], {
                                 fcm: {
                                     notification: {
@@ -254,7 +258,9 @@ router.put('/:id/lignetarif'/*,UtilFabAccesControl*/,(req,res) => {
                                         body: body
                                     },
                                     data:{
-                                        version:ver
+                                        NomVersion:ver.NomVersion,
+                                        CheminImage:imageUrl,
+                                        Montant:ver.lignetarif.Prix
                                     }
                                 }
                             }).then((publishResponse) => {
@@ -266,23 +272,23 @@ router.put('/:id/lignetarif'/*,UtilFabAccesControl*/,(req,res) => {
                         res.status(200).json(ver);
                     }).catch(err=>{
                         res.status(500).json({
-                            message:"Une erreur a été produite !"
+                            message:"Une erreur a été produite !3"+err
                         });
                     });
                 } else {
                     res.status(500).json({
-                        message:"Une erreur a été produite !"
+                        message:"Une erreur a été produite !2"
                     });
                 }
             }).catch( error => {
                 res.status(500).json({
-                    message: "Une erreur a éte produite !"
+                    message: "Une erreur a éte produite !1"+error
                 });
             });
         }
     }).catch(err=> {
         res.status(500).json({
-            message: "Une erreur a été produite !"
+            message: "Une erreur a été produite !4"+err
         });
     });
 });
