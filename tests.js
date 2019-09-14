@@ -20,7 +20,7 @@ jasmine.addReporter(new HtmlReporter({
     highlightSuspectLine: true,
 }));
 
-//jasmine.addReporter(reporter);
+jasmine.addReporter(reporter);
 jasmine.showColors(true);
 jasmine.execute();
 

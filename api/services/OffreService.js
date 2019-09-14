@@ -124,7 +124,8 @@ let OffreService=class OffreService {
                         },
                         annonce:{
                             idAnnonce: offre.annonce.idAnnonce,
-                            Prix: offre.annonce.Prix
+                            Prix: offre.annonce.Prix,
+                            automobiliste: offre.annonce.automobiliste
                         },
                     });
                 }).catch(e=>{

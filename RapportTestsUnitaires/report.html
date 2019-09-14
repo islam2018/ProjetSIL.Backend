@@ -130,346 +130,248 @@
         "path": "./RapportTestsUnitaires"
     },
     "timer": {
-        "jasmineStart": "2019-03-04T19:23:20.105Z",
-        "jasmineDone": "2019-03-04T19:23:21.163Z"
+        "jasmineStart": "2019-09-11T11:15:55.917Z",
+        "jasmineDone": "2019-09-11T11:16:08.321Z"
     },
     "counts": {
-        "passed": 53
+        "failed": 53
     },
     "sequence": [
         {
-            "id": "spec34",
-            "description": "should change the element (id)",
-            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec49",
+            "description": "should say element already exists in the table \"modele\"",
+            "fullName": "TESTS:/marques |  POST /marques/:id/modeles should say element already exists in the table \"modele\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:378:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:378:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.209Z",
-            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec35",
-            "description": "should say the element is not found",
-            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.217Z",
-            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec39",
-            "description": "should say element already exists in the table \"version\"",
-            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should say element already exists in the table \"version\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.233Z",
-            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
-            "duration": null
-        },
-        {
-            "id": "spec38",
-            "description": "should add a new element to table \"version\"",
-            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should add a new element to table \"version\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.243Z",
-            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
-            "duration": null
-        },
-        {
-            "id": "spec33",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.254Z",
-            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec37",
-            "description": "should return all the \"versions\" of marque (id) ",
-            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions should return all the \"versions\" of marque (id) ",
-            "failedExpectations": [],
             "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.262Z",
-            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions ",
-            "duration": null
-        },
-        {
-            "id": "spec36",
-            "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.276Z",
-            "prefix": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec40",
-            "description": "should return all the \"marques\"",
-            "fullName": "TESTS:/marques |  GET /marques/ should return all the \"marques\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.284Z",
-            "prefix": "TESTS:/marques |  GET /marques/ ",
-            "duration": null
-        },
-        {
-            "id": "spec42",
-            "description": "should say element already exists in the table \"marque\"",
-            "fullName": "TESTS:/marques |  POST /marques/ should say element already exists in the table \"marque\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.292Z",
-            "prefix": "TESTS:/marques |  POST /marques/ ",
-            "duration": null
-        },
-        {
-            "id": "spec41",
-            "description": "should add a new element to table \"marque\"",
-            "fullName": "TESTS:/marques |  POST /marques/ should add a new element to table \"marque\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.299Z",
-            "prefix": "TESTS:/marques |  POST /marques/ ",
-            "duration": null
-        },
-        {
-            "id": "spec50",
-            "description": "should return all the \"marques\"",
-            "fullName": "TESTS:/marques |  GET /marques/:id/utilfab should return all the \"marques\"",
-            "failedExpectations": [],
-            "passedExpectations": [],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.307Z",
-            "prefix": "TESTS:/marques |  GET /marques/:id/utilfab ",
-            "duration": null
-        },
-        {
-            "id": "spec46",
-            "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques |  DELETE /marques/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.316Z",
-            "prefix": "TESTS:/marques |  DELETE /marques/:id ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.077Z",
+            "prefix": "TESTS:/marques |  POST /marques/:id/modeles ",
             "duration": null
         },
         {
             "id": "spec48",
             "description": "should add a new element to table \"modele\"",
             "fullName": "TESTS:/marques |  POST /marques/:id/modeles should add a new element to table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:358:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:358:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.340Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.110Z",
             "prefix": "TESTS:/marques |  POST /marques/:id/modeles ",
             "duration": null
         },
         {
-            "id": "spec49",
-            "description": "should say element already exists in the table \"modele\"",
-            "fullName": "TESTS:/marques |  POST /marques/:id/modeles should say element already exists in the table \"modele\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec50",
+            "description": "should return all the \"marques\"",
+            "fullName": "TESTS:/marques |  GET /marques/:id/utilfab should return all the \"marques\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:416:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:416:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.344Z",
-            "prefix": "TESTS:/marques |  POST /marques/:id/modeles ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.353Z",
+            "prefix": "TESTS:/marques |  GET /marques/:id/utilfab ",
             "duration": null
         },
         {
-            "id": "spec44",
-            "description": "should change the element (id)",
-            "fullName": "TESTS:/marques |  PUT /marques/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec51",
+            "description": "should add a new element to table \"utilisateurFabricant\"",
+            "fullName": "TESTS:/marques |  POST /marques/:id/utilfab should add a new element to table \"utilisateurFabricant\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'Fabricant' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:477:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'Fabricant' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:477:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.357Z",
-            "prefix": "TESTS:/marques |  PUT /marques/:id ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.605Z",
+            "prefix": "TESTS:/marques |  POST /marques/:id/utilfab ",
+            "duration": null
+        },
+        {
+            "id": "spec52",
+            "description": "should say element already exists in the table \"utilisateurFabricant\"",
+            "fullName": "TESTS:/marques |  POST /marques/:id/utilfab should say element already exists in the table \"utilisateurFabricant\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:495:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:495:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.618Z",
+            "prefix": "TESTS:/marques |  POST /marques/:id/utilfab ",
             "duration": null
         },
         {
             "id": "spec45",
             "description": "should say the element is not found",
             "fullName": "TESTS:/marques |  PUT /marques/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:228:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:228:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.361Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.762Z",
+            "prefix": "TESTS:/marques |  PUT /marques/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec44",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques |  PUT /marques/:id should change the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'NomMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:208:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'NomMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:208:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.779Z",
             "prefix": "TESTS:/marques |  PUT /marques/:id ",
             "duration": null
         },
@@ -477,390 +379,543 @@
             "id": "spec43",
             "description": "should return the element (id)",
             "fullName": "TESTS:/marques |  GET /marques/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:161:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:161:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.368Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:57.941Z",
             "prefix": "TESTS:/marques |  GET /marques/:id ",
             "duration": null
         },
         {
-            "id": "spec52",
-            "description": "should say element already exists in the table \"utilisateurFabricant\"",
-            "fullName": "TESTS:/marques |  POST /marques/:id/utilfab should say element already exists in the table \"utilisateurFabricant\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec42",
+            "description": "should say element already exists in the table \"marque\"",
+            "fullName": "TESTS:/marques |  POST /marques/ should say element already exists in the table \"marque\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:122:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:122:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.556Z",
-            "prefix": "TESTS:/marques |  POST /marques/:id/utilfab ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.098Z",
+            "prefix": "TESTS:/marques |  POST /marques/ ",
             "duration": null
         },
         {
-            "id": "spec51",
-            "description": "should add a new element to table \"utilisateurFabricant\"",
-            "fullName": "TESTS:/marques |  POST /marques/:id/utilfab should add a new element to table \"utilisateurFabricant\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "id": "spec41",
+            "description": "should add a new element to table \"marque\"",
+            "fullName": "TESTS:/marques |  POST /marques/ should add a new element to table \"marque\"",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'NomMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:102:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'NomMarque' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:102:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.736Z",
-            "prefix": "TESTS:/marques |  POST /marques/:id/utilfab ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.110Z",
+            "prefix": "TESTS:/marques |  POST /marques/ ",
+            "duration": null
+        },
+        {
+            "id": "spec40",
+            "description": "should return all the \"marques\"",
+            "fullName": "TESTS:/marques |  GET /marques/ should return all the \"marques\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:45:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:45:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.195Z",
+            "prefix": "TESTS:/marques |  GET /marques/ ",
             "duration": null
         },
         {
             "id": "spec47",
             "description": "should return all the \"marques\"",
             "fullName": "TESTS:/marques |  GET /marques/:id/modeles should return all the \"marques\"",
-            "failedExpectations": [],
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:302:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:302:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
             "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.749Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.298Z",
             "prefix": "TESTS:/marques |  GET /marques/:id/modeles ",
             "duration": null
         },
         {
-            "id": "spec14",
+            "id": "spec46",
             "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "fullName": "TESTS:/marques |  DELETE /marques/:id should delete the element (id)",
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.759Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec15",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.774Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec17",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.791Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec16",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:263:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 },
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marquesTests.spec.js:263:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.802Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec18",
-            "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.819Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec11",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.828Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec13",
-            "description": "should say the element is not found",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.836Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec12",
-            "description": "should change the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.844Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec32",
-            "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id/lignetarif should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.861Z",
-            "prefix": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec23",
-            "description": "should return all the \"options\" of \"version\" (id) ",
-            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/options should return all the \"options\" of \"version\" (id) ",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.877Z",
-            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/options ",
-            "duration": null
-        },
-        {
-            "id": "spec30",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                },
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.895Z",
-            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec31",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.901Z",
-            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif ",
-            "duration": null
-        },
-        {
-            "id": "spec29",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.909Z",
-            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/lignetarif ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.474Z",
+            "prefix": "TESTS:/marques |  DELETE /marques/:id ",
             "duration": null
         },
         {
             "id": "spec22",
             "description": "should delete the element (id)",
             "fullName": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "SequelizeUniqueConstraintError: Validation error",
+                    "stack": "error properties: Object({ errors: [ ValidationErrorItem({ message: 'PRIMARY must be unique', type: 'unique violation', path: 'PRIMARY', value: '99999999', origin: 'DB', instance: [object SequelizeInstance:marque], validatorKey: 'not_unique', validatorName: null, validatorArgs: [  ] }) ], fields: Object({ PRIMARY: '99999999' }), parent: Error: Duplicate entry '99999999' for key 'PRIMARY', original: Error: Duplicate entry '99999999' for key 'PRIMARY', sql: 'INSERT INTO `marque` (`CodeMarque`,`NomMarque`) VALUES (99999999,'Testing Marque');' })\n    at <Jasmine>\n    at Query.formatError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/sequelize/lib/dialects/mysql/query.js:226:16)\n    at Query.handler [as onResult] (/home/islam/Bureau/ProjetSIL.Backend/node_modules/sequelize/lib/dialects/mysql/query.js:68:23)\n    at Query.execute (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/commands/command.js:30:14)\n    at Connection.handlePacket (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:449:32)\n    at PacketParser.onPacket (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:72:12)\n    at PacketParser.executeStart (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/packet_parser.js:75:16)\n    at Socket.<anonymous> (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:79:25)\n    at Socket.emit (events.js:209:13)\n    at addChunk (_stream_readable.js:305:12)\n    at readableAddChunk (_stream_readable.js:286:11)\n    at Socket.Readable.push (_stream_readable.js:220:10)\n    at TCP.onStreamRead (internal/stream_base_commons.js:166:17)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Validation error",
+                    "stack": "error properties: Object({ errors: [ ValidationErrorItem({ message: 'PRIMARY must be unique', type: 'unique violation', path: 'PRIMARY', value: '99999999', origin: 'DB', instance: [object SequelizeInstance:marque], validatorKey: 'not_unique', validatorName: null, validatorArgs: [  ] }) ], fields: Object({ PRIMARY: '99999999' }), parent: Error: Duplicate entry '99999999' for key 'PRIMARY', original: Error: Duplicate entry '99999999' for key 'PRIMARY', sql: 'INSERT INTO `marque` (`CodeMarque`,`NomMarque`) VALUES (99999999,'Testing Marque');' })\n    at <Jasmine>\n    at Query.formatError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/sequelize/lib/dialects/mysql/query.js:226:16)\n    at Query.handler [as onResult] (/home/islam/Bureau/ProjetSIL.Backend/node_modules/sequelize/lib/dialects/mysql/query.js:68:23)\n    at Query.execute (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/commands/command.js:30:14)\n    at Connection.handlePacket (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:449:32)\n    at PacketParser.onPacket (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:72:12)\n    at PacketParser.executeStart (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/packet_parser.js:75:16)\n    at Socket.<anonymous> (/home/islam/Bureau/ProjetSIL.Backend/node_modules/mysql2/lib/connection.js:79:25)\n    at Socket.emit (events.js:209:13)\n    at addChunk (_stream_readable.js:305:12)\n    at readableAddChunk (_stream_readable.js:286:11)\n    at Socket.Readable.push (_stream_readable.js:220:10)\n    at TCP.onStreamRead (internal/stream_base_commons.js:166:17)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.922Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.585Z",
             "prefix": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec19",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:74:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:74:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:58.922Z",
+            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec29",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:637:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:637:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:59.112Z",
+            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec20",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id should change the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'NomVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:134:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'NomVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:134:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:59.438Z",
+            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec21",
+            "description": "should say the element is not found",
+            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id should say the element is not found",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:155:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:155:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:59.447Z",
+            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec23",
+            "description": "should return all the \"options\" of \"version\" (id) ",
+            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/options should return all the \"options\" of \"version\" (id) ",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'options' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:287:68)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'options' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:287:68)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:15:59.964Z",
+            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/options ",
+            "duration": null
+        },
+        {
+            "id": "spec32",
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id/lignetarif should delete the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:810:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:810:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:00.435Z",
+            "prefix": "TESTS:/marques/modeles/versions |  DELETE /marques/modeles/versions/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec31",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:738:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:738:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:00.846Z",
+            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec30",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:714:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:714:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:00.875Z",
+            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id/lignetarif ",
             "duration": null
         },
         {
             "id": "spec28",
             "description": "should say element already exists in the table \"couleur\"",
             "fullName": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/couleurs should say element already exists in the table \"couleur\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:595:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:595:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.940Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:01.393Z",
             "prefix": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/couleurs ",
             "duration": null
         },
@@ -868,159 +923,679 @@
             "id": "spec27",
             "description": "should add a new element to table \"couleur\"",
             "fullName": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/couleurs should add a new element to table \"couleur\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:573:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:573:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.949Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:01.402Z",
             "prefix": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/couleurs ",
-            "duration": null
-        },
-        {
-            "id": "spec19",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.963Z",
-            "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id ",
             "duration": null
         },
         {
             "id": "spec26",
             "description": "should return all the \"couleurs\" of \"version\" (id) ",
             "fullName": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/couleurs should return all the \"couleurs\" of \"version\" (id) ",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBeTruthy",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:479:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:479:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.979Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:01.919Z",
             "prefix": "TESTS:/marques/modeles/versions |  GET /marques/modeles/versions/:id/couleurs ",
-            "duration": null
-        },
-        {
-            "id": "spec21",
-            "description": "should say the element is not found",
-            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:20.998Z",
-            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec20",
-            "description": "should change the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.007Z",
-            "prefix": "TESTS:/marques/modeles/versions |  PUT /marques/modeles/versions/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec24",
-            "description": "should add a new element to table \"option\"",
-            "fullName": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options should add a new element to table \"option\"",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.030Z",
-            "prefix": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options ",
             "duration": null
         },
         {
             "id": "spec25",
             "description": "should say element already exists in the table \"option\"",
             "fullName": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options should say element already exists in the table \"option\"",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:404:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:404:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.035Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:02.445Z",
             "prefix": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options ",
+            "duration": null
+        },
+        {
+            "id": "spec24",
+            "description": "should add a new element to table \"option\"",
+            "fullName": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options should add a new element to table \"option\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:382:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versionsTests.spec.js:382:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:02.495Z",
+            "prefix": "TESTS:/marques/modeles/versions |  POST /marques/modeles/versions/:id/options ",
+            "duration": null
+        },
+        {
+            "id": "spec39",
+            "description": "should say element already exists in the table \"version\"",
+            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should say element already exists in the table \"version\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:313:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:313:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:02.765Z",
+            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
+            "duration": null
+        },
+        {
+            "id": "spec38",
+            "description": "should add a new element to table \"version\"",
+            "fullName": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions should add a new element to table \"version\"",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:291:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeVersion' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:291:42)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:02.781Z",
+            "prefix": "TESTS:/marques/modeles |  POST /marques/modeles/:id/versions ",
+            "duration": null
+        },
+        {
+            "id": "spec33",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:59:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:59:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:03.019Z",
+            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec37",
+            "description": "should return all the \"versions\" of marque (id) ",
+            "fullName": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions should return all the \"versions\" of marque (id) ",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "SyntaxError: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:227:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Unexpected token u in JSON at position 0",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:227:43)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:03.270Z",
+            "prefix": "TESTS:/marques/modeles |  GET /marques/modeles/:id/versions ",
+            "duration": null
+        },
+        {
+            "id": "spec36",
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id should delete the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:182:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:182:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:03.547Z",
+            "prefix": "TESTS:/marques/modeles |  DELETE /marques/modeles/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec34",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should change the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'NomModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:112:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'NomModele' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:112:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:03.794Z",
+            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec35",
+            "description": "should say the element is not found",
+            "fullName": "TESTS:/marques/modeles |  PUT /marques/modeles/:id should say the element is not found",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:132:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modelesTests.spec.js:132:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:03.802Z",
+            "prefix": "TESTS:/marques/modeles |  PUT /marques/modeles/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec18",
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif should delete the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:400:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:400:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:04.385Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec17",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:316:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:316:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:04.888Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec16",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:292:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:292:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:04.907Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec11",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:47:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:47:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.073Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec13",
+            "description": "should say the element is not found",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id should say the element is not found",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:117:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:117:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.255Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec12",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id should change the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:95:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeOption' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:95:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.270Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/options/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec14",
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id should delete the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:161:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:161:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.427Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec15",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:203:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/optionsTests.spec.js:203:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.600Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/options/:id/lignetarif ",
             "duration": null
         },
         {
             "id": "spec2",
             "description": "shouldn't pass the authentification",
             "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ shouldn't pass the authentification",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:90:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:90:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.051Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.877Z",
             "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
             "duration": null
         },
@@ -1028,19 +1603,33 @@
             "id": "spec1",
             "description": "shouldn't pass the authentification",
             "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ shouldn't pass the authentification",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:72:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:72:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.062Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.888Z",
             "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
             "duration": null
         },
@@ -1048,145 +1637,67 @@
             "id": "spec0",
             "description": "should pass the authentification",
             "fullName": "TESTS:/auth/utilfab |  POST /auth/utilfab/ should pass the authentification",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.073Z",
-            "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
-            "duration": null
-        },
-        {
-            "id": "spec3",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.085Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec5",
-            "description": "should say the element is not found",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id should say the element is not found",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.092Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec4",
-            "description": "should change the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id should change the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:54:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 },
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/auth/utilfabTests.spec.js:54:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.100Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec6",
-            "description": "should delete the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.110Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id ",
-            "duration": null
-        },
-        {
-            "id": "spec7",
-            "description": "should return the element (id)",
-            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
-                {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
-                }
-            ],
-            "deprecationWarnings": [],
-            "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.119Z",
-            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:05.959Z",
+            "prefix": "TESTS:/auth/utilfab |  POST /auth/utilfab/ ",
             "duration": null
         },
         {
             "id": "spec9",
             "description": "should return the element (id)",
             "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:316:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:316:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.135Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.375Z",
             "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
             "duration": null
         },
@@ -1194,46 +1705,238 @@
             "id": "spec8",
             "description": "should return the element (id)",
             "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:292:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 },
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:292:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.145Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.390Z",
             "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec5",
+            "description": "should say the element is not found",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id should say the element is not found",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:117:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:117:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.562Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec4",
+            "description": "should change the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id should change the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:95:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:95:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.574Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  PUT /marques/modeles/versions/couleurs/:id ",
+            "duration": null
+        },
+        {
+            "id": "spec7",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id/lignetarif should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:203:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'idLigneTarif' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:203:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.741Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec6",
+            "description": "should delete the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id should delete the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:161:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:161:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:06.931Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/:id ",
             "duration": null
         },
         {
             "id": "spec10",
             "description": "should delete the element (id)",
             "fullName": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif should delete the element (id)",
-            "failedExpectations": [],
-            "passedExpectations": [
+            "failedExpectations": [
                 {
-                    "matcherName": "toBe",
-                    "message": "Passed.",
-                    "stack": "",
-                    "passed": true
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:400:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'statusCode' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:400:37)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
                 }
             ],
+            "passedExpectations": [],
             "deprecationWarnings": [],
             "pendingReason": "",
-            "status": "passed",
-            "stoped": "2019-03-04T19:23:21.159Z",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:07.392Z",
             "prefix": "TESTS:/marques/modeles/versions/couleurs |  DELETE /marques/modeles/versions/couleurs/:id/lignetarif ",
+            "duration": null
+        },
+        {
+            "id": "spec3",
+            "description": "should return the element (id)",
+            "fullName": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id should return the element (id)",
+            "failedExpectations": [
+                {
+                    "matcherName": "",
+                    "message": "TypeError: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:47:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                },
+                {
+                    "matcherName": "",
+                    "message": "Failed: Cannot read property 'CodeCouleur' of undefined",
+                    "stack": "    at <Jasmine>\n    at Request._callback (/home/islam/Bureau/ProjetSIL.Backend/spec/routesTest/marques/modeles/versions/couleursTests.spec.js:47:33)\n    at self.callback (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:185:22)\n    at Request.emit (events.js:209:13)\n    at Request.onRequestError (/home/islam/Bureau/ProjetSIL.Backend/node_modules/request/request.js:881:8)\n    at ClientRequest.emit (events.js:209:13)\n    at Socket.socketErrorListener (_http_client.js:406:9)\n    at Socket.emit (events.js:209:13)\n    at emitErrorNT (internal/streams/destroy.js:91:8)\n    at emitErrorAndCloseNT (internal/streams/destroy.js:59:3)\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)",
+                    "passed": false,
+                    "expected": "",
+                    "actual": "",
+                    "suspectLine": "    at <Jasmine>",
+                    "hasSuspectLine": true
+                }
+            ],
+            "passedExpectations": [],
+            "deprecationWarnings": [],
+            "pendingReason": "",
+            "status": "failed",
+            "stoped": "2019-09-11T11:16:07.575Z",
+            "prefix": "TESTS:/marques/modeles/versions/couleurs |  GET /marques/modeles/versions/couleurs/:id ",
             "duration": null
         }
     ]

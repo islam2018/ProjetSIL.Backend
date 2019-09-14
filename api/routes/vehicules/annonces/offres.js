@@ -62,8 +62,9 @@ router.put('/:id/accepter',(req,res)=>{
             offreService.changeState(req.params.id,1).then(resu=>{
                 if (resu) {
                     offreService.getOffreDetails(req.params.id).then(o=>{
+                        console.log(o.annonce.automobiliste);
                         let body = o.annonce.automobiliste.Nom + ' '+o.annonce.automobiliste.Prenom+
-                            ' a accepté votre offre sur la '+o.annonce.version.modele.NomModele+' '+o.annonce.version.NomVersion+".";
+                            ' a accepté votre offre sur la '+o.vehicule.NomModele+' '+o.vehicule.NomVersion+".";
                         beamsClient.publishToInterests(['OFFRE_'+o.idOffre], {
                             fcm: {
                                 notification: {
@@ -77,10 +78,16 @@ router.put('/:id/accepter',(req,res)=>{
                         }).catch((error) => {
                             console.log('Error:', error);
                         });
-                        res.status(200).json(o);
+                        offreService.getOffre(req.params.id).then(obj=>{
+                            res.status(200).json(obj);
+                        }).catch(err=>{
+                            res.status(500).json({
+                                message:"Une erreur a été produite !"+err
+                            });
+                        });
                     }).catch(err=>{
                         res.status(500).json({
-                            message:"Une erreur a été produite !"
+                            message:"Une erreur a été produite !"+err
                         });
                     });
                 }else {
@@ -90,7 +97,7 @@ router.put('/:id/accepter',(req,res)=>{
                 }
             }).catch(error=>{
                 res.status(500).json({
-                    message:"Une erreur a été produite !"
+                    message:"Une erreur a été produite !"+error
                 });
             });
         } else {

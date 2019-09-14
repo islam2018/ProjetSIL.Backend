@@ -110,7 +110,9 @@ router.put('/:id/valider',(req,res)=>{
     commandeService.getCommande(req.params.id).then(commande=>{
         if (commande!=null) {
             commandeService.confirmCommande(commande).then(r=>{
-                res.status(200).json(r);
+                commandeService.getCommande(req.params.id).then(commande=>{
+                  res.status(200).json(commande);
+                });
             }).catch(e=>{
                 res.status(500).json({
                     message:"Une erreur a été produite !"
