@@ -51,6 +51,7 @@ app.use('/annonces',require('./api/routes/annonces'));
 
 app.use('/infos',require('./api/routes/infos'));
 
+app.use('/pusher/beams-auth',require('./api/routes/auth/pusher'));
 
 
 

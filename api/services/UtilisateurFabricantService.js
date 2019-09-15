@@ -43,7 +43,7 @@ let UtilisateurFabricantService=class UtilisateurFabricantService {
         return UTILFAB.findOne({
             include:[
                 {model: MARQUE, attributes:['NomMarque'], as:'marque'},
-                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images'}
+                {model:IMAGE, attributes:['CheminImage'],where:{Type:5},as:'images',required:false}
             ],
             where : {idUserF: IdUtilFab}
         });

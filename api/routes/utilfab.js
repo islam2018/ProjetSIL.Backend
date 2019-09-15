@@ -19,7 +19,18 @@ router.post('/tokenVerif',CheckAccountAccesControl,(req,res)=>{
     res.status(200).json({message: "token valide"});
 });
 
-router.put('/:id', AdminAccesControl,(req,res) => {
+
+router.get('/:id',(req,res)=>{
+    utilFabService.getUtilFab(req.params.id).then(userf=>{
+        res.status(200).json(userf);
+    }).catch(error=>{
+        res.status(500).json({
+            message:"Une erreur a été produite !"
+        });
+    });
+});
+
+router.put('/:id',(req,res) => {
     utilFabService.getUtilFab(req.params.id).then(utilfab=>{
         if (utilfab!=null) {
             utilFabService.updateUtilFab(req.body,req.params.id).then(resu=>{
@@ -40,6 +51,10 @@ router.put('/:id', AdminAccesControl,(req,res) => {
                 res.status(500).json({
                     message:"Une erreur a été produite !"
                 });
+            });
+        } else {
+            res.status(404).json({
+                message:"Utilisateur non trouvé !"
             });
         }
     }).catch(err=>{

@@ -34,16 +34,23 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-router.post('/:id',AdminAccessControl,upload.single('imageUtilisateur'),(req,res)=>{
+router.post('/:id',upload.single('imageUtilisateur'),(req,res)=>{
 
-    req.body.CheminImage=req.file.url;
-    imageService.createImage(req.body,5,req.params.id).then(image=>{
-        res.status(200).json(image);
+    imageService.deleteImageProfile(req.params.id).then (result=>{
+        req.body.CheminImage=req.file.url;
+        imageService.createImage(req.body,5,req.params.id).then(image=>{
+            res.status(200).json(image);
+        }).catch (err=>{
+            res.status(500).json({
+                message:'Une erreur a été produite'
+            });
+        });
     }).catch (err=>{
         res.status(500).json({
             message:'Une erreur a été produite'
         });
     });
+
 });
 
 module.exports = router;
