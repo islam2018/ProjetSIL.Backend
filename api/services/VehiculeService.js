@@ -229,28 +229,46 @@ let VehiculeService=class VehiculeService {
     calculMontant(vehicule) {
         let montant=0;
         return new Promise((resolve,reject)=>{
-            ligneTarifService.getLigneTarif(vehicule.CodeVersion,0).then(ltVersion=>{
-                montant+=ltVersion.Prix;
-                ligneTarifService.getLigneTarif(vehicule.CodeCouleur,1).then(ltCouleur=>{
-                    montant+=ltCouleur.Prix;
-                    let promises =[];
-                    vehicule.options.forEach(option=>{
-                       promises.push(ligneTarifService.getLigneTarif(option.CodeOption,2));
-                    });
-                    Promise.all(promises).then(ltOptions=>{
-                        ltOptions.forEach(ltOption=>{
-                            montant+=ltOption.Prix;
-                        });
-                        resolve(montant);
-                    }).catch(e=>{
-                        reject(e);
-                    });
-                }).catch(e=>{
-                    reject(e);
+            let promises = [];
+            promises.push(ligneTarifService.getLigneTarif(vehicule.CodeVersion,0));
+            promises.push(ligneTarifService.getLigneTarif(vehicule.CodeCouleur, 1));
+            vehicule.options.forEach(option => {
+                promises.push(ligneTarifService.getLigneTarif(option.CodeOption, 2));
+            });
+            Promise.all(promises).then(lts => {
+                lts.forEach(lt => {
+                    if (lt!=null) montant += lt.Prix;
                 });
-            }).catch(e=>{
+                resolve(montant);
+            }).catch(e => {
                 reject(e);
             });
+            /*ligneTarifService.getLigneTarif(vehicule.CodeVersion,0).then(ltVersion=>{
+                if (ltVersion!==null) {
+                    montant += ltVersion.Prix;
+                    ligneTarifService.getLigneTarif(vehicule.CodeCouleur, 1).then(ltCouleur => {
+                        montant += ltCouleur.Prix;
+                        let promises = [];
+                        vehicule.options.forEach(option => {
+                            promises.push(ligneTarifService.getLigneTarif(option.CodeOption, 2));
+                        });
+                        Promise.all(promises).then(ltOptions => {
+                            ltOptions.forEach(ltOption => {
+                                montant += ltOption.Prix;
+                            });
+                            resolve(montant);
+                        }).catch(e => {
+                            reject(e);
+                        });
+                    }).catch(e => {
+                        reject(e);
+                    });
+                }else {
+
+                }
+            }).catch(e=>{
+                reject(e);
+            });*/
         });
 
 
