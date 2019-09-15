@@ -65,7 +65,7 @@ router.put('/:id/accepter',(req,res)=>{
                         console.log(o.annonce.automobiliste);
                         let body = o.annonce.automobiliste.Nom + ' '+o.annonce.automobiliste.Prenom+
                             ' a accepté votre offre sur la '+o.vehicule.NomModele+' '+o.vehicule.NomVersion+".";
-                        beamsClient.publishToInterests(['OFFRE_'+o.idOffre], {
+                        beamsClient.publishToUsers([o.automobiliste.idAutomobiliste], {
                             fcm: {
                                 notification: {
                                     title: 'Offre acceptée !',

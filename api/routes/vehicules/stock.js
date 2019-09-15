@@ -94,7 +94,7 @@ router.post('/lignetarif',upload.single('ligneTarifFile'), (req, res) => {
     }).fromStream(request.get(req.file.url)).then(json => {
         let promises=[];
         json.forEach(ligneTarif=>{
-            switch(ligneTarif) {
+            switch(ligneTarif.Type) {
                 case "VERSION": {
                     ligneTarif.Type = 0;
                 }break;

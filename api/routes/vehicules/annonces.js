@@ -146,7 +146,12 @@ router.post('/:id/offres',(req,res)=>{
             let body= details.automobiliste.Nom+" "+details.automobiliste.Prenom+
                 " a offert "+details.Montant+" DA pour votre voiture : "+details.vehicule.NomModele+" "+details.vehicule.NomVersion+".";
             console.log(body);
-            beamsClient.publishToInterests(['ANNONCE_'+req.params.id], {
+            beamsClient.publishToUsers([details.annonce.automobiliste.idAutomobiliste], {
+                apns: {
+                    aps: {
+                        alert: 'Nouvelle offre !'
+                    }
+                },
                 fcm: {
                     notification: {
                         title: 'Nouvelle offre !',
