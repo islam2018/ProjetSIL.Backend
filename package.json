@@ -39,7 +39,7 @@
     "pug": "^2.0.3",
     "pusher": "^2.2.0",
     "request": "^2.88.0",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sequelize-to-json": "^0.10.3",
     "sequelize-values": "^1.1.0",
     "synchronized-promise": "^0.1.0"
